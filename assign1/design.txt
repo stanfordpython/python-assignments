@@ -1,0 +1,14 @@
+Name: <YOUR NAME>
+SUNet: <SUNet ID>
+
+In 1-3 sentences per section, comment on your approach to each of the parts of the assignment. What was your high-level strategy? How did you translate that into code? Did you make use of any Pythonic practices? We want you to reflect on your coding style, and whether you're making full use of the utilities provides.
+
+
+# Caesar Cipher
+
+
+# Vigenere Cipher
+
+
+# Merkle-Hellman Knapsack Cryptosystem
+

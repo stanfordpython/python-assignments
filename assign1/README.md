@@ -17,12 +17,17 @@ Get a quick refresher by flipping through our slides from the first few weeks on
 We’ve provided a starter zip file available on the website as a skeleton for this assignment. Here’s an overview of what’s in it:
 
 1. `crypto.py` is the primary file you will modify. It will contain all the functions to decrypt/encrypt strings and also the logic behind the text-based console menu.
-2. `feedback.txt`
-See the second-to-last section for some questions we’d love to ask you
-3. Sample text files to test the File I/O 
-`caesar-plain.txt`, `caesar-cipher.txt`, `vigenere-plain.txt`, `vigenere-cipher.txt`, `railfence-plain.txt`, `railfence-cipher.txt`
-4. Tests
+2. `utils.py` provides useful utilities for console interaction and for Merkle-Hellman
+2. `design.txt` is where you'll record the design decisions you're making.
+3. `feedback.txt` is where you'll answer some questions about how the course is going overall
+4. `tests/` folder contains test input and output
+5. `res/` folder of sample text files to play around with file I/O. For Merkle-Hellman, the seed we used was 41
 
+```
+res/caesar-plain.txt   and res/caesar-cipher.txt
+res/vigenere-plain.txt and res/vigenere-cipher.txt
+res/mh-plain.txt       and res/mh-cipher.txt
+```
 
 # Cryptography Suite
 
@@ -75,7 +80,7 @@ You should test your ciphers using the interactive interpreter:
 "PYTHON"
 ```
 
-A non-exhaustive list of test cases, represented by a tab-delimited (plaintext, ciphertext) pair are given in the text file `caesar-tests.txt`.
+A non-exhaustive list of test cases, represented by a tab-delimited (plaintext, ciphertext) pair are given in the text file `tests/caesar-tests.txt`.
 
 ### Vigenere Cipher
 
@@ -120,7 +125,7 @@ Then, try testing the methods using the interactive interpreter again.
 "ATTACKATDAWN"
 ```
 
-Another list of non-exhaustive tests are available at `vigenere-tests.txt`.
+Another list of non-exhaustive tests are available at `tests/vigenere-tests.txt`.
 
 ### Merkle-Hellman Knapsack Cryptosystem
 
@@ -132,27 +137,33 @@ Building the Merkle-Hellman Cryptosystem involves three parts:
 2. Encryption
 3. Decryption
 
-At a high-level, in the Merkle-Hellman Cryptosystem, all participants go through key generation once to build a public key and a private key. Public keys are made publicly available, whereas private keys are kept under lock and key. Usually, public keys lead to some sort of encryption function, and private keys lead to some sort of decryption function, and in many ways they act as inverses.
+At a high-level, in the Merkle-Hellman Knapsack Cryptosystem, all participants go through key generation once to construct both a public key and a private key, linked together in some mathematical way. Public keys are made publicly available, whereas private keys are kept under lock and key (no pun intended). Usually, public keys will lead to some sort of encryption function, and private keys will lead to some sort of decryption function, and in many ways they act as inverses.
 
-For Person A to send message m to Person B, Person A encrypts message m using Person B's public key. Person B then decrypts the encrypted message using Person B's private key.
+For Person A to send message m to Person B, Person A encrypts message m using Person B's public key. Person B then decrypts the encrypted message using Person B's private key. Often, long messages are send in shorted chunks, with each chunk respectively encrypted before it is sent to the recipient.
+
+Make sure you understand the general idea behind public-key cryptosystems before moving forward. You don't need to know all of the details, but you should be able to explain why Person A doesn't encrypt an outgoing message with her own public key.
+
+First, we'll discuss the mathematics behind Merkle-Hellman Knapsack Cryptosystem, and then we'll dive into what functions you have to write for this assignment.
 
 
 #### Key Generation
-Choose a fixed integer `n` for the size (in bits) of messages to send so that We will be encrypting and decrypting n-bit messages. For this assignment, we'll use `n = 8` bits, so we can encrypt and decrypt messages one byte at a time.
+In the key generation step, we will construct a private key and a public key.
 
-First, we choose a superincreasing sequence of n nonzero natural numbers:
+Choose a fixed integer `n` for the chunk size (in bits) of messages to send. For this assignment, we'll use `n = 8` bits, so we can encrypt and decrypt messages one byte at a time.
+
+First, we must build a superincreasing sequence of `n` nonzero natural numbers:
 
 ```
 w = (w_1, w_2, ..., w_n)
 ```
 
-A superincreasing sequence is one in which every element is greater than the sum of all previous elements. For example, `(1, 3, 6, 13, 27, 52)` is a superincreasing sequence, but `(1, 3, 4, 9, 15, 25)` is not.
+A superincreasing sequence is one in which every element is greater than the sum of all previous elements. For example, `(1, 3, 6, 13, 27, 52)` is a superincreasing sequence, but `(1, 3, 4, 9, 15, 25)` is not. One way to construct a superincreasing sequence is to start with some small number - say, a random number between 2 and 10. You can generate the next number by selecting randomly from a range like `[total + 1, 2 * total]` or something similar, where `total` is the sum of all of the elements so far. In this way, we can gradually build up our sequence to whatever size we need - in this case, until `n = 8`.
 
-Next, pick a random integer `q`, such that `q` is greater than the sum of the the elements in `w`. For good performance, choose `q` between 1x and 2x the sum of the elements in `w`.
+Next, we pick a random integer `q`, such that `q` is greater than the sum of the the elements in `w`. To leverage code we've already written, let's choose `q` between `[total + 1, 2 * total]`, where `total` is the sum over all elements of `w`. 
 
-After, choose a random integer `r` such that `gcd(r, q) = 1` (i.e. r and q are coprime).
+Then, we choose a random integer `r` such that `gcd(r, q) = 1` (i.e. r and q are coprime). To accomplish this, it's sufficient to just generate random numbers in the range `[2, q-1]` until you find some `r` such that `r` and `q` are coprime. (Hint: the `utils` module exports a convenient `coprime` function. Use it!)
 
-Finally calculate the tuple
+Finally, we calculate the tuple
 
 ```
 beta = (b_1, b_2, ..., b_n)
@@ -166,15 +177,29 @@ b_i = r × w_i mod q
 
 The public key is `beta`, while the private key is `(w, q, r)`.
 
+Both `w` and `beta` should be converted to tuples.
+
+*Implementation Note:*
+
+To find random integers, you can use the `randint(a, b)` function (returns a random integer in the range [a, b], including both end points) from the `random` module. For example,
+
+```
+import random
+x = random.randint(1, 6)  # returns either 1, 2, 3, 4, 5, 6 with uniform probability
+
+```
+
 #### Encryption
 
-To encrypt an n-bit message
+To encrypt a character, first convert it into it's equivalent bits. For example, `'A'`, which is 65 in ASCII, becomes `[0, 1, 0, 0, 0, 0, 0, 1]`.
+
+To encrypt this character, we just have to encrypt an 8-bit message. Call it:
 
 ```
 alpha = (a_1, a_2, ..., a_n)
 ```
 
-where `a_i` is the `i`-th bit of the message and `a_i` is either 0 or 1, calculate
+where `a_i` is the `i`-th bit of the message and `a_i` is either 0 or 1. With that, we can calculate
 
 ```
 c = sum of a_i × b_i for i = 1 to n
@@ -182,17 +207,21 @@ c = sum of a_i × b_i for i = 1 to n
 
 The ciphertext is then `c`.
 
+*Implementation Note:*
+
+Whenever you're encrypting or decrypting data using Merkle-Hellman, you'll want to deal with bits. Fortunately, the `utils` module exports the `bits_to_byte(bits)` and `byte_to_bits(byte)` functions which respectively convert an array of length 8 containing 1s and 0s to an integer between 0-255 (conceptually, a byte).
+
 #### Decryption
 
-In order to decrypt a ciphertext `c` a receiver has to find the message bits `alpha_i` such that they satisfy
+In order to decrypt a ciphertext `c`, a receiver has to find the message bits `alpha_i` such that they satisfy
 
 ```
 c = sum of a_i × b_i for i = 1 to n
 ```
 
-This would be a hard problem if the `b_i` were random values because the receiver would have to solve an instance of the subset sum problem, which is known to be NP-hard (i.e. very hard). However, `beta` was chosen such that decryption is easy if the private key `(w, q, r)` is known.
+This is generally a hard problem, if the `b_i` are random values, because the receiver would have to solve an instance of the subset sum problem, which is known to be NP-hard (i.e. very hard). However, we constructed `beta` in a very special way, such that if we *also* know the private key `(w, q, r)`, then we can decrypt the message more easily.
 
-The key to decryption is to find an integer `s` that is the modular inverse of `r` modulo `q`. That means `s` satisfies the equation `s r mod q = 1` or equivalently there exist an integer k such that `sr = kq + 1`. Since `r` was chosen such that `gcd(r,q) = 1` it is possible to find `s` and `k` by using the Extended Euclidean algorithm, which we've implemented for you. 
+The key to decryption will be a special integer `s` that has some nice properties - namely, that `s` is the modular inverse of `r` modulo `q`. That means `s` satisfies the equation `r × s mod q = 1`, and since `r` was chosen such that `gcd(r, q) = 1`, it will always be possible to find such an `s` using something called the Extended Euclidean algorithm, which we've implemented for you (in `utils.modinv(r, q)`). It's a really cool algorithm! If you're interested, go read about it on Wikipedia.
 
 Once `s` is known, the receiver of the ciphertext computes
 
@@ -200,147 +229,172 @@ Once `s` is known, the receiver of the ciphertext computes
 c' = cs mod(q)
 ```
 
-Because of `rs mod q = 1` and `b_i = r × w_i (mod q)`, we know
+Because we know `r × s mod q = 1` and `b_i = r × w_i (mod q)`, it's also true that
 
 ```
-b_i s =  w_i r s = w_i (mod q).
+b_i s =  w_i × r × s = w_i (mod q).
 ```
 
 Therefore,
 
 ```
-c' = cs = sum of a_i × b_i × s for each i = a_i × w_i (mod q).
+c' = c × s = sum of a_i × b_i × s for each i = a_i × w_i (mod q).
 ```
 
-The sum of all values `w_i` is smaller than `q` and hence `sum of a_i × w_i` is also in the interval `[0,q-1]`. Thus the receiver has to solve the subset sum problem
+Wow! We've converted our problem of solving a subset sum problem over the `b_i`s, which might be a very nasty sequence, to an equivalent problem over the `w_i`s, which form a very nice sequence.
+
+Thus the receiver has to solve the subset sum problem
 
 ```
 c' = sum of a_i × w_i for i = 1 to n
 ```
 
-This problem is computationally easy because `w` was chosen to be a superincreasing sequence. Take the largest element in `w`, say `w_k`. If `w_k > c` , then `a_k = 0`, and if `w_k  <= c`, then `a_k = 1`. Then, subtract `w_k × a_k` from `c` , and repeat these steps until you have figured out all of `alpha`.
+This problem is computationally easy because `w` was chosen to be a superincreasing sequence! Take the largest element in `w`, say `w_k`. If `w_k > c` , then `a_k = 0`, and if `w_k  <= c`, then `a_k = 1`. Then, subtract `w_k × a_k` from `c` , and repeat these steps until you have figured out all of `alpha`.
 
 Still confused? This stuff can get complicated. Wikipedia provides [a great example](https://en.wikipedia.org/wiki/Merkle%E2%80%93Hellman_knapsack_cryptosystem#Example) to work through if you prefer concrete numbers over abstract symbols.
 
-What do you actually have to implement? We've taken care of a lot of the math behind-the-scenes (if you want to check out how, look into `utils.py`).
+#### Implementation
+
+What do you actually have to implement? We've taken care of a lot of the math behind-the-scenes (if you want to check out how, look into `utils.py`), so you're job focuses more on the data structures. In particular, you need to write the following four functions.
 
 ```
+def generate_private_key(n=8):
+    """Generate a private key for use in the Merkle-Hellman Knapsack Cryptosystem
+
+    Following the instructions in the handout, construct the private key components
+    of the MH Cryptosystem. This consistutes 3 tasks:
+
+    1. Build a superincreasing sequence `w` of length n
+        (Note: you can check if a sequence is superincreasing with `utils.is_superincreasing(seq)`)
+    2. Choose some integer `q` greater than the sum of all elements in `w`
+    3. Discover an integer `r` between 2 and q that is coprime to `q` (you can use utils.coprime)
+
+    You'll need to use the random module for this function, which has been imported already
+
+    Somehow, you'll have to return all of these values out of this function! Can we do that in Python?!
+
+    @param n bitsize of message to send (default 8)
+    @type n int
+
+    @return 3-tuple `(w, q, r)`, with `w` a n-tuple, and q and r ints.
+    """
+    pass
+
 def create_public_key(private_key):
-    pass  # Build a public key corresponding to the private key
-    # Hint: this can be written in one line using a list comprehension
-    
+    """Creates a public key corresponding to the given private key.
+
+    To accomplish this, you only need to build and return `beta` as described in the handout.
+
+        beta = (b_1, b_2, ..., b_n) where b_i = r × w_i mod q
+
+    Hint: this can be written in one line using a list comprehension
+
+    @param private_key The private key
+    @type private_key 3-tuple `(w, q, r)`, with `w` a n-tuple, and q and r ints.
+
+    @return n-tuple public key
+    """
+    pass
+
+
 def encrypt_mh(message, public_key):
     """Encrypt an outgoing message using a public key.
-    
-    1. Separate the message into byte-sized chunks
-    2. For each byte, determine the 8 bits
+
+    1. Separate the message into chunks the size of the public key (in our case, fixed at 8)
+    2. For each byte, determine the 8 bits (the `a_i`s) using `utils.byte_to_bits`
     3. Encrypt the 8 message bits by computing
          c = sum of a_i * b_i for i = 1 to n
-    4. Return a list of encrypted ciphertexts
+    4. Return a list of the encrypted ciphertexts for each chunk in the message
+
+    Hint: think about using `zip` at some point
 
     @param message The message to be encrypted
     @type message bytes
     @param public_key The public key of the desired recipient
     @type public_key n-tuple of ints
-    
-    @return list of ints
+
+    @return list of ints representing encrypted bytes
     """
     return message
-    
-    # Hint: think about using zip
-    
+
 def decrypt_mh(message, private_key):
     """Decrypt an incoming message using a private key
-    
+
     1. Extract w, q, and r from the private key
-    2. Compute s using the Extended Euclidean algorithm
-    3. For each bite-sized chunk, compute
+    2. Compute s, the modular inverse of r mod q, using the
+        Extended Euclidean algorithm (implemented at `utils.modinv(r, q)`)
+    3. For each byte-sized chunk, compute
          c' = cs (mod q)
-    4. Solve the superincreasing subset sum using c' and w
-    5. Use the resulting message bits to reconsitute the message
-    
+    4. Solve the superincreasing subset sum using c' and w to recover the original byte
+    5. Reconsitite the encrypted bytes to get the original message back
+
     @param message Encrypted message chunks
     @type message list of ints
     @param private_key The private key of the recipient
     @type private_key 3-tuple of w, q, and r
+
+    @return bytearray or str of decrypted characters
     """
+    return message
 ```
 
-Note: 
+Note: We're aware this is a hard problem. It's supposed to challenge you! If you're stuck, even on something that *seems* simple, please please reach out to the course staff over Piazza or during office hours. We'll be more than happy to help!
 
 *Full credit to the Wikipedia summary for this explanation! The description is shamelessly copied and modified :)*
 ## Console Menu
-This program is user-driven, so your first step is to write a function that asks the user if they want to (e)ncrypt or (d)ecrypt a (f)ile or a (s)tring, and lastly whether to do so using a (c)aesar cipher, a (v)igenere cipher, or a (r)ailfence cipher. If the Vigenere or railfence ciphers are selected, either for encryption or decryption, you should make sure to ask the user for additional information. In the case of the Vigenere cipher, you should ask them for the phrase to be used as a secret key. In the case of the railfence cipher, you should request a positive integer number of rails. 
+In order to better test this program, we've provided a console menu to interact with the cryptography suite. This shouldn't replace your normal debugging process - rather, see it as an augmentation of the tools you have to track down any elusive bugs.
 
-The program should be case-insensitive. A sample run of the program might look like this:
+In general, we don't do very much error handling (since the console menu is intended as a tool for you to debug), so it may crash gracelessly on bad input. You're welcome to modify or change the console menu as you see fit. We'll only be testing your application-level functions.
+
+A sample run of the program might look like:
 
 ```
-$ python3 crypto.py
+(cs41) $ python3 crypto.py
 Welcome to the Cryptography Suite!
-*Input*
-(F)ile or (S)tring? S
-Enter the string to encrypt: I’m not dead yet
-*Transform*
-(E)ncrypt or (D)ecrypt? E
-(C)aesar, (V)igenere, or (R)ailfence? v
-Passkey? Python
-Encrypting IMNOTDEADYET using Vigenere cipher with key PYTHON
-...
-*Output*
+----------------------------------
+* Tool *
+(C)aesar, (V)igenere or (M)erkle-Hellman? c
+* Action *
+(E)ncrypt or (D)ecrypt? e
+* Input *
+(F)ile or (S)tring? s
+Enter a string: hello!
+* Transform *
+Encrypting HELLO! using Caesar cipher...
+* Output *
+(F)ile or (S)tring? s
+"KHOOR"
+Again? (Y/N) y
+----------------------------------
+* Tool *
+(C)aesar, (V)igenere or (M)erkle-Hellman? v
+* Action *
+(E)ncrypt or (D)ecrypt? d
+* Input *
 (F)ile or (S)tring? f
-Filename? output.txt
-Writing ciphertext to output.txt...
-Again (Y/N)? Y
-*Input*
-(F)ile or (S)tring? F
-Filename: secret_message.txt
-*Transform*
-(E)ncrypt or (D)ecrypt? D
-(C)aesar, (V)igenere, or (R)ailfence? C
-Decrypting contents of secret_message.txt using Caesar cipher
-...
-*Output*
-(F)ile or (S)tring? S
-The plaintext is: HELLOWORLD
+Filename? res/vigenere-cipher.txt
+* Transform *
+Keyword? LEMON
+Decrypting LXFOPVEFRNHR using Vigenere cipher and keyword LEMON...
+* Output *
+(F)ile or (S)tring? s
+"ATTACKATDAWN"
+Again? (Y/N) n
+Goodbye!
+(cs41) $ 
 ```
 
-If the user enters an invalid option to a prompt, you should reprompt until they enter an appropriate response.
-
-For robustness, you should strip text of all non-alphabetic characters like spaces and punctuation, which should not be encrypted, before passing the text to the encrypt_* and decrypt_* functions. The function str.isalpha() may be helpful.
-
-Implement the function:
-run_suite()
-which should run a single iteration of the cryptography suite, prompting the user for information about input, transformation, and output.
-
-## File I/O
-
-No cryptography tool would be complete without the ability to encrypt and decrypt files! In this final section, you will incorporate file input and output into the program.
-
-You will need to update the console menu in order to allow the user to supply a filename to use.
-
-
-Notes:
-
-- You may assume that all filenames supplied by the user represent valid files with the appropriate read/write flags set.
-- You only need to implement file I/O for Caesar and Vigenere ciphers. Merkle-Hellman is 
-
-Implement the functions:
-
-```
-get_text()
-write_text(content)
-```
-
-Recall that you can open a file for writing by passing the `w` flag to open.
 
 ## Extensions
 
-The following section is an extension and is entirely optional. If you choose to give it a crack, give us some documentation and let us know how it went in your feedback!
+What?! You haven't had enough? Okay, your call.
+
+The following section contains possible extensions and is **entirely optional**. If you choose to take a crack at any, regardless of how far you get, give us some documentation and let us know how it went in your feedback!
 
 ### Intelligent Codebreaker
-Suppose that you have access to ciphertext that you know has been encrypted using a Vigenere cipher. Furthermore, suppose that you know that the corresponding plaintext has been written using only words in /usr/share/dict/words, although you don’t know the exact message. Finally, suppose that you know that someone has encrypted a message using a Vigenere cipher with a key drawn from a preset list of words. Can you still decrypt the ciphertext?
+Suppose that you have access to ciphertext that you know has been encrypted using a Vigenere cipher. Furthermore, suppose that you know that the corresponding plaintext has been written using only words in `/usr/share/dict/words`, although you don’t know the exact message. Finally, suppose that you know that someone has encrypted a message using a Vigenere cipher with a key drawn from a preset list of words. Can you still decrypt the ciphertext?
 
-For many of the incorrect keys, the resulting plaintext will be gibberish. Thus, the bulk of this problem lies in evaluating how close to an English sentence a given sequence of letters is.
+For many of the incorrect keys, the resulting plaintext will be gibberish, but there will also be incorrect keys for which the resulting plaintext sounds English-y, but isn't quite right. Thus, the bulk of this problem lies in evaluating how close to an English sentence a given sequence of letters is.
 
 Your top-level function should be
 
@@ -350,17 +404,17 @@ decrypt_vigenere(ciphertext, possible_keys)
 
 Besides that, you are free to implement this program however you see fit. However, think about the Python style guidelines before continuing.
 
-You can test your method on “SEOEYMIDWTGFAGAXSEAOQYAIXTRROTY”
+You can test your method on the text inside of `secret_message.txt`.
 
 ### Error Handling
-Currently, our program makes a lot of strong assumptions - see the Notes section in each part. Can you add code to handle cases where these assumptions are violated? For example, you should reprompt the user for a file if the file she supplied is invalid.
+Currently, our program makes a lot of strong assumptions - see the Notes section in each part. Can you add code to handle cases where these assumptions are violated?
 
 ### Encrypt Non-Text Files
-So far, our encryption techniques have been applied solely to letters from the alphabet. However, it is possible to extend these encryption methods to work on arbitrary binary data, such as images, audio files, and more. For this extension, choose at least one of the encryption techniques and make it work on binary files. You will need to use the binary flag when reading from files, which you can read more about here. You may want to read about text sequence types compared with binary sequence types as well.
+So far, our ciphers have been applied solely to text-based messages full of ascii letters from the alphabet. However, it is possible to extend these encryption methods to work on arbitrary binary data, such as images, audio files, and more. For this extension, choose at least one of the encryption techniques and make it work on binary files. You will need to use the binary flag when reading from files. You may want to read about text sequence types compared with binary sequence types as well.
 
 ## Design
 
-Please submit a short design document (`design.txt`) describing your approach to each of the parts of the assignment. "Short" means a few sentences (2-4) per part discussing the rationale behind your decision to implement this program in the way you did.
+Please submit a short design document (`design.txt`) describing your approach to each of the parts of the assignment. "Short" means just a few sentences (1-3) per part discussing the rationale behind your decision to implement this program in the way you did.
 
 ## Feedback
 
