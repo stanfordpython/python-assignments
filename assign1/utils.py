@@ -9,7 +9,7 @@ def is_superincreasing(seq):
     """Returns True iff `seq` is a superincreasing sequence"""
     ct = 0  # Total so far
     for n in seq:
-        if n <= sum:
+        if n <= ct:
             return False
         ct += n
     return True
