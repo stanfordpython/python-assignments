@@ -186,7 +186,7 @@ def run_merkle_hellman():
     print("* Building private key...")
 
     private_key = generate_private_key()
-    public_key = build_public_key(private_key)
+    public_key = create_public_key(private_key)
 
     if action == 'E':  # Encrypt
         data = utils.get_input(binary=True)
