@@ -4,11 +4,13 @@
 
 ## Overview
 
-Congratulations on a great quarter thus far! You have embarked on a quest to find the famous Holy Grail. Along the way, you will have to write various Python scripts to assist you in your quest. We know you're up to the challenge. Your quest will draw on everything you have learned thus far.
+Congratulations on a great quarter so far!
 
-We've actually hidden a Holy Grail somewhere on campus. Godspeed.
+You have embarked on a quest to find the famous Holy Grail. Along the way, you will have to write various Python scripts to assist you in your journey. We know you're up to the challenge. Your quest will draw on everything you have learned thus far in the course.
 
-Note: The goal is to have you enjoy the beautiful Stanford weather as a break from midterm season.
+We've actually hidden a Holy Grail somewhere on campus. The first person to find it gets late night, on us. Godspeed.
+
+*Note: The goal is to have you enjoy the beautiful Stanford weather as a break from midterm season, and have some fun solving small puzzles.*
 
 ![Holy Grail](http://parktheatreholland.com/wp-content/uploads/2014/10/banner-python.jpg)
 
