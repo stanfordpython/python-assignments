@@ -3,11 +3,11 @@ import time
 
 """
 It's Winter quarter of your Senior year and you have a few more Ws then you'd like.
-In order for you to 'Camp Stanford' next quarter, you need to take as many classes as 
-possible. Lucky for you all classes meet MWF, so you dont have to worry about the 
-days of the week, just the times of the day. You need to make a schedule that has 
-no overlapping classes, however you dont need to take into account the time of 
-getting from one class to another. One last thing, you are fine with classes that 
+In order for you to 'Camp Stanford' next quarter, you need to take as many classes as
+possible. Lucky for you all classes meet MWF, so you dont have to worry about the
+days of the week, just the times of the day. You need to make a schedule that has
+no overlapping classes, however you dont need to take into account the time of
+getting from one class to another. One last thing, you are fine with classes that
 start at 9, but anything that is later than 6:30 is off the table
 The list of possible classes will be listed like this:
 
@@ -19,11 +19,11 @@ CS41 13.5 15 a
 
 you'll notice that we use decimals for minutes and military time to avoid confusion
 
-You probably can't do this problem with a naive brute force approach that will search all 
-possibilities, but there are ways to filter out classes that you would never take. If done 
+You probably can't do this problem with a naive brute force approach that will search all
+possibilities, but there are ways to filter out classes that you would never take. If done
 properly this may leave few enough classes that brute force will work.
 
-Hints: 
+Hints:
 
 *   Consider creating a class for a course and reading in the file and creating a list
     of course objects.
@@ -43,20 +43,22 @@ class Class:
         """
         What fields should the class have?
         """
+        pass
 
 def brute_schedule(classes):
     """
-    Unfortunately this problem is not solvable by a greedy algorithm so we have to 
-    either do recursion or something a bit more aggressive. The easiest way to find 
-    the best schedule is to try to fit as many classes as possible in every 
+    Unfortunately this problem is not solvable by a greedy algorithm so we have to
+    either do recursion or something a bit more aggressive. The easiest way to find
+    the best schedule is to try to fit as many classes as possible in every
     conceivable order and then keep the best one.
     """
+    pass
 
 def fast_schedule(classes):
     """
     Takes the classes and keeps only one class per start time with the shortest duration
-    
-    For example, with these three classes: 
+
+    For example, with these three classes:
     ClassA 9 12
     ClassB 9 11.5
     ClassC 9.5 12
@@ -76,9 +78,7 @@ if __name__ == '__main__':
     with open(DATA_LOCATION, 'r') as f:
         lines = f.readlines()
 
-    class_strings = [line[:-1] for line in lines]
+    class_strings = [line.strip() for line in lines]
     classes = [Class(*class_str.split()) for class_str in class_strings]
 
-
     fast_schedule(classes)
-

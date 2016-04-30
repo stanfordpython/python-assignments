@@ -8,25 +8,32 @@ Congratulations on a great quarter so far!
 
 You have embarked on a quest to find the famous Holy Grail. Along the way, you will have to write various Python scripts to assist you in your journey. We know you're up to the challenge. Your quest will draw on everything you have learned thus far in the course.
 
-We've actually hidden a Holy Grail somewhere on campus. The first person to find it gets late night, on us. Godspeed.
+We've actually hidden a Holy Grail somewhere on campus. The first person to find it gets late night, on us =D. Godspeed.
 
-*Note: The goal is to have you enjoy the beautiful Stanford weather as a break from midterm season, and have some fun solving small puzzles.*
+*Note: We want you to enjoy the beautiful Stanford weather, as a nice break from midterms, and have some fun solving small puzzles.*
 
 ![Holy Grail](http://parktheatreholland.com/wp-content/uploads/2014/10/banner-python.jpg)
 
 ## Logistics
 
-Download the [starter files](https://github.com/stanfordpython/python-assignments/tree/master/assign2) and use some of the hints below to solve the puzzles and find the holy grail!
+Download the [starter files](https://github.com/stanfordpython/python-assignments/tree/master/assign2) from GitHub and use some of the hints below to solve the puzzles and find the Holy Grail!
 
 ## Puzzle Guidelines
 
-Congratulations! However, now it's time to put what you have learned to the test. The staff have created a gauntlet of test for you to accomplish. Trials and tribulations that will seperate the Dutch from the less-Dutch.
+The staff has created a suite of challenges that will bring you ever closer to the Holy Grail.
 
-### Assemble the Schedule
+### Graduate from Knight School
 
-First you will assemble your schedule: To pass this guantlet simply clone the source code and attempt to enroll in as many classes as possible. The correct set of classes in chronological order will provide you with a token that you will then use to complete the following link:
+Before you can leave on your quest, you must first graduate from Knight School. In order to do that, you'll need to assemble your schedule so that you're enrolled in as many courses as possible. After all, the sooner you graduate, the sooner you can start your journey!
 
-`http://tinyurl.com/#PUT TOKEN HERE`
+
+In the case of a tie (i.e. two classes that have the same start and end times), choose the class that comes first in the file.
+
+The correct set of classes in chronological order will provide you with a token that you will then use to complete the following link:
+
+```
+http://tinyurl.com/PUT_TOKEN_HERE
+```
 
 Before you move on to part two however, be sure to fill out the form that is linked in the completed.txt file so we know how far along you are.
 
@@ -60,6 +67,24 @@ $ python3
 # some output here
 ```
 
+## Starter Files
+
+```
+assign2/
+├── README.md
+├── grail.zip
+├── knightschool
+│   ├── courses.txt
+│   └── knightschool.py
+└── mystery.pyc
+```
+
+In addition to this `README`, you've been given a few other tools to help you on your quest:
+
+* `grail.zip`: An elder knight has given you a locked chest containing vital information about the location of the holy grail. Unfortunately, the knight never gave you the key, so you'll need to find a suitable passkey yourself.
+* `knightschool/`: Starter code for the first puzzle.
+* `mystery.pyc`: A hint-giving, coconut-toting byte-compiled Python module that can help out when you're stuck.
+
 ## General Advice
 
 As the Zen of Python states, "now is better than never." Get started early on this assignment!
@@ -72,7 +97,11 @@ There aren't very many predefined extensions for this project. If you think of o
 
 ## Submitting
 
-Submit your final code using the `submit` script on AFS, like with Assignment 1.
+Submit your final code using the `submit` script on AFS, as with Assignment 1.
+
+```
+myth$ /usr/class/cs41/tools/submit
+```
 
 ## Grading
 
