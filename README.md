@@ -6,7 +6,7 @@ Assignments for CS41.
 
 Assignment 1: Cryptography
 
-Assignment 2: Hunt for the Holy Grail!
+Assignment 2: Quest for the Holy Grail!
 
 Assignment 3: Wallscraper
 
