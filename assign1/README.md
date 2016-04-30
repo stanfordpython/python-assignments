@@ -249,7 +249,7 @@ Thus the receiver has to solve the subset sum problem
 c' = sum of a_i × w_i for i = 1 to n
 ```
 
-This problem is computationally easy because `w` was chosen to be a superincreasing sequence! Take the largest element in `w`, say `w_k`. If `w_k > c` , then `a_k = 0`, and if `w_k  <= c`, then `a_k = 1`. Then, subtract `w_k × a_k` from `c` , and repeat these steps until you have figured out all of `alpha`.
+This problem is computationally easy because `w` was chosen to be a superincreasing sequence! Take the largest element in `w`, say `w_k`. If `w_k > c'` , then `a_k = 0`, and if `w_k  <= c'`, then `a_k = 1`. Then, subtract `w_k × a_k` from `c'` , and repeat these steps until you have figured out all of `alpha`.
 
 Still confused? This stuff can get complicated. Wikipedia provides [a great example](https://en.wikipedia.org/wiki/Merkle%E2%80%93Hellman_knapsack_cryptosystem#Example) to work through if you prefer concrete numbers over abstract symbols.
 
