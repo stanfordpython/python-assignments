@@ -1,8 +1,26 @@
-*READ COMPLETELY BEFORE STARTING THE ASSIGNMENT*
+# Assignment 2: Quest for the Holy Grail!
 
-Congratulations on a great quarter thus far. However, now it's time to put what you have learned to the test. The staff have created a gauntlet of test for you to accomplish. Trials and tribulations that will seperate the Dutch from the less-Dutch.
+**Due: 4:59:59 PM, Sat May 7th**
 
-The theme of this assignment is simple "Pass the Class"
+## Overview
+
+Congratulations on a great quarter thus far! You have embarked on a quest to find the famous Holy Grail. Along the way, you will have to write various Python scripts to assist you in your quest. We know you're up to the challenge. Your quest will draw on everything you have learned thus far.
+
+We've actually hidden a Holy Grail somewhere on campus. Godspeed.
+
+Note: The goal is to have you enjoy the beautiful Stanford weather as a break from midterm season.
+
+![Holy Grail](http://parktheatreholland.com/wp-content/uploads/2014/10/banner-python.jpg)
+
+## Logistics
+
+Download the [starter files](https://github.com/stanfordpython/python-assignments/tree/master/assign2) and use some of the hints below to solve the puzzles and find the holy grail!
+
+## Puzzle Guidelines
+
+Congratulations! However, now it's time to put what you have learned to the test. The staff have created a gauntlet of test for you to accomplish. Trials and tribulations that will seperate the Dutch from the less-Dutch.
+
+### Assemble the Schedule
 
 First you will assemble your schedule: To pass this guantlet simply clone the source code and attempt to enroll in as many classes as possible. The correct set of classes in chronological order will provide you with a token that you will then use to complete the following link:
 
@@ -10,9 +28,13 @@ First you will assemble your schedule: To pass this guantlet simply clone the so
 
 Before you move on to part two however, be sure to fill out the form that is linked in the completed.txt file so we know how far along you are.
 
+### Solve the Crime
+
 Now that you have your schedule for next quarter, you realize you have a lab that you need to complete in order to pass a Bio Lab. Solve the DNA puzzle and sum together the answers to the problems in dna.txt to get the password that unlocks the final test.
 
 Before you move on make sure you fill out the *different* form that is linked in the completed.txt file in second puzzle folder so we know how far along you are.
+
+### The Final Piece
 
 Now that you have your password you can unlock the final level. The zip file in your assign2 directory will only open with your password and can only be attempted 10 times. Tread lightly.
 
@@ -20,3 +42,51 @@ Now that you have your final piece of the puzzle solve the final puzzle to deter
 As always, fill out the third form in the final folder to let us know how far along you are.
 
 Once you have reached the final location take a picture and send it to us so we know you have completed the gauntlet.
+
+## The Hint Machine
+
+We've included in the starter files a `mystery.cpython-34.pyc` file. This file represents a byte-compiled Python file (compiled using CPython 3.4). If you're stuck, you can attempt to glean a useful hint towards the puzzles by 
+
+The `mystery` module represented by the `.pyc` file can be imported into the python interpreter or into your own script. The `mystery` module contains a `hint` function that takes some number and type of parameters. Use the hints given by the python compiler, the function itself, and your own introspection skills to figure out what to pass into this mystery function to obtain your next hint.
+
+For example,
+
+```
+$ python3
+>>> import mystery
+>>> mystery.hint()  # You might pass some arguments into `hint`
+# some output here
+```
+
+## General Advice
+
+As the Zen of Python states, "now is better than never." Get started early on this assignment!
+
+If you get stuck, post general inquiries on Piazza. If you’re blocked on a particular hint given by the compiled python file, please send us a private note on Piazza!
+
+## Extensions
+
+There aren't very many predefined extensions for this project. If you think of one, let us know!
+
+## Submitting
+
+Submit your final code using the `submit` script on AFS, like with Assignment 1.
+
+## Grading
+
+### Functionality
+
+Your functionality grade is determined purely by your progress in the Quest. If you complete all of the challenges, you'll receive a guaranteed check-plus. If you complete only the first two challenges, you'll receive a check. If you complete only the first challenge, you'll receive a check-minus.
+
+Remember, we're using the Google forms linked in every piece of the puzzle to determine how far you've made it in the quest, so make sure to submit the form as soon as you unlock a new level! **If you don't submit the form, we have no way of determining your progress, and thus can't give you credit for completion of that part.**
+
+### Style
+
+Your style grade is comprised of three main components - program design, Your style grade is determined by the quality and reusability of your submitted code.
+
+We know that there are many ways to solve each of the challenges, so spend time thinking about the best approach before beginning.
+
+## Credit
+Inspiration for this assignment comes from the fantastic 1975 British masterpiece, [Monty Python and the Holy Grail](https://www.youtube.com/v/F41SSqJx2tU). As always, credit to Sherman Leung (@skleung) for the original handout, and to David Slater (@dsslater) for substantial rewrites. David wrote the class selection problem, and Conner Smith (@csmith95) wrote the DNA puzzle.
+
+> With <3 by @sredmond 
