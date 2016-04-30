@@ -1,4 +1,4 @@
-# Assignment 4 - Final Project!
+# Assignment 4: Final Project!
 
 ## The Proposal
 
@@ -48,3 +48,5 @@ Stylistically, you will be evaluated on your general program design (a la 106 se
 ## Submitting
 
 Submit your code, as usual, using the `submit` script on the Stanford computer networks (`myth`, `corn`, etc.). As well as any necessary dependencies, using the `submit` script on AFS.
+
+> With <3 by @sredmond 
