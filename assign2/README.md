@@ -72,7 +72,8 @@ assign2/
 ├── knightschool
 │   ├── courses.txt
 │   └── knightschool.py
-└── mystery.pyc
+├── mystery.pyc
+└── puzzle_2.zip
 ```
 
 In addition to this `README`, you've been given a few other tools to help you on your quest:
