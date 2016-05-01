@@ -29,11 +29,7 @@ Before you can leave on your quest, you must first graduate from Knight School. 
 
 In the case of a tie (i.e. two classes that have the same start and end times), choose the class that comes first in the file.
 
-The correct set of classes in chronological order will provide you with a token that you will then use to complete the following link:
-
-```
-http://tinyurl.com/PUT_TOKEN_HERE
-```
+The correct set of classes in chronological order will provide you with a token that you will then use to unlock the puzzle_2.zip to continue in your quest.
 
 Before you move on to part two however, be sure to fill out the form that is linked in the completed.txt file so we know how far along you are.
 
