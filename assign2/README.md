@@ -107,7 +107,7 @@ myth$ /usr/class/cs41/tools/submit
 
 ### Functionality
 
-Your functionality grade is determined purely by your progress in the Quest. If you complete all of the challenges, you'll receive a guaranteed check-plus. If you complete only the first two challenges, you'll receive a check. If you complete only the first challenge, you'll receive a check-minus.
+Your functionality grade is determined purely by your progress in the quest. If you complete all of the challenges, you'll receive a guaranteed check-plus. If you complete only the first two challenges, you'll receive a check. If you complete only the first challenge, you'll receive a check-minus.
 
 Remember, we're using the Google forms linked in every piece of the puzzle to determine how far you've made it in the quest, so make sure to submit the form as soon as you unlock a new level! **If you don't submit the form, we have no way of determining your progress, and thus can't give you credit for completion of that part.**
 
