@@ -109,7 +109,7 @@ Remember, we're using the Google forms linked in every piece of the puzzle to de
 
 ### Style
 
-Your style grade is comprised of three main components - program design, Your style grade is determined by the quality and reusability of your submitted code.
+Your style grade is comprised of three main components - Pythonic practices, program design, and Python mechanics. "Pythonic practices" refers to your use of the Python tools we've talked about in class. 
 
 We know that there are many ways to solve each of the challenges, so spend time thinking about the best approach before beginning.
 
