@@ -68,12 +68,12 @@ $ python3
 ```
 assign2/
 ├── README.md
-├── grail.zip
 ├── knightschool
 │   ├── courses.txt
 │   └── knightschool.py
-├── mystery.pyc
-└── puzzle_2.zip
+├── dna.zip
+├── grail.zip
+└── mystery.pyc
 ```
 
 In addition to this `README`, you've been given a few other tools to help you on your quest:
