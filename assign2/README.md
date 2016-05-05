@@ -31,7 +31,7 @@ In the case of a tie (i.e. two classes that have the same start and end times), 
 
 The correct set of classes in chronological order will provide you with a token that will unlock `dna.zip`, so you can continue in your quest.
 
-### Solve the Crime
+### Cross the Moat
 
 **Immediately after unzipping `dna.zip`, you should fill out the form linked in `completed-knightschool.txt` so we know how far along you are.**
 
@@ -41,9 +41,9 @@ Now that you have your schedule for next quarter, you're ready to embark on your
 
 **Immediately after unzipping `grail.zip`, you should fill out the form linked in `completed-dna.txt` so we know how far along you are.**
 
-Having completed the previous challenges, you're now almost to the holy grail, the grand prize. Read through the `README.md` for detailed instructions, and don't hesitate to ask questions on Piazza if you get stuck.
+Having completed the previous challenges, you're now almost to the holy grail, the grand prize. Read through the `README.md` in `grail.zip` for detailed instructions, and don't hesitate to ask questions on Piazza if you get stuck.
 
-*Note: this final puzzle requires you to seek the holy grail at a physical spot on campus, so you should not wait until Saturday afternoon to start this piece.*
+*Note: this final puzzle requires you to seek the holy grail at a physical spot on campus, so you should not wait until Saturday afternoon to start this piece. The holy grail comes with a link to a Google form, which will let us know that you've found the grail.*
 
 ## The Hint Machine
 
