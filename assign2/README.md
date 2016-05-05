@@ -29,28 +29,25 @@ Before you can leave on your quest, you must first graduate from Knight School. 
 
 In the case of a tie (i.e. two classes that have the same start and end times), choose the class that comes first in the file.
 
-The correct set of classes in chronological order will provide you with a token that you will then use to unlock the puzzle_2.zip to continue in your quest.
-
-Before you move on to part two however, be sure to fill out the form that is linked in the completed.txt file so we know how far along you are.
+The correct set of classes in chronological order will provide you with a token that will unlock `dna.zip`, so you can continue in your quest.
 
 ### Solve the Crime
 
-Now that you have your schedule for next quarter, you realize you have a lab that you need to complete in order to pass a Bio Lab. Solve the DNA puzzle and sum together the answers to the problems in dna.txt to get the password that unlocks the final test.
+**Immediately after unzipping `dna.zip`, you should fill out the form linked in `completed-knightschool.txt` so we know how far along you are.**
 
-Before you move on make sure you fill out the *different* form that is linked in the completed.txt file in second puzzle folder so we know how far along you are.
+Now that you have your schedule for next quarter, you're ready to embark on your quest. Unfortunately, there's a challenge in the way, and you'll need to use your Python skills to advance. Solve the puzzle to yield the password to unlock `grail.zip`. More instructions are available in the `README.md` inside `dna.zip`.
 
 ### The Final Piece
 
-Now that you have your password you can unlock the final level. The zip file in your assign2 directory will only open with your password and can only be attempted 10 times. Tread lightly.
+**Immediately after unzipping `grail.zip`, you should fill out the form linked in `completed-dna.txt` so we know how far along you are.**
 
-Now that you have your final piece of the puzzle solve the final puzzle to determine where your prize will be located. 
-As always, fill out the third form in the final folder to let us know how far along you are.
+Having completed the previous challenges, you're now almost to the holy grail, the grand prize. Read through the `README.md` for detailed instructions, and don't hesitate to ask questions on Piazza if you get stuck.
 
-Once you have reached the final location take a picture and send it to us so we know you have completed the gauntlet.
+*Note: this final puzzle requires you to seek the holy grail at a physical spot on campus, so you should not wait until Saturday afternoon to start this piece.*
 
 ## The Hint Machine
 
-We've included in the starter files a `mystery.cpython-34.pyc` file. This file represents a byte-compiled Python file (compiled using CPython 3.4). If you're stuck, you can attempt to glean a useful hint towards the puzzles by 
+We've included in the starter files a `mystery.pyc` file. This file represents a byte-compiled Python file (compiled using CPython 3.4). If you're stuck, you can attempt to glean a useful hint towards the puzzles by codebreaking the symbols exported by this module.
 
 The `mystery` module represented by the `.pyc` file can be imported into the python interpreter or into your own script. The `mystery` module contains a `hint` function that takes some number and type of parameters. Use the hints given by the python compiler, the function itself, and your own introspection skills to figure out what to pass into this mystery function to obtain your next hint.
 
@@ -78,9 +75,10 @@ assign2/
 
 In addition to this `README`, you've been given a few other tools to help you on your quest:
 
-* `grail.zip`: An elder knight has given you a locked chest containing vital information about the location of the holy grail. Unfortunately, the knight never gave you the key, so you'll need to find a suitable passkey yourself.
 * `knightschool/`: Starter code for the first puzzle.
-* `mystery.pyc`: A hint-giving, coconut-toting byte-compiled Python module that can help out when you're stuck.
+* `dna.zip`: Locked starter code for the second puzzle. You'll need to graduate from knight school before you can unlock this puzzle.
+* `grail.zip`: Locked starter code for the third puzzle. An elder knight has given you a locked chest containing vital information about the location of the holy grail. Unfortunately, the knight never gave you the key, so you'll need to find a suitable passkey yourself.
+* `mystery.pyc`: A hint-giving, coconut-toting byte-compiled Python module that can help out if you're stuck.
 
 ## General Advice
 
@@ -108,13 +106,16 @@ Your functionality grade is determined purely by your progress in the quest. If 
 
 Remember, we're using the Google forms linked in every piece of the puzzle to determine how far you've made it in the quest, so make sure to submit the form as soon as you unlock a new level! **If you don't submit the form, we have no way of determining your progress, and thus can't give you credit for completion of that part.**
 
+In particular, you need to find the physical holy grail (using the clues in `grail.zip`) on campus to get full marks. The holy grail will be hidden in a bag somewhere. Good luck!
+
 ### Style
 
-Your style grade is comprised of three main components - Pythonic practices, program design, and Python mechanics. "Pythonic practices" refers to your use of the Python tools we've talked about in class. 
+Your style grade is comprised of three main components - Pythonic practices, program design, and Python mechanics. "Pythonic practices" refers to your use of the Python tools we've talked about in class, and emphasizes Pythonic thinking. "Program design" refers to general programming style - decomposition, commenting, algorithms. "Python mechanics" refers to naming, spacing, parenthesizing, etc. Basically everything covered in PEP 8.
 
 We know that there are many ways to solve each of the challenges, so spend time thinking about the best approach before beginning.
 
 ## Credit
-Inspiration for this assignment comes from the fantastic 1975 British masterpiece, [Monty Python and the Holy Grail](https://www.youtube.com/v/F41SSqJx2tU). As always, credit to Sherman Leung (@skleung) for the original handout, and to David Slater (@dsslater) for substantial rewrites. David wrote the class selection problem, and Conner Smith (@csmith95) wrote the DNA puzzle.
+
+Inspiration for this assignment comes from the fantastic 1975 British masterpiece, [Monty Python and the Holy Grail](https://www.youtube.com/v/F41SSqJx2tU). As always, credit to Sherman Leung (@skleung) for the original handout, and to David Slater (@dsslater) for minor edits. David wrote the class selection problem, and Conner Smith (@csmith95) wrote the DNA puzzle.
 
 > With <3 by @sredmond 
