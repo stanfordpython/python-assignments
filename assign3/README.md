@@ -363,6 +363,7 @@ Some of these are easy, some of these are very hard.
 
 ### Download Albums
 
+Add support for downloading imgur albums.
 
 ### Command Line Utility
 We saw in class that command-line arguments can be passed to Python scripts, and these arguments will be available through `sys.argv`. Modify your program so that it can be invoked with a single command-line argument representing the subreddit to scrape data from. So, `$ python wallscraper.py wallpaper` would download all the top wallpapers of the day, and `$ python wallscraper.py fffffffuuuuuuuuuuuu` would download all the top rage comics.
@@ -373,35 +374,31 @@ Both OS X and Linux have ways to schedule a program to run every so often (Windo
 ### Programmatically set the highest-scoring wallpaper as your desktop wallpaper
 Both OS X and Linux have command-line tools to programmatically set your desktop background to be a specified file path (again, Windows is harder). In combination with the previous extension, you could have an automatically shifting desktop background of the internet's top trending wallpapers!
 
-### Automatic size detection
-Is there a way you can detect the size of an image before you write it to local storage? If not, is there a way you can determine the size after you've saved the image? Use the third-party`pillow` [library](https://python-pillow.github.io/) for any special image processing. Then sort the downloaded images into folders based on their aspect ratio, and furthermore by their absolute size.
-
 ### Support for Pagination
 We currently scrape only one page of Reddit data at a time. In the response data, there are pagination tokens `before` and `after` than can be used to scroll through pages and pages of reddit. Use these pagination tokens to search through arbitrarily many pages of a subreddit.
 
 ### Wallpaper deduplication
 If we ever encounter the same wallpaper twice, we'll process the data twice, download it twice, etc. Implement a system that will eliminate image download duplication. You have freedom to implement this however you want.
 
+### Logging
+When you encounter errors, log the errors instead of printing an error message. Use the `logging` library.
 
-## Extensions
-file.txt to not download duplicates when repeated testing
-Python logging
-filter, error handling, logging instead of printing,
-Style guide
-Parallel processing and multithreaded
-Build a server application to select from downloaded images with better sorting capabilities.
+### Parallel Processing and Multithreading
+Extend the current download code to make use of Python's multiprocessing and multithreading primitives.
 
 ## Starter Code
 
 ```
 assign3/
 ├── README.md
+└── wallpapers/
 └── wallscraperutils.py
 └── wallscraper.py
 ```
 
 In addition to this `README`, the other starter files are:
 
+* `wallpapers/`: where all the downloaded wallpapers will go.
 * `wallscraper.py`: Barebones starter code. All of your program logic will go into this file.
 * `wallscraperutils.py`: A few helper functions that may simplify some of the less interesting steps of the assignment. Read through the file for more information.
 
