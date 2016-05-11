@@ -11,10 +11,20 @@ Replace this with a description of the program.
 """
 import utils
 
+
+class RedditPost:
+    def __init__(self, data):
+        pass
+
+    def download(self):
+        pass
+
+    def __str__(self):
+        return ""
+
+
 def main():
     pass
 
-
 if __name__ == '__main__':
     main()
-
