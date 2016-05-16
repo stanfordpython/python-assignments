@@ -4,6 +4,7 @@ Miscellaneous utilities for wallscraper
 """
 from fractions import Fraction
 import sys
+import pathlib
 
 WALLPAPER_FOLDER = pathlib.Path(__file__).parent / 'wallpapers'
 
