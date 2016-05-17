@@ -4,19 +4,27 @@
 
 *Due: Friday, May 20th at 11:59:59 PM*
 
-See this sample project proposal for an example of what we’re looking for.
+![THe Proposal](https://raw.githubusercontent.com/stanfordpython/python-assignments/master/assign4/proposal.png)
 
-When you turn in your project to us, please make a copy of this template and share it with us (allowing us to View + Comment). Proposals in Google Doc formats are preferred so we can comment on the proposals and give feedback quickly.
+As described in class, the purpose of the project proposal is for the course staff to ensure that the project is well-scoped and incorporates Python in some meaningful way. We can also suggest useful packages for your project.
+
+See [`sampleproposal.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/sampleproposal.md) for an example of what we’re looking for. You should use [`template.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/template.md) as a starting template for your proposal.
+
+In order to submit the proposal, drop your file into our [Google Drive Folder](https://drive.google.com/open?id=0B-eHIhYpHrGDdHJzclFoem1rR1E). When we review your proposals, we'll look at the most recently added proposal.
+
+*Note: you can use late days on the project proposal, but hopefully you will not, so that we can get feedback to you more quickly.*
 
 ## The Project
 
-*Due: TBD*
+*Due: Sunday, May 29th at 11:59:59 PM*
 
 Implement the project you have proposed, incorporating feedback that we will return to you by Monday, November 9th.
 
 We’ll have a midpoint check in before Thanksgiving - asking your team to send us an update on where you guys are in your projects.
 
 All final projects will be due before class on 11/17, just in time for presentations that will be during class on 11/17 and 11/19!
+
+*Note: you can only use up to one late day on this project, 
 
 ### Development Strategy and Hints
 
@@ -30,13 +38,13 @@ Build incrementally and test frequently! This project will likely be the largest
 
 For this assignment, we are not explicitly providing any code to you.
 
-We are publishing a beta version of the `stanford` library,
-
 You are free to use any builtin modules, publicly available code, or any code you find online, as long as you cite it appropriately. Use Google and StackOverflow a lot! Chances are that someone has built a library to help with your project.
 
 You may *not* use proprietary code, code which requires a paid license, anything which promotes illegal activity, etc.
 
 ## The Presentation
+
+
 
 ## Grading
 
