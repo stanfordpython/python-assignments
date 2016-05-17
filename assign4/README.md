@@ -2,7 +2,7 @@
 
 ## The Proposal
 
-*Due: TBD*
+*Due: Friday, May 20th at 11:59:59 PM*
 
 See this sample project proposal for an example of what we’re looking for.
 
@@ -19,6 +19,7 @@ We’ll have a midpoint check in before Thanksgiving - asking your team to send 
 All final projects will be due before class on 11/17, just in time for presentations that will be during class on 11/17 and 11/19!
 
 ### Development Strategy and Hints
+
 Have a plan. We're making you submit a project proposal so that you think about potential challenges and your plan to overcome them.
 
 Start small and iterate quickly. Python, unlike many other languages, allows you to rapidly iterate by developing your code in small steps through the interactive interpreter.
