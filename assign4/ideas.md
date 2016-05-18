@@ -30,6 +30,8 @@ piazzAI - a piazza client that answers common questions by using a hand-selected
 
 stamp - convert spotify playlists to apple music playlists and back
 
+herowid - using the erowid database, a huge set of experiences of people on a variety of illegal drugs, classify a person's substance abuse based on their speech or text patterns
+
 xl2py - an excel spreadsheet to python converter, with reference resolution and everything
 
 facegraph - scrape all facebook chats with a given person and generate visualizations and analytics of your lifetime conversation
@@ -72,8 +74,6 @@ Random Rapper - version of the random writer project from CS106B that scrapes ra
 ## Ex-Assignments
 *These projects were barely cut from being CS41 assignments. With some modification, they could be good final projects!*
 
-Sous Chef - Scrape a website for a huge list of recipes, and then suggest the most popular ones (machine learning?) given a list of ingredients (perhaps those that are already available in the kitchen)
-
 Ghost AI - build an AI for the popular word game Ghost, where players sequentially add a character to a growing prefix, losing if they spell a full word or if the current string is not a valid prefix of any word. 
 
 Image Triangulation - Use Delaunay triangulation to auto-artsify profile pics into low-poly renders of the image
@@ -81,6 +81,8 @@ Image Triangulation - Use Delaunay triangulation to auto-artsify profile pics in
 ## Stolen Assignments
 *Implementations of programming assignments from other classes, this time in Python!*
 
-Karel - build a Karel emulator in Python, including a graphical interface, a lexer and parser for the karel language, and enforced correctness)
+Karel (CS106A)- build a Karel emulator in Python, including a graphical interface, a lexer and parser for the karel language, and enforced correctness)
+
+RSS Aggregator (CS110) - aggregates news from lots of RSS feeds
 
 
