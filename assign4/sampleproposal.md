@@ -1,16 +1,16 @@
-# Project Proposal: Mastermind
+# CS41 Sample Project Proposal: Mastermind
 
-> Sam Redmond and TBD
+> Sam Redmond (sredmond) and Guido van Rossum (bdfl)
 
 ## Overview
 
-Programming a Python-based interface for the game [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)).
+We want to build a Python-based interface for the game [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)).
 
-## Implementation Details
+## Implementation Strategy
 
 The overarching implementation will involve object-oriented design to compartmentalize the API methods to update and display the state of the board for each turn in Mastermind. The board class will be effectively integrated into a text based interface that users can interact with in a game loop that asks for user input at each turn.
 
-## Task breakdown + Stretch Goals
+## Tasks
 
 1. Setting up the board’s data model
 2. Printing the board
