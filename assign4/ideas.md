@@ -11,7 +11,7 @@ What data is available? Census data? Genome data? API data? Survey data? etc.
 
 What problems do you care about? Healthcare? Food insecurity? Education? Climate change? Divestment? Mental health? Politics? etc.
 
-You can do *basically* anything you would like to!
+You can do almost anything you would like to!
 
 ## Random Ideas
 *Miscellaneous ideas that we thought of over the course of the quarter.*

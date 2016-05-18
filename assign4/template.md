@@ -35,6 +35,8 @@ If you've already accomplished some of the tasks, make a note of it! If you're i
 
 This task list isn't binding - you can change your mind, modify tasks, etc - but it's a good starting point to organize incremental development.
 
+## Testing
+
 ## Resources
 *This section is smaller and less vital than the others. If you're not using any external resources, you can leave this blank.*
 

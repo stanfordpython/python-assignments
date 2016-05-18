@@ -4,11 +4,11 @@
 
 *Due: Friday, May 20th at 11:59:59 PM*
 
-![THe Proposal](https://raw.githubusercontent.com/stanfordpython/python-assignments/master/assign4/proposal.png)
+![The Proposal](https://raw.githubusercontent.com/stanfordpython/python-assignments/master/assign4/proposal.png)
 
 As described in class, the purpose of the project proposal is for the course staff to ensure that the project is well-scoped and incorporates Python in some meaningful way. We can also suggest useful packages for your project. The better your proposal, the more we can assist you by pointing you away from common pitfalls and towards good solutions.
 
-You should use [`template.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/template.md) as a starting template for your proposal. See [`sampleproposal.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/sampleproposal.md) for an example of what we’re looking for. We've added some ideas to [`ideas.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/ideas.md) if you're stuck.
+You should use [`template.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/template.md) as a starting template for your proposal. You can access the raw markdown [here] or just copy-paste into a Google Doc. See [`sampleproposal.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/sampleproposal.md) for an example of what we’re looking for. We've added some ideas to [`ideas.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/ideas.md) if you're stuck.
 
 In order to submit the proposal, drop your file into our [Google Drive Folder](https://drive.google.com/open?id=0B-eHIhYpHrGDdHJzclFoem1rR1E). When we review your proposals, we'll look at the most recently added proposal.
 
@@ -20,21 +20,23 @@ In order to submit the proposal, drop your file into our [Google Drive Folder](h
 
 Implement the project you have proposed, incorporating feedback that we will return to you by Monday, May 23rd at the latest.
 
-We’ll have a midpoint check in before Thanksgiving - asking your team to send us an update on where you guys are in your projects.
-
 *Note: you can only use up to one late day on this project, so that we can read through all the projects before presentations begin!*
 
 ### Development Strategy and Hints
 
 Have a plan. We're making you submit a project proposal so that you think about potential challenges and your plan to overcome them.
 
-Start small and iterate quickly. Python, unlike many other languages, allows you to rapidly iterate by developing your code in small steps through the interactive interpreter.
+Start small and iterate quickly. Python, unlike many other languages, allows you to rapidly iterate. Consider developing your code in small steps through the interactive interpreter.
 
 Build incrementally and test frequently! This project will likely be the largest Python project you have written, so make sure each task works before moving on!
 
 ### Deliverables
 
-In addition to your code, you should submit a `README.md` file as a writeup of your final project.
+In addition to your code, you must include a `README.md` file as a writeup of your final project. This writeup should be meamingful, and contain a technical overview of the project and the code therein. In effect, you're writing documentation for your project - if the first thing someone read about your project was the README, what information do they need to know? We're asking you to also include a technical section to your README (although many READMEs, such as this one, are non-techincal). Describe the code design, the purpose of various modules, and any requirements (e.g. must run a certain version of Python, or must have a particular operating system, or must have a Postgres database running, or must have a Google account, or anything else)
+
+In addition, we're asking you to write installation/execution instructions. After we download your code, what steps do we have to perform to get it up and running? For many of you, the answer will just be "run the main python script," but several others will have more complex configuration. If we can't set up your project, we have no way to confirm that your project works correctly, so we hope that your installation instructions are clear, correct, replicable, and concise.
+
+Other general sections of a README usually include, but are not limited to: known bugs, contact information for the maintainer (that's you!), and credits/acknowledgements.
 
 ### Starter Code
 
@@ -46,16 +48,32 @@ You may *not* use proprietary code, code which requires a paid license, anything
 
 ## Grading
 
-The project proposal grade will be assessed purely on completion. Did you do it? Great! If not - less great. 
+The project *proposal* grade will be assessed purely on completion. Did you do it? Great! If not - less great. 
 
-Your grade will be assessed on both functionality and style.
+Your final project grade will be assessed on both functionality and style.
 
-Functionality will be determined entirely by your program's correctness on a suite of unit tests (some of which are provided with the starter code).
+Functionality will be determined holistically using a combination of difficulty of project and success of execution. Unfortunately, that's as detailed as we can get given the breadth of possible topics. In effect, if you put in your fair share of effort, we'll be reasonable. =)
 
-Stylistically, you will be evaluated on your general program design (a la 106 series: decomposition, logic, etc) as well as your Python-specific style. In particular, we will be looking for "Pythonic" approaches to solving problems, as opposed to "non-Pythonic" solutions, that emphasize the Zen of Python. We will also be looking at your Python syntax and mechanics. We encourage you to format your code in accordance with [Python style guidelines](https://www.python.org/dev/peps/pep-0008/). You can find a tool to help format your code [online](http://pep8online.com/).
+Stylistically, as always, you'll be assessed on three main categories:
+
+* **Pythonic practices:** Proper use of the Python tools and ways of thinking introduced in this class - using list comprehensions where appropriate, intelligent utilizing iterables/generators where appropriate, etc. Show us that you've learned how to think like a Python programmer!
+* **Program design:** General programming style - decomposition, commenting, logic, algorithm design, etc.
+* **Python mechanics:** Basically everything covered in PEP8 - naming, spacing, parenthesizing, etc.
+
+We hold the final project to a higher standard of style than the assignments, since it's naturally more freeform. Make sure that your code is something that you are proud showing off!
 
 ## Submitting
 
-Submit your code, as usual, using the `submit` script on the Stanford computer networks (`myth`, `corn`, etc.). As well as any necessary dependencies, using the `submit` script on AFS.
+When you have finished your final project, you can submit all your files using the `submit` script as usual:
+
+```
+myth$ /usr/class/cs41/tools/submit
+```
+
+**WARNING: If you use any third-party libraries, ensure that you have generated a `requirements.txt` file listing your project's dependencies before submitting. You can do this by putting the output of `$ pip freeze` into a file. When exercising your code, we will install any dependencies with `$ pip install -r requirements.txt`, and not install anything else. Make sure that your code works on myth or corn before submitting if you can!**
+
+If your project is sufficiently oddly organized, make sure to add clarifying information in your README file.
+
+We highly recommend that you check your submission folder on AFS to ensure that all necessary files are copied over successfully.
 
 > With <3 by @sredmond 
