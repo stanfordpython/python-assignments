@@ -8,39 +8,43 @@
 
 As described in class, the purpose of the project proposal is for the course staff to ensure that the project is well-scoped and incorporates Python in some meaningful way. We can also suggest useful packages for your project. The better your proposal, the more we can assist you by pointing you away from common pitfalls and towards good solutions.
 
-You should use [`template.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/template.md) as a starting template for your proposal. You can access the raw markdown [here] or just copy-paste into a Google Doc. See [`sampleproposal.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/sampleproposal.md) for an example of what we’re looking for. We've added some ideas to [`ideas.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/ideas.md) if you're stuck.
+You should use [`template.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/template.md) as a starting template for your proposal. You can access the raw markdown [here](https://raw.githubusercontent.com/stanfordpython/python-assignments/master/assign4/template.md) or just copy-paste into a Google Doc. See [`sampleproposal.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/sampleproposal.md) for an example of what we’re looking for. Additionally, we've added some ideas to [`ideas.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/ideas.md) if you're stuck.
 
 In order to submit the proposal, drop your file into our [Google Drive Folder](https://drive.google.com/open?id=0B-eHIhYpHrGDdHJzclFoem1rR1E). When we review your proposals, we'll look at the most recently added proposal.
 
-*Note: you can use late days on the project proposal, but hopefully you will complete this on time so that we can get feedback to you more quickly.*
+*Note: you can use late days on the project proposal, but hopefully you will complete the proposal on time so that we can get feedback to you sooner.*
 
 ## The Project
 
 *Due: Sunday, May 29th at 11:59:59 PM*
 
-Implement the project you have proposed, incorporating feedback that we will return to you by Monday, May 23rd at the latest.
+Implement the project you have proposed, incorporating feedback that we will return to you by Monday, May 23rd at the latest. You are free to begin working on the project before you hear from us.
 
-*Note: you can only use up to one late day on this project, so that we can read through all the projects before presentations begin!*
+*Note: you can only use up to one late day on the final project!*
 
 ### Development Strategy and Hints
 
 Have a plan. We're making you submit a project proposal so that you think about potential challenges and your plan to overcome them.
 
-Start small and iterate quickly. Python, unlike many other languages, allows you to rapidly iterate. Consider developing your code in small steps through the interactive interpreter.
+Start small and iterate quickly. Python, unlike many other languages, allows you to rapidly iterate. Consider developing your code in small steps using the interactive interpreter.
 
 Build incrementally and test frequently! This project will likely be the largest Python project you have written, so make sure each task works before moving on!
 
 ### Deliverables
 
-In addition to your code, you must include a `README.md` file as a writeup of your final project. This writeup should be meamingful, and contain a technical overview of the project and the code therein. In effect, you're writing documentation for your project - if the first thing someone read about your project was the README, what information do they need to know? We're asking you to also include a technical section to your README (although many READMEs, such as this one, are non-techincal). Describe the code design, the purpose of various modules, and any requirements (e.g. must run a certain version of Python, or must have a particular operating system, or must have a Postgres database running, or must have a Google account, or anything else)
+In addition to your code, you must include a `README.md` file as a meaningful writeup of your final project.
+
+This writeup should contain a technical overview of the project and the code therein. In effect, you're writing documentation for your project - if the first thing someone reads about your project is the README, what information does she need to know? We're asking you to also include a technical section in your README to describe the code design, the purpose of various modules, and any requirements (e.g. must run a certain version of Python, or must have a particular operating system, or must have a Postgres database running, or must have a Google account, or anything else).
 
 In addition, we're asking you to write installation/execution instructions. After we download your code, what steps do we have to perform to get it up and running? For many of you, the answer will just be "run the main python script," but several others will have more complex configuration. If we can't set up your project, we have no way to confirm that your project works correctly, so we hope that your installation instructions are clear, correct, replicable, and concise.
 
 Other general sections of a README usually include, but are not limited to: known bugs, contact information for the maintainer (that's you!), and credits/acknowledgements.
 
+In total, the README should be about 700-1500 words, with a majority of that going to the technical overview. Of course, these words counts are estimates, and you're free to write fewer or more as you see fit.
+
 ### Starter Code
 
-For this assignment, we are not explicitly providing any code to you. We have been working on an early alpha release of a `stanford` package that makes CS106A/B/X-style functionality (graphics, sound) available in Python 3. The software hasn't been tested much, and is surely buggy, but if you'd like to work with our development libraries, let us know.
+For this assignment, we are not explicitly providing any code to you. However, we have been working on an early alpha release of a `stanford` package that makes CS106A/B/X-style functionality (graphics, sound) available in Python 3. The software hasn't been tested much, and is surely buggy, but if you'd like to work with our development libraries, let us know.
 
 You are free to use any builtin modules, publicly available code, or any code you find online, as long as you cite it appropriately. Use Google and StackOverflow a lot! Chances are that someone has built a library to help with your project.
 
@@ -70,10 +74,10 @@ When you have finished your final project, you can submit all your files using t
 myth$ /usr/class/cs41/tools/submit
 ```
 
-**WARNING: If you use any third-party libraries, ensure that you have generated a `requirements.txt` file listing your project's dependencies before submitting. You can do this by putting the output of `$ pip freeze` into a file. When exercising your code, we will install any dependencies with `$ pip install -r requirements.txt`, and not install anything else. Make sure that your code works on myth or corn before submitting if you can!**
+**WARNING: If you use any third-party libraries, ensure that you have generated a `requirements.txt` file listing your project's dependencies before submitting. You can do this by putting the output of `$ pip freeze` into a file. When exercising your code, we guarantee that we will run `$ pip install -r requirements.txt` to install this list of dependencies.**
 
-If your project is sufficiently oddly organized, make sure to add clarifying information in your README file.
+If your project is sufficiently convoluted, make sure to add the corresponding clarifying information in your README file.
 
-We highly recommend that you check your submission folder on AFS to ensure that all necessary files are copied over successfully.
+We highly recommend that you check your submission folder on AFS after submitting to ensure that all necessary files were copied over successfully.
 
 > With <3 by @sredmond 
