@@ -28,7 +28,7 @@ Your program will prompt a line of input from the user (any prompt is acceptable
 - What else would you like to tell us that you haven't already expressed through the application?
 - What are you most excited to learn about this quarter?
 
-Additionally, if the user enters the special input "What can you tell me?", you must print out the list of questions that your program can answer, one question per line.
+Additionally, if the user enters the special input: `"What can you answer?"`, you must print out the list of questions that your program can answer, one question per line.
 
 If the user's input does not exactly match one of these above inputs, your program can do whatever it wants.
 
@@ -39,7 +39,7 @@ Your program should be able to emulate the following sample runs.
 ```
 $ python3 intro.py
 Ask me a question: What is your name?
-It is Arthur, King of the Britains.
+It is Arthur, King of the Britons.
 
 $ python3 intro.py
 Ask me a question: What is your quest?
