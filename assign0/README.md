@@ -100,6 +100,16 @@ We will not be evaluating any style on this assignment.
 
 ## Submitting
 
-See submission instructions on the course website.
+See [submission instructions](https://github.com/stanfordpython/python-handouts/blob/master/submitting-assignments.md) on the course website.
+
+For assignment 0, the key ideas are:
+```
+$ ssh <sunetid>@myth.stanford.edu "mkdir -p ~/cs41/assign0"
+$ scp <path/to/intro.py> <sunetid>@myth.stanford.edu:~/cs41/assign0/
+$ ssh <sunetid>@myth.stanford.edu
+<... connect to myth ...>
+myth$ cd ~/cs41/assign0/
+myth$ /usr/class/cs41/tools/submit
+```
 
 > With <3 by @sredmond 
