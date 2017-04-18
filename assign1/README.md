@@ -530,7 +530,7 @@ Stylistically, you will be evaluated on your general program design (a la 106 se
 
 1. Your modified `crypto.py`
 2. The `design.txt` file documenting your design decisions
-3. The `feedback.txt` letting us know how we're doing!
+3. The `feedback.txt` file letting us know how we're doing
 
 ## Submitting
 
@@ -546,6 +546,24 @@ $ ssh <sunetid>@myth.stanford.edu
 myth$ cd ~/cs41/assign1/
 myth$ /usr/class/cs41/tools/submit
 ```
+
+## General Tips
+
+The `string` module exports some useful values:
+
+```
+>>> import string
+>>> string.ascii_letters
+'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+>>> string.ascii_uppercase
+'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+>>> string.ascii_lowercase
+'abcdefghijklmnopqrstuvwxyz'
+>>> string.punctuation
+'!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
+```
+
+Check back here for more tips as they come up!
 
 ## Credit
 *Sherman Leung (@skleung), Python Tutorial, Learn Python the Hard Way, Google Python, MIT OCW 6.189, Project Euler, and Wikipedia's list of ciphers.*
