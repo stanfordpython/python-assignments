@@ -1,12 +1,12 @@
 # Assignment 1: Cryptography
-**Due: 11:59:59 PM, Wed April 13th**
+**Due: 11:59:59 PM, Thursday April 27th**
 
 ## Overview
 In this assignment, you will build a cryptography suite that implements three different cryptosystems - Caesar cipher, Vigenere cipher, and the Merkle-Hellman Knapsack Cryptosystem. This handout will walk you through the details of building this text-based cryptography tool. We want to instill good Pythonic practices from the beginning - so we encourage you to think critically about writing clean Python code.
 
 *Expected Time: 6 hours (if it takes much longer than that, email us)*
 
-Note: Get started early! Merkle-Hellman is by *far* the hardest of the ciphers.
+Note: Get started early! Merkle-Hellman is the hardest cipher to implement.
 
 ## Review
 
@@ -14,10 +14,11 @@ Get a quick refresher by flipping through our slides from the first few weeks on
 
 ## Starter Files
 
-We’ve provided a starter zip file available on the website as a skeleton for this assignment. Here’s an overview of what’s in it:
+We’ve provided starter files available on the website as a skeleton for this assignment. Here’s an overview of what’s in it:
 
-1. `crypto.py` is the primary file you will modify. It will contain all the functions to decrypt/encrypt strings and also the logic behind the text-based console menu.
+1. `crypto.py` is the primary file you will modify. It will implement all the functions to decrypt/encrypt strings.
 2. `utils.py` provides useful utilities for console interaction and for Merkle-Hellman
+3. `crypto-console.py` runs an interactive console that lets you test your cryptography functions.
 2. `design.txt` is where you'll record the design decisions you're making.
 3. `feedback.txt` is where you'll answer some questions about how the course is going overall
 4. `tests/` folder contains test input and output
@@ -342,14 +343,14 @@ Note: We're aware this is a hard problem. It's supposed to challenge you! If you
 
 *Full credit to the Wikipedia summary for this explanation! The description is shamelessly copied and modified :)*
 ## Console Menu
-In order to better test this program, we've provided a console menu to interact with the cryptography suite. This shouldn't replace your normal debugging process - rather, see it as an augmentation of the tools you have to track down any elusive bugs.
+In order to better test this program, we've provided a console menu to interact with the cryptography suite. This shouldn't replace your normal debugging process - rather, view it as an augmentation of the tools you have to track down any elusive bugs.
 
 In general, we don't do very much error handling (since the console menu is intended as a tool for you to debug), so it may crash gracelessly on bad input. You're welcome to modify or change the console menu as you see fit. We'll only be testing your application-level functions.
 
 A sample run of the program might look like:
 
 ```
-(cs41) $ python3 crypto.py
+(cs41) $ python3 crypto-console.py
 Welcome to the Cryptography Suite!
 ----------------------------------
 * Tool *
@@ -387,14 +388,85 @@ Goodbye!
 
 ## Extensions
 
-What?! You haven't had enough? Okay, your call.
+What?! You still haven't had enough? Okay, your call.
 
-The following section contains possible extensions and is **entirely optional**. If you choose to take a crack at any, regardless of how far you get, give us some documentation and let us know how it went in your feedback!
+The following section contains possible extensions and is **entirely optional**. If you choose to take a crack at any, regardless of how far you get, let us know how it went in your feedback!
+
+### Scytale Cipher
+*Difficulty: &#127798; &#127798;*
+
+The scytale was used as far back as the [Spartans](http://www.australianscience.com.au/technology/a-scytale-cryptography-of-the-ancient-sparta/), and is one example of ancient cryptography (thought to be used in military campaigns). The [Wikipedia page](https://en.wikipedia.org/wiki/Scytale) has a good overview.
+
+Below is a sample encryption of the plaintext "IAMHURTVERYBADLYHELP" using a scytale cipher with circumference 5 to generate the ciphertext "IRYYATBHMVAEHEDLURLP"
+
+We write the message diagonally down (around) the scytale, and then 
+
+```
+I . . . . R . . . . Y . . . . Y . . . .
+. A . . . . T . . . . B . . . . H . . .
+. . M . . . . V . . . . A . . . . E . .
+. . . H . . . . E . . . . D . . . . L .
+. . . . U . . . . R . . . . L . . . . P
+```
+
+The ciphertext is obtained by reading from left to right, top to bottom. In this example, the ciphertext is
+
+```
+IRYYATBHMVAEHEDLURLP
+```
+
+Implement the functions:
+
+```
+encrypt_scytale(plaintext, circumference)
+decrypt_scytale(ciphertext, circumference)
+```
+
+What will you do when the length of the message is not a perfect multiple of the circumference?
+
+Consider using list comprehensions and slice syntax to simplify your implementation.
+
+Want more of a challenge (&#127798; &#127798; &#127798;)? Try to decrypt an arbitrary ciphertext without knowing the circumference of the scytale.
+
+
+### Railfence Cipher
+*Difficulty: &#127798; &#127798; &#127798;*
+
+Below is a sample encryption of the plaintext "WEAREDISCOVEREDFLEEATONCE" using a railfence with 3 rails to generate the ciphertext "WECRLTEERDSOEEFEAOCAIVDEN"
+
+We write the message diagonally 
+
+```
+W . . . E . . . C . . . R . . . L . . . T . . . E
+. E . R . D . S . O . E . E . F . E . A . O . C .
+. . A . . . I . . . V . . . D . . . E . . . N . .
+```
+
+The ciphertext is obtained by reading the rails from left to right, top to bottom.
+
+```
+WECRLTEERDSOEEFEAOCAIVDEN
+```
+
+Implement the functions:
+
+```
+encrypt_railfence(plaintext, num_rails)
+decrypt_railfence(ciphertext, num_rails)
+```
+
+How will you handle the cases where the last ascending (or descending) segment doesn't reach a corner?
+
+Consider using list comprehensions and slice syntax (especially assigning into slices) to simplify your implementation.
+
+Want more of a challenge (&#127798; &#127798; &#127798; &#127798;)? Try to decrypt an arbitrary ciphertext without knowing the number of rails used.
 
 ### Intelligent Codebreaker
-Suppose that you have access to ciphertext that you know has been encrypted using a Vigenere cipher. Furthermore, suppose that you know that the corresponding plaintext has been written using only words in `/usr/share/dict/words`, although you don’t know the exact message. Finally, suppose that you know that someone has encrypted a message using a Vigenere cipher with a key drawn from a preset list of words. Can you still decrypt the ciphertext?
+*Difficulty: &#127798; &#127798; &#127798;*
 
-For many of the incorrect keys, the resulting plaintext will be gibberish, but there will also be incorrect keys for which the resulting plaintext sounds English-y, but isn't quite right. Thus, the bulk of this problem lies in evaluating how close to an English sentence a given sequence of letters is.
+Suppose that you have access to some ciphertext that you know has been encrypted using a Vigenere cipher. Furthermore, suppose that you know that the corresponding plaintext has been written using only words in `/usr/share/dict/words`, whitespace, and punctuation, although you don’t know the exact message. Finally, suppose that you know that someone has encrypted a message using a Vigenere cipher with a key drawn from a preset list of words, (again, let's suppose from `/usr/share/dict/words`). Can you still decrypt the ciphertext?
+
+For many of the incorrect keys, the resulting plaintext will be gibberish, but there will also be incorrect keys for which the resulting plaintext sounds English-y, but isn't quite right. Thus, the bulk of this problem lies in evaluating how close to a valid English sentence a given sequence of letters is.
 
 Your top-level function should be
 
@@ -406,26 +478,43 @@ Besides that, you are free to implement this program however you see fit. Howeve
 
 You can test your method on the text inside of `secret_message.txt`.
 
+For more of a challenge (&#127798; &#127798; &#127798; &#127798;), broaden your definition of English-y to allow finding plaintexts in which not all words come from `/usr/share/dict/words` (a message we're interested in decrypting, for example, might contain a person's name). What other signals in the text can you look for?
+
+You can also try to break Vigenere encryptions using a combination of the above tactic and a frequency attack for a given key-length.
+
 ### Error Handling
-Currently, our program makes a lot of strong assumptions - see the Notes section in each part. Can you add code to handle cases where these assumptions are violated?
+*Difficulty: &#127798;*
+
+Currently, our library functions (`encrypt_*` and `decrypt_*`) maks a lot of strong assumptions about the input - see the Notes section in each part. Can you add code to handle cases where these assumptions are violated?
 
 ### Encrypt Non-Text Files
+*Difficulty: &#127798; &#127798;*
+
 So far, our ciphers have been applied solely to text-based messages full of ascii letters from the alphabet. However, it is possible to extend these encryption methods to work on arbitrary binary data, such as images, audio files, and more. For this extension, choose at least one of the encryption techniques and make it work on binary files. You will need to use the binary flag when reading from files. You may want to read about text sequence types compared with binary sequence types as well.
+
+### Cracking Merkle-Hellman
+*Difficulty: &#127798; &#127798; &#127798; &#127798; &#127798;*
+
+Unfortunately, there is a polynomial-time algorithm for breaking the Merkle-Hellman Knapsack Cryptosystem. Implement it.
+
+The algorithm's details are described in [Shamir's 1984 paper](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.123.5840&rep=rep1&type=pdf).
 
 ## Design
 
-Please submit a short design document (`design.txt`) describing your approach to each of the parts of the assignment. "Short" means just a few sentences (1-3) per part discussing the rationale behind your decision to implement this program in the way you did.
+Please submit a short design document (`design.txt`) describing your approach to each of the parts of the assignment. "Short" means just a few sentences (1-3) per part discussing the rationale behind your decision to implement this program in the way you did. Consider answering the following questions:
+
+1. What data structures did you use to handle transformation of data?
+2. What Pythonic ideas or strategies did you incorporate in your approach, if any? 
 
 ## Feedback
 
-We hope you have been enjoying the course so far, and would love to hear from you about how this first assignment went! It's the first assignment we've ever written from scratch, and there's definitely room for us to improve on structuring and pacing the various parts of the class and assignments. 
+We hope you have been enjoying the course so far, and would love to hear from you about how this first real assignment went!
 
 To help us out, please answer the following questions in the `feedback.txt` file provided with the starter code:
 
 1. How long did this assignment take you to complete?
 2. What has been the best part of the class so far?
 3. What can we do to make this class more enjoyable for you?
-4. What types of assignments would excite you in this class?
 
 Thank you for being our guinea pigs this quarter - we're learning from you as well as we teach this course!
 
@@ -435,13 +524,30 @@ Your grade will be assessed on both functionality and style.
 
 Functionality will be determined entirely by your program's correctness on a suite of unit tests (some of which are provided with the starter code).
 
-Stylistically, you will be evaluated on your general program design (a la 106 series: decomposition, logic, etc) as well as your Python-specific style. In particular, we will be looking for "Pythonic" approaches to solving problems, as opposed to "non-Pythonic" solutions, that emphasize the Zen of Python. We will also be looking at your Python syntax and mechanics. We encourage you to format your code in accordance with [Python style guidelines](https://www.python.org/dev/peps/pep-0008/). You can find a tool to help format your code [online](http://pep8online.com/).
+Stylistically, you will be evaluated on your general program design (a la 106 series: decomposition, logic, etc) as well as your Python-specific style. In particular, we will be looking for "Pythonic" approaches to solving problems, as opposed to "non-Pythonic" solutions, that emphasize the Zen of Python. We will also be looking at your Python syntax and mechanics. We encourage you to format your code in accordance with [Python style guidelines](https://www.python.org/dev/peps/pep-0008/). You can find a tool to help format your code [online](http://pep8online.com/). If you have any questions, please don't hesitate to let us know. Think about the [Zen of Python](https://www.python.org/dev/peps/pep-0020/) when making design decisions. 
+
+## Deliverables
+
+1. Your modified `crypto.py`
+2. The `design.txt` file documenting your design decisions
+3. The `feedback.txt` letting us know how we're doing!
 
 ## Submitting
 
-Stay tuned for assignment submission instructions!
+See the [submission instructions](https://github.com/stanfordpython/python-handouts/blob/master/submitting-assignments.md) on the course website.
+
+For assignment 1, the key ideas are:
+
+```
+$ ssh <sunetid>@myth.stanford.edu "mkdir -p ~/cs41/assign1"
+$ scp -r <path/to/assign1> <sunetid>@myth.stanford.edu:~/cs41/assign1/
+$ ssh <sunetid>@myth.stanford.edu
+<... connect to myth ...>
+myth$ cd ~/cs41/assign1/
+myth$ /usr/class/cs41/tools/submit
+```
 
 ## Credit
-*Sherman Leung (@skleung), Python Tutorial, Learn Python the Hard Way, Google Python, MIT OCW 6.189, and Project Euler.*
+*Sherman Leung (@skleung), Python Tutorial, Learn Python the Hard Way, Google Python, MIT OCW 6.189, Project Euler, and Wikipedia's list of ciphers.*
 
 > With <3 by @sredmond 

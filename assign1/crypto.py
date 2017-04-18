@@ -9,55 +9,48 @@ SUNet: <SUNet ID>
 
 Replace this with a description of the program.
 """
-import random
-
 import utils
-"""
-Caesar Cipher
-"""
+
+# Caesar Cipher
 
 def encrypt_caesar(plaintext):
-    """
-    Encrypts plaintext using a Caesar cipher.
+    """Encrypt plaintext using a Caesar cipher.
+
     Add more implementation details here.
     """
-    pass  # Your implementation here
+    raise NotImplementedError  # Your implementation here
 
 
 def decrypt_caesar(ciphertext):
-    """
-    Decrypts a ciphertext using a Caesar cipher.
+    """Decrypt a ciphertext using a Caesar cipher.
+
     Add more implementation details here.
     """
-    pass  # Your implementation here
+    raise NotImplementedError  # Your implementation here
 
 
-"""
-Vigenere Cipher
-"""
+# Vigenere Cipher
 
 def encrypt_vigenere(plaintext, keyword):
-    """
-    Encrypts plaintext using a Vigenere cipher with a keyword.
+    """Encrypt plaintext using a Vigenere cipher with a keyword.
+
     Add more implementation details here.
     """
-    pass  # Your implementation here
+    raise NotImplementedError  # Your implementation here
 
 
 def decrypt_vigenere(ciphertext, keyword):
-    """
-    Decrypts ciphertext using a Vigenere cipher with a keyword.
+    """Decrypt ciphertext using a Vigenere cipher with a keyword.
+
     Add more implementation details here.
     """
-    pass  # Your implementation here
+    raise NotImplementedError  # Your implementation here
 
 
-"""
-Merkle-Hellman Knapsack Cryptosystem
-"""
+# Merkle-Hellman Knapsack Cryptosystem
 
 def generate_private_key(n=8):
-    """Generate a private key for use in the Merkle-Hellman Knapsack Cryptosystem
+    """Generate a private key for use in the Merkle-Hellman Knapsack Cryptosystem.
 
     Following the instructions in the handout, construct the private key components
     of the MH Cryptosystem. This consistutes 3 tasks:
@@ -76,10 +69,10 @@ def generate_private_key(n=8):
 
     @return 3-tuple `(w, q, r)`, with `w` a n-tuple, and q and r ints.
     """
-    pass
+    raise NotImplementedError  # Your implementation here
 
 def create_public_key(private_key):
-    """Creates a public key corresponding to the given private key.
+    """Create a public key corresponding to the given private key.
 
     To accomplish this, you only need to build and return `beta` as described in the handout.
 
@@ -92,7 +85,7 @@ def create_public_key(private_key):
 
     @return n-tuple public key
     """
-    pass
+    raise NotImplementedError  # Your implementation here
 
 
 def encrypt_mh(message, public_key):
@@ -113,7 +106,7 @@ def encrypt_mh(message, public_key):
 
     @return list of ints representing encrypted bytes
     """
-    return message
+    raise NotImplementedError  # Your implementation here
 
 def decrypt_mh(message, private_key):
     """Decrypt an incoming message using a private key
@@ -133,102 +126,5 @@ def decrypt_mh(message, private_key):
 
     @return bytearray or str of decrypted characters
     """
-    return message
+    raise NotImplementedError  # Your implementation here
 
-
-#########################################################
-#            IMPLEMENTATION OF CONSOLE MENU             #
-# You shouldn't need to change anything below this box. #
-#########################################################
-
-def clean_caesar(text):
-    """Convert text to a form compatible with the preconditions imposed by Caesar cipher"""
-    return text.upper()
-
-def clean_vigenere(text):
-    return ''.join(ch for ch in text.upper() if ch.isupper())
-
-def run_caesar():
-    action = utils.get_action()
-    encrypting = action == 'E'
-    data = clean_caesar(utils.get_input(binary=False))
-
-    print("* Transform *")
-    print("{}crypting {} using Caesar cipher...".format('En' if encrypting else 'De', data))
-
-    output = (encrypt_caesar if encrypting else decrypt_caesar)(data)
-
-    utils.set_output(output)
-
-
-def run_vigenere():
-    action = utils.get_action()
-    encrypting = action == 'E'
-    data = clean_vigenere(utils.get_input(binary=False))
-
-    print("* Transform *")
-    keyword = clean_vigenere(input("Keyword? "))
-
-    print("{}crypting {} using Vigenere cipher and keyword {}...".format('En' if encrypting else 'De', data, keyword))
-
-    output = (encrypt_vigenere if encrypting else decrypt_vigenere)(data, keyword)
-
-    utils.set_output(output)
-
-
-def run_merkle_hellman():
-    action = utils.get_action()
-
-    print("* Seed *")
-    seed = input("Set Seed [enter for random]: ")
-    import random
-    random.seed(seed)
-    print("* Building private key...")
-
-    private_key = generate_private_key()
-    public_key = create_public_key(private_key)
-
-    if action == 'E':  # Encrypt
-        data = utils.get_input(binary=True)
-        print("* Transform *")
-        chunks = encrypt_mh(data, public_key)
-        output = ' '.join(map(str, chunks))
-    else:  # Decrypt
-        data = utils.get_input(binary=False)
-        chunks = [int(line.strip()) for line in data.split() if line.strip()]
-        print("* Transform *")
-        output = decrypt_mh(chunks, private_key)
-
-    utils.set_output(output)
-
-
-def run_suite():
-    """
-    Runs a single iteration of the cryptography suite.
-
-    Asks the user for input text from a string or file, whether to encrypt
-    or decrypt, what tool to use, and where to show the output.
-    """
-    print('-' * 34)
-    tool = utils.get_tool()
-    # This isn't the cleanest way to implement functional control flow,
-    # but I thought it was too cool to not sneak in here!
-    commands = {
-        'C': run_caesar,         # Caesar Cipher
-        'V': run_vigenere,       # Vigenere Cipher
-        'M': run_merkle_hellman  # Merkle-Hellman Knapsack Cryptosystem
-    }
-    commands[tool]()
-
-
-def main():
-    """Harness for CS41 Assignment 1"""
-    print("Welcome to the Cryptography Suite!")
-    run_suite()
-    while utils.get_yes_or_no("Again?"):
-        run_suite()
-    print("Goodbye!")
-
-
-if __name__ == '__main__':
-    main()
