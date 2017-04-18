@@ -100,7 +100,7 @@ We will not be evaluating any style on this assignment.
 
 ## Submitting
 
-See [submission instructions](https://github.com/stanfordpython/python-handouts/blob/master/submitting-assignments.md) on the course website.
+See the [submission instructions](https://github.com/stanfordpython/python-handouts/blob/master/submitting-assignments.md) on the course website.
 
 For assignment 0, the key ideas are:
 ```
