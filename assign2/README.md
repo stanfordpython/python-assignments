@@ -1,6 +1,6 @@
 # Assignment 2: Quest for the Holy Grail!
 
-**Due: 4:59:59 PM, Sat May 7th**
+**Due: 11:59:59 PM, Thu May 11th**
 
 ## Overview
 
@@ -12,7 +12,7 @@ We've actually hidden a Holy Grail somewhere on campus. The first person to find
 
 *Note: We want you to enjoy the beautiful Stanford weather, as a nice break from midterms, and have some fun solving small puzzles.*
 
-![Holy Grail](http://parktheatreholland.com/wp-content/uploads/2014/10/banner-python.jpg)
+![Holy Grail](http://i.imgur.com/mbHoLDl.png)
 
 ## Logistics
 
@@ -20,71 +20,74 @@ Download the [starter files](https://github.com/stanfordpython/python-assignment
 
 ## Puzzle Guidelines
 
-The staff has created a suite of challenges that will bring you ever closer to the Holy Grail.
+The course staff has created a suite of challenges that will bring you ever closer to the Holy Grail.
 
-### Graduate from Knight School
+### Knight Training
 
-Before you can leave on your quest, you must first graduate from Knight School. In order to do that, you'll need to assemble your schedule so that you're enrolled in as many courses as possible. After all, the sooner you graduate, the sooner you can start your journey!
+Your quest will begin with a set of trials to test your readiness. Your skills as a dragon trainer and a swordsperson will be critical in this stage of your journey. You will complete this part of the quest by writing code in the `knight.py` file and then running `python3 quest.py` to test your knight against our challenges. Don't worry - you may attempt the quest as many times as you would like. The quest will provide helpful advice along the way on what you need to do next. If you would like to speed up the advice use the flag `-f`. If you are finished with listening to the elders who run the quest, use the flag `-q`. That is, you can run `python3 quest.py -f` or `python3 quest.py -q`.
 
+#### How to Train Your Dragon
 
-In the case of a tie (i.e. two classes that have the same start and end times), choose the class that comes first in the file.
+When training your dragon to fly, we expect that you return *changes* in their flight pattern. In the example below, in order to get to x, y, z position (2, 4, 0), our dragon must turn 25.565 degrees clockwise and travel 4.472 forward. Note that when later flying to (4, 8, 0), the dragon's direction is not adjusted (a *change* of 0 degrees in orientation) since it is already oriented in the correct direction and only needs to move 4.472 units. This example omits the z-direction because of the limitation of MS-Paint.
 
-The correct set of classes in chronological order will provide you with a token that will unlock `dna.zip`, so you can continue in your quest.
+A few notes:
 
-### Cross the Moat
+* We define a clockwise rotation as positive. It is possible therefore to have negative angle adjustments, if your dragon is rotating counter-clockwise.
+* We define an upward angle of ascent from ground level as positive. If your dragon needs to lower the angle of ascent, you can supply a negative change in angle of ascent.
+* We will never have your dragon fly backwards. That is, the distance your dragon travels will always be positive.
 
-**Immediately after unzipping `dna.zip`, you should fill out the form linked in `completed-knightschool.txt` so we know how far along you are.**
+A few hints:
+* The `math` module has many useful trigonometric functions, including `math.atan2`, `math.acos`, `math.sqrt`, and `math.degrees`.
+* Drawing a diagram can help determine which trig functions to use.
 
-Now that you have your schedule for next quarter, you're ready to embark on your quest. Unfortunately, there's a challenge in the way, and you'll need to use your Python skills to advance. Solve the puzzle to yield the password to unlock `grail.zip`. More instructions are available in the `README.md` inside `dna.zip`.
+![Dragon](http://web.stanford.edu/~dsslater/dragon.png)
+
+#### A Fighting Chance
+
+When fighting against our champion, your "moves" should be returned as a list of integers, where each number refers to your choice of move in a given round. The numbers refer to the different types of moves: do nothing (0), parry (1), attack (2), aggressive attack (3).
+
+As an example, consider a competition of three rounds where our champion's strategy is: attack during round 0, aggressive attack during round 1, and then do nothing during round 2. This strategy would be represented as the list `[2, 3, 0]`. If your knight were to respond with parry, parry, followed by aggressive attack, your strategy would be represented as `[1, 1, 3]`. In this case, you would win the engagement! In the actual quest, your strength is not equal to the champion's strength, and the champion's strategy is not public information.
+
+Once you have trained your dragon and have defeated our champion in a duel, you will be given a riddle to solve out in the real world. You can unlock the next part of the quest by entering the correct answer to the riddle.
+
+### Potion Making
+
+Now that your knight's physical prowess has been proven, we will challenge your knight's mind. Your job is to identify how many potions can be concocted, given a collection of recipes, a pantry of ingredients, and market where you can trade. 
+
+Notes:
+
+* The task is to determine how many recipes could hypothetically be completed. The fact that Potion A *could* be concocted does not affect whether Potion B *could* be concocted. In other words, if you could produce Potion A by itself, Potion B by iteself and Potion C by itself then you would return 3.
+
+Once you have completed the potion making portion, you will receive a secret code, allowing you to unlock the final part of the quest.
 
 ### The Final Piece
 
-**Immediately after unzipping `grail.zip`, you should fill out the form linked in `completed-dna.txt` so we know how far along you are.**
+Having completed the previous challenges, you're now almost to the holy grail, the grand prize. Read through the `README.md` in the unzipped `grail.zip` for detailed instructions, and don't hesitate to ask questions on Piazza if you get stuck.
 
-Having completed the previous challenges, you're now almost to the holy grail, the grand prize. Read through the `README.md` in `grail.zip` for detailed instructions, and don't hesitate to ask questions on Piazza if you get stuck.
+*Note: this final puzzle requires you to seek the holy grail at a physical spot on campus, so you should not wait until the final day to start this piece. The holy grail comes with a link to a Google form, which will let us know that you've found the grail and to submit a picture of you with it.*
 
-*Note: this final puzzle requires you to seek the holy grail at a physical spot on campus, so you should not wait until Saturday afternoon to start this piece. The holy grail comes with a link to a Google form, which will let us know that you've found the grail.*
-
-## The Hint Machine
-
-We've included in the starter files a `mystery.pyc` file. This file represents a byte-compiled Python file (compiled using CPython 3.4). If you're stuck, you can attempt to glean a useful hint towards the puzzles by codebreaking the symbols exported by this module.
-
-The `mystery` module represented by the `.pyc` file can be imported into the python interpreter or into your own script. The `mystery` module contains a `hint` function that takes some number and type of parameters. Use the hints given by the python compiler, the function itself, and your own introspection skills to figure out what to pass into this mystery function to obtain your next hint.
-
-For example,
-
-```
-$ python3
->>> import mystery
->>> mystery.hint()  # You might pass some arguments into `hint`
-# some output here
-```
 
 ## Starter Files
 
 ```
 assign2/
 ├── README.md
-├── knightschool
-│   ├── courses.txt
-│   └── knightschool.py
-├── dna.zip
-├── grail.zip
-└── mystery.pyc
+├── knight.py
+├── quest.py
+└── grail.zip
 ```
 
 In addition to this `README`, you've been given a few other tools to help you on your quest:
 
-* `knightschool/`: Starter code for the first puzzle.
-* `dna.zip`: Locked starter code for the second puzzle. You'll need to graduate from knight school before you can unlock this puzzle.
+* `knight.py`: Starter code for the first two parts of the quest.
+* `quest.py`: The script that will put your knight through tests while giving you hints and riddles along the way.
 * `grail.zip`: Locked starter code for the third puzzle. An elder knight has given you a locked chest containing vital information about the location of the holy grail. Unfortunately, the knight never gave you the key, so you'll need to find a suitable passkey yourself.
-* `mystery.pyc`: A hint-giving, coconut-toting byte-compiled Python module that can help out if you're stuck.
 
 ## General Advice
 
-As the Zen of Python states, "now is better than never." Get started early on this assignment!
+As the Zen of Python states: "Now is better than never." Get started early on this assignment!
 
-If you get stuck, post general inquiries on Piazza. If you’re blocked on a particular hint given by the compiled python file, please send us a private note on Piazza!
+If you get stuck, post general inquiries on Piazza. If you’re blocked on a particular hint, please send us a private note on Piazza!
 
 ## Extensions
 
@@ -104,9 +107,7 @@ myth$ /usr/class/cs41/tools/submit
 
 Your functionality grade is determined purely by your progress in the quest. If you complete all of the challenges, you'll receive a guaranteed check-plus. If you complete only the first two challenges, you'll receive a check. If you complete only the first challenge, you'll receive a check-minus.
 
-Remember, we're using the Google forms linked in every piece of the puzzle to determine how far you've made it in the quest, so make sure to submit the form as soon as you unlock a new level! **If you don't submit the form, we have no way of determining your progress, and thus can't give you credit for completion of that part.**
-
-In particular, you need to find the physical holy grail (using the clues in `grail.zip`) on campus to get full marks. The holy grail will be hidden in a bag somewhere. Good luck!
+You need to find the physical holy grail (using the clues in `grail.zip`) on campus to get full marks. The holy grail will be hidden in a bag somewhere. Good luck!
 
 ### Style
 
@@ -116,6 +117,6 @@ We know that there are many ways to solve each of the challenges, so spend time 
 
 ## Credit
 
-Inspiration for this assignment comes from the fantastic 1975 British masterpiece, [Monty Python and the Holy Grail](https://www.youtube.com/v/F41SSqJx2tU). As always, credit to Sherman Leung (@skleung) for the original handout, and to David Slater (@dsslater) for minor edits. David wrote the class selection problem, and Conner Smith (@csmith95) wrote the DNA puzzle.
+Inspiration for this assignment comes from the fantastic 1975 British masterpiece, [Monty Python and the Holy Grail](https://www.youtube.com/watch?v=F41SSqJx2tU). As always, credit to Sherman Leung (@skleung) for the original handout and idea, and to David Slater (@dsslater) and Gracie Young (@grace-young) for edits and puzzle details. David wrote the dragon-training and knight-fighting, and Gracie wrote the potion-making.
 
-> With <3 by @sredmond 
+> With <3 by @sredmond, @dsslater, and @grace-young
