@@ -16,11 +16,11 @@ You can do almost anything you would like to!
 ## Random Ideas
 *Miscellaneous ideas that we thought of over the course of the quarter.*
 
-2-step auto-authenicator - who needs security?! just auto-2-step all messages from a certain sender
+2-Step Auto-Authenicator - who needs security? automatically 2-step-authenticate all messages from a certain sender.
 
-pizza button - a hardware button that when pressed will use my credit card info to deliver domino's directly to the dorm room
+Pizza Button - a hardware button that when pressed will use my credit card info to deliver Domino's directly to the dorm room.
 
-paperless.py - clone and update paperless so that it can support CS41 (way out of scope for this class but a person can dream)
+paperless.py - clone and update Paperless so that it can support CS41 (way out of scope for this class but a person can dream)
 
 canvasdav - a WebDAV client for Canvas (Coursework had one, Canvas doesn't) for local filesystem-like mounting of Canvas materials
 
@@ -84,5 +84,3 @@ Image Triangulation - Use Delaunay triangulation to auto-artsify profile pics in
 Karel (CS106A)- build a Karel emulator in Python, including a graphical interface, a lexer and parser for the karel language, and enforced correctness)
 
 RSS Aggregator (CS110) - aggregates news from lots of RSS feeds
-
-

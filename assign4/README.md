@@ -2,25 +2,23 @@
 
 ## The Proposal
 
-*Due: Friday, May 20th at 11:59:59 PM*
+*Due: Thursday, May 18th at 11:59:59 PM*
 
 ![The Proposal](https://raw.githubusercontent.com/stanfordpython/python-assignments/master/assign4/proposal.png)
 
 As described in class, the purpose of the project proposal is for the course staff to ensure that the project is well-scoped and incorporates Python in some meaningful way. We can also suggest useful packages for your project. The better your proposal, the more we can assist you by pointing you away from common pitfalls and towards good solutions.
 
-You should use [`template.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/template.md) as a starting template for your proposal. You can access the raw markdown [here](https://raw.githubusercontent.com/stanfordpython/python-assignments/master/assign4/template.md) or just copy-paste into a Google Doc. See [`sampleproposal.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/sampleproposal.md) for an example of what we’re looking for. Additionally, we've added some ideas to [`ideas.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/ideas.md) if you're stuck.
+You should use [`template.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/template.md) as a starting template for your proposal. You can access the raw markdown [here](https://raw.githubusercontent.com/stanfordpython/python-assignments/master/assign4/template.md) or just copy-paste into a Google Doc to edit. See [`sampleproposal.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/sampleproposal.md) for an example of what we’re looking for. Additionally, we've added some ideas to [`ideas.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/ideas.md) if you're stuck.
 
-In order to submit the proposal, drop your file into our [Google Drive Folder](https://drive.google.com/open?id=0B-eHIhYpHrGDdHJzclFoem1rR1E). When we review your proposals, we'll look at the most recently added proposal.
+In order to submit the proposal, fill out our [Google Form](https://goo.gl/forms/OPSzQA6wgLONgj4G2) with the appropriate content. When we review your proposals, we'll look at the most recently added proposal.
 
 *Note: you can use late days on the project proposal, but hopefully you will complete the proposal on time so that we can get feedback to you sooner.*
 
 ## The Project
 
-*Due: Sunday, May 29th at 11:59:59 PM*
+*Due:*
 
-Implement the project you have proposed, incorporating feedback that we will return to you by Monday, May 23rd at the latest. You are free to begin working on the project before you hear from us.
-
-*Note: you can only use up to one late day on the final project!*
+Implement the project you have proposed, incorporating our feedback. You are free to begin working on the project before you hear from us.
 
 ### Development Strategy and Hints
 
@@ -36,11 +34,11 @@ In addition to your code, you must include a `README.md` file as a meaningful wr
 
 This writeup should contain a technical overview of the project and the code therein. In effect, you're writing documentation for your project - if the first thing someone reads about your project is the README, what information does she need to know? We're asking you to also include a technical section in your README to describe the code design, the purpose of various modules, and any requirements (e.g. must run a certain version of Python, or must have a particular operating system, or must have a Postgres database running, or must have a Google account, or anything else).
 
-In addition, we're asking you to write installation/execution instructions. After we download your code, what steps do we have to perform to get it up and running? For many of you, the answer will just be "run the main python script," but several others will have more complex configuration. If we can't set up your project, we have no way to confirm that your project works correctly, so we hope that your installation instructions are clear, correct, replicable, and concise.
+In addition, we're asking you to write installation/execution instructions. After we download your code, what steps do we have to perform to get it up and running? For many of you, the answer will just be "run the main python script named `something.py`," but several others will have more complex configuration. If we can't set up your project, we have no way to confirm that your project works correctly, so we hope that your installation instructions are clear, correct, replicable, and concise.
 
 Other general sections of a README usually include, but are not limited to: known bugs, contact information for the maintainer (that's you!), and credits/acknowledgements.
 
-In total, the README should be about 700-1500 words, with a majority of that going to the technical overview. Of course, these words counts are estimates, and you're free to write fewer or more as you see fit.
+In total, the README should be about 500-1500 words, with a majority of that going to the technical overview. Of course, these words counts are estimates, and you're free to write fewer or more as you see fit.
 
 ### Starter Code
 
