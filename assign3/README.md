@@ -1,4 +1,5 @@
 # Assignment 3: Stylize
+**Due: 11:59:59 PM, Tue May 23th**
 
 ## Congratulations!
 
