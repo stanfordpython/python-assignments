@@ -68,7 +68,7 @@ Part of the challenge of this assignment is becoming familiar with a poorly arch
 
 `ingredients.py` defined an `Ingredient` and `IngredientList` class. How useful are these classes? Could we simplify them? Make them act like other data structures?
 
-`recipe.py` defines the `Recipe` class and the `RecipeBook` class. They currently don't have any interested methods or functions.
+`recipe.py` defines the `Recipe` class and the `RecipeBook` class. They currently don't have any interesting methods or functions.
 
 `recipes.json` is the JSON file containing a static dump of recipes.
 
