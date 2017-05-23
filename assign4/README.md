@@ -16,7 +16,7 @@ In order to submit the proposal, fill out our [Google Form](https://goo.gl/forms
 
 ## The Project
 
-*Due:*
+*Due: Friday June 2nd at 11:59:59 PM*
 
 Implement the project you have proposed, incorporating our feedback. You are free to begin working on the project before you hear from us.
 
