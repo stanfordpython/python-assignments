@@ -1,20 +1,20 @@
 # Assignment 0: Welcome to Python!
-**Due: 4:20 PM, Thu Jan 17**
+> Due: 4:20 PM, Thu Jan 17
 
 ## Overview
 
 This introductory assignment aims to give you practice with a few of the Python fundamentals we've covered in class. More importantly, the goal of this warmup assignment is to ensure that your local Python installation is set up correctly and that you are familiar with the CS41 submission process.
 
-At a high level, for this assignment you will write code to play the part of a cheese shop owner and the keeper of the bridge of death.
+At a high level, in this assignment you will write code to calculate coconut-carrying capacity, play the part of a cheese shop owner, and challenge knights to cross the Bridge of Death.
 
-*Expected Time: 1.5 hours*
-*Max Time: 3 hours*
+- *Expected Time: 1.5 hours*
+- *Max Time: 3 hours*
 
 Note: Get started early! We want to resolve any installation or submission problems earlier rather than later.
 
 ## Review
 
-If you would like, get a quick refresher by flipping through our slides from the first week on the [course website.](https://stanfordpython.com/#lectures)
+If you would like to, get a quick refresher by flipping through our slides from the first week on the [course website](https://stanfordpython.com/#lectures).
 
 ## Installing Python
 
@@ -24,11 +24,11 @@ Follow our instructions for installing Python and setting up a virtual environme
 - For Linux users, follow [these instructions](https://github.com/stanfordpython/python-handouts/blob/master/installing-python-linux.md)
 - For Windows users, follow [these instructions](https://github.com/stanfordpython/python-handouts/blob/master/installing-python-windows.md)
 
-*NOTE: Every time you open a new terminal session, you will need to activate your virtual environment.*
+**IMPORTANT: Every time you open a new terminal session, you will need to activate your virtual environment again.**
 
 ## Starter Files
 
-There are no starter files for this assignment. You will create and submit a file called `cheese.py` and a file named `bridge.py`.
+There are no starter files for this assignment. You will create and submit a files named `coconuts.py`, `cheese.py`, and `bridge.py`.
 
 A reasonable starter file might look like:
 
@@ -45,31 +45,35 @@ if __name__ == '__main__':
 
 # Program Specifications
 
-This assignment consists of three parts: (1) Coconut Computation, (2) The Cheese Shop, and (3) The Bridge of Death.
+This assignment consists of three parts:
 
-As a useful reminder, the interactive interpreter is your best friend! Use it heavily while experimenting and exploring Python.
+1. Coconut-Carrying Capacities,
+2. The Cheese Shop, and
+3. The Bridge of Death.
 
-## Coconut Computation
+As a reminder, the interactive interpreter is your best friend! Use it heavily when experimenting with and exploring Python.
+
+## Coconut-Carrying Capacities
 
 Before anything else, watch [this three-minute video](https://www.youtube.com/watch?v=zqtS9xyl0f4) on Youtube. The transcript can be found [here](http://www.montypython.net/scripts/HG-cocoscene.php).
 
-We're going to help the guards out and compute whether a collection of swallows can carry a collection of coconuts between them. We know that "a five ounce bird could not carry a one pound coconut.", and we will assume that a 5.5 ounce bird can carry a one pound coconut. More specifically, we will assume that every 5.5 ounces of bird can carry one pound of coconut.
+We're going to help the guards out and compute whether a collection of swallows can carry a collection of coconuts between them. We know that "a five ounce bird could not carry a one pound coconut," so we will assume that a 5.5 ounce bird can carry a one pound coconut. More specifically, we will assume that every 5.5 ounces of bird can carry one pound of coconut.
 
-Create a file named `coconuts.py`, in which we will write our program. In this portion of the assignment, we will ask the user for two numbers: the total ounces of birds that are carrying coconuts, and the total weight in pounds of the coconuts.
+Create a file named `coconuts.py` in which we will write our program. In this portion of the assignment, we will ask the user for two numbers: the total ounces of birds that are carrying coconuts, and the total weight in pounds of the coconuts.
 
-Prompt the user for the number of ounces of bird by asking: `"How many ounces of swallows are carrying the coconuts? "`. Prompt the user for the number of pounds of coconut by asking: `"How many pounds of coconuts are there? "`. Remember to convert these values to `float`s! You can assume that the user input is formmated correctly.
+Prompt the user for the number of ounces of bird by asking: `"How many ounces of swallows are carrying the coconuts? "`. Prompt the user for the number of pounds of coconut by asking: `"How many pounds of coconuts are there? "`. Remember to convert these values to `float`s! You can assume that the user input is formatted correctly.
 
 If the total number of ounces of birds divided by the number of pounds of coconuts is at least 5.5 (including the value 5.5), then we will print out `"Yes! Carrying the coconuts is possible."`. Otherwise, print out `"No. Carrying the coconuts is impossible."`
 
 ### Sample Runs
 
-Your program should be able to emulate the following sample runs. Make sure to activate your virtual environment before executing these lines of code!
+Your program should be able to emulate the following sample runs. *Make sure to activate your virtual environment before executing these lines of code!*
 
 ```
 (cs41-env)$ python3 coconuts.py
 How many ounces of birds are carrying the coconuts? 5
 How many pounds of coconuts are there? 1
-No. Carrying the coconuts is impossible
+No. Carrying the coconuts is impossible.
 
 (cs41-env)$ python3 coconuts.py
 How many ounces of birds are carrying the coconuts? 6.2
@@ -84,12 +88,12 @@ Yes! Carrying the coconuts is possible.
 (cs41-env)$ python3 coconuts.py
 How many ounces of birds are carrying the coconuts? 12.5
 How many pounds of coconuts are there? 2.5
-No. Carrying the coconuts is impossible
+No. Carrying the coconuts is impossible.
 ```
 
 ### Hints
 
-In all portions of this assignment, you may find it tedious to repeatedly enter inputs. You can create a file, for example called `coconuts-input.txt`, and populate it with the two lines `12.5` and `2.5` so that the file looks like:
+In all portions of this assignment, you may find it tedious to repeatedly enter inputs. You can create a file, for example called `coconuts-input.txt`, and populate it with the two lines `17` and `3` so that the file looks like:
 
 ```
 17
@@ -103,7 +107,7 @@ Now, you can run the program with predetermined input by running:
 How many ounces of birds are carrying the coconuts? How many pounds of coconuts are there? Yes! Carrying the coconuts is possible.
 ```
 
-The formatting will be compressed, and a little harder to read, but this debugging trick might be useful for you in the later parts of the assignment.
+The formatting will be compressed, and a little harder to read, but this debugging trick might be an efficiency gain for you in the later parts of the assignment.
 
 ## The Cheese Shop
 
@@ -117,13 +121,13 @@ Suppose, for the following examples, that you have a list of `cheeses` containin
 
 Begin by printing the string `"Good morning. Welcome to the National Cheese Emporium!"` to the console.
 
-Next, in a loop, we will repeatedly ask the user which cheese they would like to buy. If the user enters the exact name of a cheese that you have, print a success message and end the program. If the user does not enter the exact name of a cheese that you have, print a message that contains the user's input as a substring and the reprompt the user to enter a cheese.
+Next, in a loop, we will repeatedly ask the user which cheese they would like to buy. If the user enters the exact name of a cheese that you have, print a success message and end the program. If the user does not enter the exact name of a cheese that you have, print a message that contains the user's input and the reprompt the user to ask for another cheese.
 
-The user is also allowed to enter special questions. If the user enters either of the strings `"You... do have some cheese, don't you?"` or `"Have you in fact got any cheese here at all?"`, you must reply by listing the number of cheeses that you have, along with their names.
+The user is also allowed to enter special questions. If the user enters either of the strings `"You... do have some cheese, don't you?"` or `"Have you in fact got any cheese here at all?"`, you must reply by listing the number of cheeses that you have in the format `"We have {} cheese(s)!"`, along with the name of each type of cheese you have, one on each line.
 
 ### Sample Usage
 
-Your program should be able to emulate the following sample runs. Make sure to activate your virtual environment before executing these lines of code!
+Your program should be able to emulate the following sample runs. *Make sure to activate your virtual environment before executing these lines of code!*
 
 ```
 (cs41-env)$ python3 cheese.py
@@ -144,7 +148,7 @@ I'm afraid we don't have any Red Windsor.
 What would you like? cHeDdAr
 I'm afraid we don't have any cHeDdAr.
 What would you like? Have you in fact got any cheese here at all?
-# cheeses: 3
+We have 3 cheese(s)!
 Muenster
 Cheddar
 Red Leicester
@@ -156,13 +160,13 @@ For anything that is not specified in the above specification, your program can 
 
 ### Hints
 
-You can compare that two strings are the same by using `==`.
+You can check that an element is contained in a collection by using the keyword `in`.
 
 ## Keeper of the Bridge of Death
 
-Before anything else, watch [this four-minute video](https://www.youtube.com/watch?v=dPOyOM7wxlE) (cw: gun violence) on Youtube. The transcript can be found [here](http://www.montypython.net/scripts/HG-bridgescene.php).
+Before anything else, watch [this four-minute video](https://www.youtube.com/watch?v=dPOyOM7wxlE) on Youtube. The transcript can be found [here](http://www.montypython.net/scripts/HG-bridgescene.php).
 
-In this assignment, you program will play the part of the keeper of the bridge of death (a.k.a. the old man from Scene 24), and the user will play the part of the travelling knights. Through this assignment, you will gain practice with file reading, lists and strings.
+In this assignment, you program will play the part of the keeper of the Bridge of Death (a.k.a. the old man from Scene 24), and the user will play the part of the travelling knights. Through this assignment, you will gain practice with file reading, lists and strings.
 
 First, create a file called `answers.txt` containing the following input:
 
@@ -178,17 +182,17 @@ the airspeed velocity of an unladen swallow? 24mph|11mps
 Each line of the file has the following format:
 
 ```
-question? one option|another option|a third option
+question? one possible response|another response|a third response
 ```
-where the question is separated from the options by the two-character string `"? "` and the options themselves are separated by the pipe character (`"|"`). 
+where the question is separated from the responses by the two-character string `"? "` and the options themselves are separated by the pipe character (`"|"`). You can assume that the file is well-formatted. You can also assume that no question or potential response contains either the `'?'` character or the `'|'` character. However, you are not guaranteed that questions and answers do not contain spaces.
 
-As the keeper of the bridge of death, you will ask each of a successive number of travellers three questions each. The `answers.txt` files provide the questions that you are supposed to ask.
+As the keeper of the Bridge of Death, you will ask each of a successive number of travellers three questions each. The `answers.txt` files provide the questions that you will ask.
 
-For each traveller, begin by printing a warning message. For the first two travellers, print `"Stop! Who would cross the Bridge of Death must answer me these questions three, 'ere the other side he see."`. For each additional traveller beyond the first two, just message `"Stop!"`
+For each traveller, begin by printing a warning message. For the first two travellers, print `"Stop! Who would cross the Bridge of Death must answer me these questions three, 'ere the other side he see."`. For each additional traveller beyond the first two, just message `"Stop!"`.
 
-Next, we will ask the travellers a series of questions. For each one, we will ask some question, prompting the user for input. Strip the user's input to remove leading and trailing whitespace. If the user's input does not contain any of our reference options as a substring, ignoring case, we will cast the traveller into the Gorge of Eternal Peril (more on this further down) and immediately move onto the next traveller. For example, the answer `"Lancelot"`, `"sir galahad of camelot  "` and `"  NO, THIS IS ROBIN "` all are successfully matched by the option list `Lancelot|Galahad|Robin`
+Next, we will ask the travellers a series of questions, three per traveller. Each time, we will ask some question, prompting the user for input. Form the question by prepending `"What is "` to the text contained in the question portion of the line from `answers.txt`. Strip the user's input of any trailing spaces, `'.'`, or `'!'` characters. If the user's input does not contain any of our reference options as a substring, ignoring case, we will cast the traveller into the Gorge of Eternal Peril (more on this further down) and immediately move onto the next traveller. For example, the answer `"Lancelot"`, `"sir galahad of camelot  "` and `"  NO, THIS IS ROBIN "` all are successfully matched by the option list `Lancelot|Galahad|Robin`
 
-Each traveller who wants to cross the bridge will be asked three questions. The first is `"What is your name? "`. The second is `"What is your quest? "`. The third will be drawn from the `answers.txt` file, starting at the question that immediately follows the `quest` line. For each of these questions, the list of possible answers follows the question in the `answers.txt` file. Successive traveller will be asked sequential questions from the file. For example, in the `answers.txt` file given above, there will be a total of four travellers, because there are four non-`name`, non-`quest` questions. These questions will, in order, be 
+Each traveller who wants to cross the bridge will be asked three questions. The first is `"What is your name? "`. The second is `"What is your quest? "`. The third will be drawn from the `answers.txt` file, starting at the question that immediately follows the `quest` line. You can assume that no questions beyond the first two ask for `"your name? "` or `"your quest? "`. For each of these questions, the list of possible answers follows the question in the `answers.txt` file. Successive travellers will be asked sequential questions from the file. For example, in the `answers.txt` file given above, there will be a total of four travellers, because there are four non-`name`, non-`quest` questions. These questions will, in order, be 
 
 ```
 "What is your favorite color? "
@@ -197,19 +201,15 @@ Each traveller who wants to cross the bridge will be asked three questions. The 
 "What is the airspeed velocity of an unladen swallow?"
 ```
 
-Each will be the third question asked to four successive travellers.
+Each will be the third question asked to four successive travellers, following the questions `"What is your name? "` and `"What is your quest? "`
 
-If the travelling knight answers all three questions satisfactorily, print out `"Right. Off you go."` and move on to the next traveller.
+If the travelling knight answers all three questions satisfactorily, print `"Right. Off you go."` and move on to the next traveller, prompting for their name.
 
 When a traveller is cast into the Gorge of Eternal Peril, print out their name, in all capital letters, with the text `": Auuuuuuuugh!"`appended. For example, if Galahad fails to answer a question correctly, print out `"GALAHAD: Auuuuuuuugh!"`.
 
-A final note on formatting: each message you print to the console should be prefaced by `"KEEPER: "`.
+Each message you print to the console should be prefaced by `"KEEPER: "`.
 
-Lastly, if the user answers one of your questions with text that ends with a `?` character, not counting trailing whitespace, you should reply: `"KEEPER: What? I don't know that! Auuuuuuuugh!"` and immediately end the program.
-
-### Assumptions
-
-You can assume that the file is well-formatted with reasonable data. You are guaranteed that no question or potential answer contains either the `'?'` character or the `'|'` character. However, you are not guaranteed that questions and answers do not contain spaces.
+Lastly, if the user answers one of your questions with text that ends with a `'?'` character, not counting trailing whitespace, you should reply: `"KEEPER: What? I don't know that! Auuuuuuuugh!"` and immediately end the program.
 
 ### Hints
 
@@ -240,7 +240,7 @@ This program has a lot of interactive input. Use the input mocking trick we saw 
 
 ### Sample Usage
 
-Your program should be able to emulate the following sample runs. Make sure to activate your virtual environment before executing these lines of code!
+Your program should be able to emulate the following sample runs. *Make sure to activate your virtual environment before executing these lines of code!*
 
 ```
 (cs41-env)$ python3 bridge.py
@@ -253,12 +253,12 @@ KEEPER: Stop! Who would cross the Bridge of Death must answer me these questions
 KEEPER: What is your name? Sir Robin of Camelot.
 KEEPER: What is your quest? To seek the Holy Grail.
 KEEPER: What is the capital of Assyria? I don't know that!
-SIR ROBIN OF CAMELOT.: Auuuuuuuugh!
+SIR ROBIN OF CAMELOT: Auuuuuuuugh!
 KEEPER: Stop!
 KEEPER: What is your name? Sir Galahad of Camelot.
 KEEPER: What is your quest? I seek the grail.
 KEEPER: What is your favorite color? Blue. No yel--
-SIR GALAHAD OF CAMELOT.: Auuuuuuuugh!
+SIR GALAHAD OF CAMELOT: Auuuuuuuugh!
 KEEPER: Stop!
 KEEPER: What is your name? It is Arthur, King of the Britons.
 KEEPER: What is your quest? To seek the Holy Grail.
@@ -274,13 +274,7 @@ PATRICK: Auuuuuuuugh!
 (cs41-env)$ python3 bridge.py
 KEEPER: Stop! Who would cross the Bridge of Death must answer me these questions three, 'ere the other side he see.
 KEEPER: What is your name? gAlAhAd Of CaMeLoT
-KEEPER: What is your quest? What's a quest?
-KEEPER: What? I don't know that! Auuuuuuuugh!"
-
-(cs41-env)$ python3 bridge.py
-KEEPER: Stop! Who would cross the Bridge of Death must answer me these questions three, 'ere the other side he see.
-KEEPER: What is your name? gAlAhAd Of CaMeLoT
-KEEPER: What is your quest? What's a quest?
+KEEPER: What is your quest? What's *your* quest?!?
 KEEPER: What? I don't know that! Auuuuuuuugh!"
 
 (cs41-env)$ python3 bridge.py
@@ -309,7 +303,7 @@ KEEPER: Right. Off you go.
 ## Extensions
 > Extensions on Assignment 0? If you insist.
 
-This section of an assignment handout gives a few of our suggestions if you're looking for ways to go above and beyond the requirements of the assignment. At no point are you required to implement an extension - although they sometimes provide interesting challenges or alternative approaches to problem-solving.
+This section of an assignment handout usually gives a few of our suggestions if you're looking for ways to go above and beyond the requirements of the assignment. At no point are you ever required to implement an extension - although they sometimes provide interesting challenges or alternative approaches to problem-solving.
 
 In general, when you submit an extension to an assignment, add `-ext` to the end of the filename. In this case, if you want to submit an extension, you should submit both an unmodified `coconuts.py` file that implements the unextended assignment and a `coconuts-ext.py` file that implements your extension. Extension programs should also contain a module-level comment explaining what the extended assignment does differently.
 
@@ -340,11 +334,14 @@ Allow the user to enter any input, and search for each of your cheeses, case-ins
 ### `bridge`: Add more questions and responses to the `answers` file
 Create a new file named `answer-ext.txt`, and extend it by adding more lines to the file that ask more questions or offer a different collection of acceptable responses.
 
+### `bridge`: Match regular expressions instead of fuzzy text matching
+If you are comfortable with regular expressions, update your code to treat potential responses as regular expressions, and say that user input is successful if it satisfies any of the regular expressions.
+
 ## Grading
 
 Your grade for this assignment will be assessed on completion. If you successfully submit a Python program that largely follows the specification above, you will receive full credit on this assignment. We will not be very strict on edge cases, although we encourage you to attempt to match the above specification exactly.
 
-We will be grading your style on this assignment, since we haven't yet talked about what good Python style looks like in detail. However, we will be leaving feedback on your style, so take a pass through your completed assignment to make its style good (to you!) if you haven't already done that.
+We will not be grading your style on this assignment, since we haven't yet talked about what good Python style looks like in detail. However, we will be leaving feedback on your style, so take a pass through your completed assignment to make its style feel good (to you!) if you haven't already done that.
 
 ## Style Checks
 
@@ -354,7 +351,7 @@ While not necessary for this assignment, we want to point out a really useful to
 (cs41-env)$ pycodestyle coconuts.py cheese.py bridge.py
 ```
 
-Any style violations will be printed to the console. You can automatically apply all of these changes using the `autopep8` tool. Be warned that the `autopep8` tool overwrites your file in-place, and may substantially change them, so you might want to apply changes by hand. However, `autopep8` can be a good time saver.
+Any style violations will be printed to the console. You can automatically apply all of these changes using the `autopep8` tool. Be warned that the `autopep8` tool overwrites your files in-place, and may substantially change them, so you might want to apply changes by hand. However, `autopep8` can be a good time saver.
 
 ```
 (cs41-env)$ autopep8 coconuts.py cheese.py bridge.py
