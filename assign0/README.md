@@ -257,7 +257,7 @@ SIR ROBIN OF CAMELOT: Auuuuuuuugh!
 KEEPER: Stop!
 KEEPER: What is your name? Sir Galahad of Camelot.
 KEEPER: What is your quest? I seek the grail.
-KEEPER: What is your favorite color? Green. No yel--
+KEEPER: What is your favorite color? Red. No bl--
 SIR GALAHAD OF CAMELOT: Auuuuuuuugh!
 KEEPER: Stop!
 KEEPER: What is your name? It is Arthur, King of the Britons.
