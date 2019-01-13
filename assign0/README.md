@@ -201,7 +201,7 @@ Each traveller who wants to cross the bridge will be asked three questions. The 
 "What is the airspeed velocity of an unladen swallow? "
 ```
 
-Each will be the third question asked to four successive travellers, following the questions `"What is your name? "` and `"What is your quest? "`
+In this case, each will be the third question asked to four successive travellers, following the questions `"What is your name? "` and `"What is your quest? "`. If all of the non-`name` non-`quest` questions have been exhausted, you program should end normally. For example, if there were nine lines in `answers.txt` containing seven non-`name`, non-`quest` questions, at most seven travelling knights could visit the keeper.
 
 If the travelling knight answers all three questions satisfactorily, print `"Right. Off you go."` and move on to the next traveller, prompting for their name.
 
