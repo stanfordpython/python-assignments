@@ -171,7 +171,7 @@ In this assignment, you program will play the part of the keeper of the Bridge o
 First, create a file called `answers.txt` containing the following input:
 
 ```
-your name? lancelot|launcelot|robin|galahad|arthur, king of the britons|king arthur
+your name? lancelot|launcelot|robin|galahad|of camelot|arthur, king of the britons|king arthur
 your quest? seek the holy grail|seek the grail
 your favorite color? blue
 the capital of Assyria? ashur|kalhu|dur-sharrukin|nineveh|harra
@@ -197,8 +197,8 @@ Each traveller who wants to cross the bridge will be asked three questions. The 
 ```
 "What is your favorite color? "
 "What is the capital of Assyria? "
-"What is your favorite color?"
-"What is the airspeed velocity of an unladen swallow?"
+"What is your favorite color? "
+"What is the airspeed velocity of an unladen swallow? "
 ```
 
 Each will be the third question asked to four successive travellers, following the questions `"What is your name? "` and `"What is your quest? "`
