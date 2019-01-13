@@ -286,7 +286,7 @@ KEEPER: Right. Off you go.
 KEEPER: Stop! Who would cross the Bridge of Death must answer me these questions three, 'ere the other side he see.
 KEEPER: What is your name? Sir Robin of Camelot.
 KEEPER: What is your quest? To seek the Holy Grail.
-KEEPER: What is the capital of Assyria? It was Assur for a while, at least.
+KEEPER: What is the capital of Assyria? It was Ashur for a while, at least.
 KEEPER: Right. Off you go.
 KEEPER: Stop!
 KEEPER: What is your name? Sir Galahad of Camelot.
