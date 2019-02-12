@@ -1,0 +1,131 @@
+#!/usr/bin/python3.4 -tt
+"""
+File: submit.py
+---------------
+Submission tools for assignment 1.
+"""
+from datetime import datetime
+import pathlib
+import socket
+import shutil
+import sys
+import os
+import subprocess
+
+WHITELISTED_FILES = ['crypto.py', 'design.txt', 'feedback.txt']
+TARGET_DIR = pathlib.Path('/afs/ir/class/cs41/submissions/assign1')
+DUE_DATE = datetime(2016, 4, 14, 6, 59, 59)  # UTC, which is +7 hours
+
+# print(__file__)
+# print(os.getcwd())
+
+def error(exc):
+    print("Unknown exception occurred.")
+    print(exc)
+    print("Please contact the course staff with this error message.")
+    raise exc
+
+def check_exists(filename):
+    p = path.Path(filename)
+    if not p.exists():
+        print("Error! File {f} not found.".format())
+
+def check_environment():
+    ACCEPTABLE_HOSTS = ['myth']
+    TEST_HOSTS = ['sredmond']
+    host = socket.gethostname()
+    if not any(host.startswith(x) for x in ACCEPTABLE_HOSTS + TEST_HOSTS):
+        print("You are running on {}, which is not a valid host.\nValid hosts are {}.\nPlease log in to a valid host and re-run.".format(host, ACCEPTABLE_HOSTS))
+        sys.exit(1)
+
+def check_crypto_functions():
+    pass
+
+def get_assignment_number():
+    pass
+
+def get_next_submission_directory(sunet):
+    num = 1
+    student_dir = TARGET_DIR / "{}-{}".format(sunet, num)
+    while student_dir.exists():
+        num += 1
+        student_dir = TARGET_DIR / "{}-{}".format(sunet, num)
+    return student_dir
+
+def upload(sunet, files):
+    student_dir = get_next_submission_directory(sunet)
+    student_dir.mkdir()
+    print("Uploading files to {}".format(str(student_dir)))
+    for filename in files:
+        print("Uploading {}...".format(filename))
+        shutil.copy2(filename, str(student_dir))
+    print("If you have any extra files to upload (extensions, etc), you need to manually cp them to the proper directory (sorry!)")
+    submit_time = timestamp(str(student_dir / 'TIMESTAMP'))
+    time_left = DUE_DATE - submit_time
+    if time_left.days < 0:
+        days_overdue = -time_left.days
+        print("Using {} late day(s)".format(days_overdue))
+    grading(str(student_dir / 'GRADING'))
+    print("Done!")
+
+"""
+SUNetID specific stuff
+(mostly copied from Julie)
+"""
+
+def get_sunet_id():
+    import getpass
+    try:
+        login_name = getpass.getuser()
+    except Exception as exc:
+        error(exc)
+
+    return login_name
+
+def get_yes_or_no(prompt, reprompt=None):
+    """
+    Asks the user whether they would like to continue.
+    Responses that begin with a `Y` return True. (case-insensitively)
+    Responses that begin with a `N` return False. (case-insensitively)
+    All other responses (including '') cause a reprompt.
+    """
+    if not reprompt:
+        reprompt = prompt
+
+    choice = input("{} (Y/N) ".format(prompt)).upper()
+    while not choice or choice[0] not in ['Y', 'N']:
+        choice = input("Please enter either 'Y' or 'N'. {} (Y/N)? ".format(reprompt)).upper()
+    return choice[0] == 'Y'
+
+def run_sanity():
+    sanity = get_yes_or_no('Run sanity check?')
+    if sanity:
+        subprocess.call(['/usr/class/cs41/tools/sanitycheck'])
+    return get_yes_or_no('Still submit? ')
+
+
+def submit():
+    check_environment()
+    sunet = get_sunet_id()
+    print("Hello, {}".format(sunet))
+    result = run_sanity()
+    if not result:
+        print("Cancelling")
+        return
+    upload(sunet, WHITELISTED_FILES)
+
+def timestamp(filename):
+    with open(filename, 'w') as f:
+        now = datetime.utcnow()
+        submit = now.strftime("%a, %b %d %I:%M:%S %p UTC")
+        f.write("Submitted: {}\n".format(submit))
+    return now
+
+def grading(filename):
+    with open(filename, 'w') as f:
+        f.write("Functionality: \n\n")
+        f.write("Style: \n\n")
+        f.write("Overall: \n\n")
+
+if __name__ == '__main__':
+    submit()
