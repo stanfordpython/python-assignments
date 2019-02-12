@@ -10,7 +10,7 @@ Note: It's always a good idea to get started early, in case you run into unexpec
 
 ## Review
 
-Get a quick refresher by flipping through our slides from the first few weeks on [the course website](https://stanfordpython.com)
+Get a quick refresher by flipping through our slides from the first few weeks on [the course website](https://stanfordpython.com).
 
 ## Starter Files
 
