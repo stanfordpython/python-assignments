@@ -291,7 +291,7 @@ The encryption of a long message is an array of these `c`s.
 
 *Implementation Note:*
 
-Whenever you're encrypting or decrypting data using Merkle-Hellman, you'll want to deal with bits. Fortunately, the `utils` module exports a `bits_to_byte(bits)` and `byte_to_bits(byte)` functions which respectively convert an array of length 8 containing 1s and 0s to an integer between 0-255 (conceptually, a byte).
+Whenever you're encrypting or decrypting data using Merkle-Hellman, you'll want to deal with bits. Fortunately, the `utils` module exports a `bits_to_byte(bits)` and `byte_to_bits(byte)` functions which respectively convert a tuple of length 8 containing 1s and 0s to an integer between 0-255 (conceptually, a byte).
 
 #### Decryption
 
@@ -341,83 +341,93 @@ What do you actually have to implement? We've taken care of a lot of the math be
 
 ```Python
 def generate_private_key(n=8):
-    """Generate a private key for use in the Merkle-Hellman Knapsack Cryptosystem.
+    """Generate a private key to use with the Merkle-Hellman Knapsack Cryptosystem.
 
-    Following the instructions in the handout, construct the private key components
-    of the MH Cryptosystem. This consistutes 3 tasks:
+    Following the instructions in the handout, construct the private key
+    components of the MH Cryptosystem. This consists of 3 tasks:
 
     1. Build a superincreasing sequence `w` of length n
-        (Note: you can check if a sequence is superincreasing with `utils.is_superincreasing(seq)`)
+        Note: You can double-check that a sequence is superincreasing by using:
+            `utils.is_superincreasing(seq)`
     2. Choose some integer `q` greater than the sum of all elements in `w`
-    3. Discover an integer `r` between 2 and q that is coprime to `q` (you can use utils.coprime)
+    3. Discover an integer `r` between 2 and q that is coprime to `q`
+        Note: You can use `utils.coprime(r, q)` for this.
 
-    You'll need to use the random module for this function, which has been imported already
+    You'll also need to use the random module's `randint` function, which we've
+    already imported for you.
 
-    Somehow, you'll have to return all of these values out of this function! Can we do that in Python?!
+    Somehow, you'll have to return all three of these values from this function!
+    Can we do that in Python?!
 
-    :param n: bitsize of message to send (default 8)
+    :param n: Bitsize of message to send (defaults to 8)
     :type n: int
 
-    :returns: 3-tuple `(w, q, r)`, with `w` a n-tuple, and q and r ints.
+    :returns: 3-tuple private key `(w, q, r)`, with `w` a n-tuple, and q and r ints.
     """
-    pass
+
 
 def create_public_key(private_key):
     """Create a public key corresponding to the given private key.
 
-    To accomplish this, you only need to build and return `beta` as described in the handout.
+    To accomplish this, you only need to build and return `beta` as described in
+    the handout.
 
         beta = (b_1, b_2, ..., b_n) where b_i = r × w_i mod q
 
-    Hint: this can be written in one line using a list comprehension
+    Hint: this can be written in one or two lines using list comprehensions.
 
-    :param private_key: The private key
+    :param private_key: The private key created by generate_private_key.
     :type private_key: 3-tuple `(w, q, r)`, with `w` a n-tuple, and q and r ints.
 
     :returns: n-tuple public key
     """
-    pass
 
 
 def encrypt_mh(message, public_key):
     """Encrypt an outgoing message using a public key.
 
-    1. Separate the message into chunks the size of the public key (in our case, fixed at 8)
-    2. For each byte, determine the 8 bits (the `a_i`s) using `utils.byte_to_bits`
+    Following the outline of the handout, you will need to:
+    1. Separate the message into chunks based on the size of the public key.
+        In our case, that's the fixed value n = 8, corresponding to a single
+        byte. In principle, we should work for any value of n, but we'll
+        assert that it's fine to operate byte-by-byte.
+    2. For each byte, determine its 8 bits (the `a_i`s). You can use
+        `utils.byte_to_bits(byte)`.
     3. Encrypt the 8 message bits by computing
          c = sum of a_i * b_i for i = 1 to n
-    4. Return a list of the encrypted ciphertexts for each chunk in the message
+    4. Return a list of the encrypted ciphertexts for each chunk of the message.
 
-    Hint: think about using `zip` at some point
+    Hint: Think about using `zip` and other tools we've discussed in class.
 
-    :param message: The message to be encrypted
+    :param message: The message to be encrypted.
     :type message: bytes
-    :param public_key: The public key of the desired recipient
+    :param public_key: The public key of the message's recipient.
     :type public_key: n-tuple of ints
 
-    :returns: list of ints representing encrypted bytes
+    :returns: Encrypted message bytes represented as a list of ints.
     """
-    return message
+
 
 def decrypt_mh(message, private_key):
-    """Decrypt an incoming message using a private key
+    """Decrypt an incoming message using a private key.
 
-    1. Extract w, q, and r from the private key
-    2. Compute s, the modular inverse of r mod q, using the
-        Extended Euclidean algorithm (implemented at `utils.modinv(r, q)`)
+    Following the outline of the handout, you will need to:
+    1. Extract w, q, and r from the private key.
+    2. Compute s, the modular inverse of r mod q, using the Extended Euclidean
+        algorithm (implemented for you at `utils.modinv(r, q)`)
     3. For each byte-sized chunk, compute
          c' = cs (mod q)
-    4. Solve the superincreasing subset sum using c' and w to recover the original byte
-    5. Reconsitite the encrypted bytes to get the original message back
+    4. Solve the superincreasing subset sum problem using c' and w to recover
+        the original plaintext byte.
+    5. Reconstitute the decrypted bytes to form the original message.
 
-    :param message: Encrypted message chunks
+    :param message: Encrypted message chunks.
     :type message: list of ints
-    :param private_key: The private key of the recipient
+    :param private_key: The private key of the recipient (you).
     :type private_key: 3-tuple of w, q, and r
 
     :returns: bytearray or str of decrypted characters
     """
-    return message
 ```
 
 The astute reader might notice that the input parameter to encrypt_mh is actually a message of type `bytes`, which is a standard type we haven't seen before. The [standard library](https://docs.python.org/3/library/stdtypes.html#bytes) provides the best documentation for `bytes`, but the short version is that a `bytes` object behaves like an immutable sequence of integers, with each value in the sequence restricted such that 0 <= x < 256. A `bytes` object can be declared (for testing) by prefixing a string literal with a `b`. That is, `x = b"ABC"` assigns a `bytes` object with three elements to the variable `x`, and `x[0]` is not the length-one string `'A'` as you might expect, but rather the number `65`, which corresponds to the ASCII value of `'A'`.
