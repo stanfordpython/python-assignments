@@ -174,9 +174,9 @@ def run_merkle_hellman(encrypting, data):
 def run_suite():
     """Run a single iteration of the cryptography suite.
 
-    Asks the user a type of cryptosystem to use, and then dispatches to methods
-    that ask for input text from a string or file, whether to encrypt
-    or decrypt, and where to show the output.
+    Asks the user a type of cryptosystem to use, whether to encrypt or decrypt,
+    input text from a string or file, and where to show the output, dispatching
+    the actual work to a helper function.
     """
     print('-' * 34)
     system = get_cryptosystem()
