@@ -138,7 +138,7 @@ These functions take two arguments, a message to encrypt (or decrypt) and a keyw
 
 Notes:
 
-- You can assume that all characters in the plaintext, ciphertext, and keyword will be alphabetic.
+- You can assume that all characters in the plaintext, ciphertext, and keyword will be alphabetic (i.e no spaces, numbers, or punctuation).
 - You can assume that all of the characters will be provided in uppercase.
 - You can assume that keyword will have at least one letter in it.
 
@@ -159,6 +159,8 @@ Questions to Ponder:
 - What concepts from class can we employ to make this code more elegant?
 
 You can use the functions `ord` and `chr` which convert strings of length one to and from their ASCII numerical equivalents. For example, `ord('A') == 65`, `ord('B') == 66`, ..., `ord('Z') == 90`, and `chr(65) == 'A'`, `chr(66) == 'B'`, ..., `chr(90) == 'Z'`. For an extra challenge, try to implement these functions purely functionally.
+
+Intrigued? Take a look in `not_a_secret_message.txt`. One possible extension is to try to decrypt this message (or any encrypted message!) despite not knowing what the key is. For this encryption, ignore non-alphabetic characters entirely.
 
 ## Console Menu
 
