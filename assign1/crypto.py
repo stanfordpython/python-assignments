@@ -93,8 +93,8 @@ def generate_private_key(n=8):
     3. Discover an integer `r` between 2 and q that is coprime to `q`
         Note: You can use `utils.coprime(r, q)` for this.
 
-    You'll also need to use the random module's `randint` function, which we've
-    already imported for you.
+    You'll also need to use the random module's `randint` function, which you
+    will have to import.
 
     Somehow, you'll have to return all three of these values from this function!
     Can we do that in Python?!

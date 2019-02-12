@@ -1,11 +1,11 @@
-#!/usr/bin/env python3 -tt
-"""
-File: crypto-console.py
------------------------
-Implements a console menu to interact with the cryptography functions exported
-by the crypto module.
+#!/usr/bin/env python3
+"""Run a console menu to interact with cryptographic ciphers.
 
-If you are a student, you shouldn't need to change anything in this file.
+All cryptographic functionality is provided by the `crypto` module - this script
+simply provides a harness to interact with the ciphers.
+
+If you are a student, you shouldn't need to manually change this file, although
+you are free to tinker with it as you wish.
 """
 import random
 
@@ -14,23 +14,38 @@ from crypto import (encrypt_caesar, decrypt_caesar,
                     generate_private_key, create_public_key,
                     encrypt_mh, decrypt_mh)
 
+HEADER = r"""
+   ___________ __ __ ___   ______                 __                               __             ______                       __
+  / ____/ ___// // /<  /  / ____/______  ______  / /_____  ____ __________ _____  / /_  __  __   / ____/___  ____  _________  / /__
+ / /    \__ \/ // /_/ /  / /   / ___/ / / / __ \/ __/ __ \/ __ `/ ___/ __ `/ __ \/ __ \/ / / /  / /   / __ \/ __ \/ ___/ __ \/ / _ \
+/ /___ ___/ /__  __/ /  / /___/ /  / /_/ / /_/ / /_/ /_/ / /_/ / /  / /_/ / /_/ / / / / /_/ /  / /___/ /_/ / / / (__  ) /_/ / /  __/
+\____//____/  /_/ /_/   \____/_/   \__, / .___/\__/\____/\__, /_/   \__,_/ .___/_/ /_/\__, /   \____/\____/_/ /_/____/\____/_/\___/
+                                  /____/_/              /____/          /_/          /____/
+"""
+
 
 #############################
 # GENERAL CONSOLE UTILITIES #
 #############################
 
-def get_tool():
-    print("* Tool *")
+
+def get_cryptosystem():
+    """Ask the user which cryptosystem to use. Always returns a letter in `"CVM"`."""
+    print("* Cryptosystem *")
     return _get_selection("(C)aesar, (V)igenere or (M)erkle-Hellman? ", "CVM")
 
 
 def get_action():
-    """Return true iff encrypt"""
+    """Ask the user whether to encrypt or decrypt text. Always returns a letter in `"ED"`."""
     print("* Action *")
     return _get_selection("(E)ncrypt or (D)ecrypt? ", "ED")
 
 
 def get_filename():
+    """Ask the user for a filename, reprompting for nonempty input.
+
+    Doesn't check that the file exists.
+    """
     filename = input("Filename? ")
     while not filename:
         filename = input("Filename? ")
@@ -38,6 +53,7 @@ def get_filename():
 
 
 def get_input(binary=False):
+    """Prompt the user for input data, optionally read as bytes."""
     print("* Input *")
     choice = _get_selection("(F)ile or (S)tring? ", "FS")
     if choice == 'S':
@@ -57,6 +73,7 @@ def get_input(binary=False):
 
 
 def set_output(output, binary=False):
+    """Write output to a user-specified location."""
     print("* Output *")
     choice = _get_selection("(F)ile or (S)tring? ", "FS")
     if choice == 'S':
@@ -79,8 +96,8 @@ def _get_selection(prompt, options):
 
 
 def get_yes_or_no(prompt, reprompt=None):
-    """
-    Asks the user whether they would like to continue.
+    """Ask the user whether they would like to continue.
+
     Responses that begin with a `Y` return True. (case-insensitively)
     Responses that begin with a `N` return False. (case-insensitively)
     All other responses (including '') cause a reprompt.
@@ -95,48 +112,45 @@ def get_yes_or_no(prompt, reprompt=None):
 
 
 def clean_caesar(text):
-    """Convert text to a form compatible with the preconditions imposed by Caesar cipher"""
+    """Convert text to a form compatible with the preconditions imposed by Caesar cipher."""
     return text.upper()
 
 
 def clean_vigenere(text):
+    """Convert text to a form compatible with the preconditions imposed by Vigenere cipher."""
     return ''.join(ch for ch in text.upper() if ch.isupper())
 
 
-def run_caesar():
-    action = get_action()
-    encrypting = action == 'E'
-    data = clean_caesar(get_input(binary=False))
+def run_caesar(encrypting, data):
+    """Run the Caesar cipher cryptosystem."""
+    data = clean_caesar(data)
 
     print("* Transform *")
     print("{}crypting {} using Caesar cipher...".format('En' if encrypting else 'De', data))
 
-    output = (encrypt_caesar if encrypting else decrypt_caesar)(data)
-
-    set_output(output)
+    return (encrypt_caesar if encrypting else decrypt_caesar)(data)
 
 
-def run_vigenere():
-    action = get_action()
-    encrypting = action == 'E'
-    data = clean_vigenere(get_input(binary=False))
+def run_vigenere(encrypting, data):
+    """Run the Vigenere cipher cryptosystem."""
+    data = clean_vigenere(data)
 
     print("* Transform *")
     keyword = clean_vigenere(input("Keyword? "))
+    while not keyword:
+        keyword = clean_vigenere(input("Keyword? "))
 
     print("{}crypting {} using Vigenere cipher and keyword {}...".format('En' if encrypting else 'De', data, keyword))
 
-    output = (encrypt_vigenere if encrypting else decrypt_vigenere)(data, keyword)
-
-    set_output(output)
+    return (encrypt_vigenere if encrypting else decrypt_vigenere)(data, keyword)
 
 
-def run_merkle_hellman():
+def run_merkle_hellman(encrypting, data):
+    """Run the Merkle-Hellman knapsack cryptosystem."""
     action = get_action()
 
     print("* Seed *")
     seed = input("Set Seed [enter for random]: ")
-    import random
     if not seed:
         random.seed()
     else:
@@ -147,41 +161,47 @@ def run_merkle_hellman():
     private_key = generate_private_key()
     public_key = create_public_key(private_key)
 
-    if action == 'E':  # Encrypt
-        data = get_input(binary=True)
+    if encrypting:  # Encrypt
         print("* Transform *")
         chunks = encrypt_mh(data, public_key)
-        output = ' '.join(map(str, chunks))
+        return ' '.join(map(str, chunks))
     else:  # Decrypt
-        data = get_input(binary=False)
         chunks = [int(line.strip()) for line in data.split() if line.strip()]
         print("* Transform *")
-        output = decrypt_mh(chunks, private_key)
-
-    set_output(output)
+        return decrypt_mh(chunks, private_key)
 
 
 def run_suite():
-    """
-    Runs a single iteration of the cryptography suite.
+    """Run a single iteration of the cryptography suite.
 
-    Asks the user for input text from a string or file, whether to encrypt
-    or decrypt, what tool to use, and where to show the output.
+    Asks the user a type of cryptosystem to use, and then dispatches to methods
+    that ask for input text from a string or file, whether to encrypt
+    or decrypt, and where to show the output.
     """
     print('-' * 34)
-    tool = get_tool()
-    # This isn't the cleanest way to implement functional control flow,
-    # but I thought it was too cool to not sneak in here!
+    system = get_cryptosystem()
+    action = get_action()
+    encrypting = action == 'E'
+    if system == 'M' and encrypting:
+        data = get_input(binary=True)
+    else:
+        data = get_input(binary=False)
+
+
+    # This isn't the cleanest way to implement functional control flow, but I
+    # thought it was too cool to not sneak in here!
     commands = {
         'C': run_caesar,         # Caesar Cipher
         'V': run_vigenere,       # Vigenere Cipher
         'M': run_merkle_hellman  # Merkle-Hellman Knapsack Cryptosystem
     }
-    commands[tool]()
+    output = commands[system](encrypting, data)
+    set_output(output)
 
 
 def main():
-    """Harness for CS41 Assignment 1"""
+    """Run the main interactive console for Assignment 1: Cryptography."""
+    print(HEADER)
     print("Welcome to the Cryptography Suite!")
     run_suite()
     while get_yes_or_no("Again?"):
