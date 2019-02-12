@@ -1,13 +1,10 @@
-#!/usr/bin/env python3 -tt
 """
-File: crypto.py
----------------
 Assignment 1: Cryptography
 Course: CS 41
 Name: <YOUR NAME>
 SUNet: <SUNet ID>
 
-Replace this with a description of the program.
+Replace this placeholder text with a description of this module.
 """
 import utils
 

@@ -10,11 +10,11 @@ Note: Get started early! Merkle-Hellman is the hardest cipher to implement.
 
 ## Review
 
-Get a quick refresher by flipping through our slides from the first few weeks on [the course website](http://stanfordpython.com)
+Get a quick refresher by flipping through our slides from the first few weeks on [the course website](https://stanfordpython.com)
 
 ## Starter Files
 
-We’ve provided starter files available on the website as a skeleton for this assignment. Here’s an overview of what’s in it:
+We've provided starter files available on the website as a skeleton for this assignment. Here's an overview of what's in it:
 
 1. `crypto.py` is the primary file you will modify. It will implement all the functions to decrypt/encrypt strings.
 2. `utils.py` provides useful utilities for console interaction and for Merkle-Hellman
@@ -464,7 +464,7 @@ Want more of a challenge (&#127798; &#127798; &#127798; &#127798;)? Try to decry
 ### Intelligent Codebreaker
 *Difficulty: &#127798; &#127798; &#127798;*
 
-Suppose that you have access to some ciphertext that you know has been encrypted using a Vigenere cipher. Furthermore, suppose that you know that the corresponding plaintext has been written using only words in `/usr/share/dict/words`, whitespace, and punctuation, although you don’t know the exact message. Finally, suppose that you know that someone has encrypted a message using a Vigenere cipher with a key drawn from a preset list of words, (again, let's suppose from `/usr/share/dict/words`). Can you still decrypt the ciphertext?
+Suppose that you have access to some ciphertext that you know has been encrypted using a Vigenere cipher. Furthermore, suppose that you know that the corresponding plaintext has been written using only words in `/usr/share/dict/words`, whitespace, and punctuation, although you don't know the exact message. Finally, suppose that you know that someone has encrypted a message using a Vigenere cipher with a key drawn from a preset list of words, (again, let's suppose from `/usr/share/dict/words`). Can you still decrypt the ciphertext?
 
 For many of the incorrect keys, the resulting plaintext will be gibberish, but there will also be incorrect keys for which the resulting plaintext sounds English-y, but isn't quite right. Thus, the bulk of this problem lies in evaluating how close to a valid English sentence a given sequence of letters is.
 

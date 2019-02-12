@@ -1,18 +1,25 @@
-#!/usr/bin/env python3 -tt
-"""
-Mathematical utilities for CS41's Assignment 1: Cryptography.
-"""
-import fractions as _fractions
+"""Mathematical utilities for CS41's Assignment 1: Cryptography."""
+import fractions
+
 
 class Error(Exception):
     """Base class for exceptions in this module."""
 
+
 class BinaryConversionError(Error):
     """Custom exception for invalid binary conversions."""
-    pass
+
 
 def is_superincreasing(seq):
-    """Return whether a given sequence is superincreasing."""
+    """Return whether a given sequence is superincreasing.
+
+    Usage::
+
+        is_superincreasing([1, 1, 1, 1, 1])  # => False
+        is_superincreasing([1, 2, 4, 8, 16])  # => True
+
+    :param seq: The iterable to check.
+    """
     ct = 0  # Total so far
     for n in seq:
         if n <= ct:
@@ -22,7 +29,7 @@ def is_superincreasing(seq):
 
 
 def modinv(a, b):
-    """Returns the modular inverse of a mod b.
+    """Return the modular inverse of a mod b.
 
     Pre: a < b and gcd(a, b) = 1
 
@@ -40,7 +47,7 @@ def modinv(a, b):
 
 def coprime(a, b):
     """Returns True iff `gcd(a, b) == 1`, i.e. iff `a` and `b` are coprime"""
-    return _fractions.gcd(a, b) == 1
+    return fractions.gcd(a, b) == 1
 
 
 def byte_to_bits(byte):
@@ -55,7 +62,7 @@ def byte_to_bits(byte):
 
 
 def bits_to_byte(bits):
-    if not all(bit == 0 or bit == 1 for bit in bits):
+    if not all(bit in (0, 1) for bit in bits):
         raise BinaryConversionError("Invalid bitstring passed")
 
     byte = 0
