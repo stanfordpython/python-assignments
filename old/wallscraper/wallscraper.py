@@ -1,7 +1,5 @@
-#!/usr/bin/env python3 -tt
+#!/usr/bin/env python3
 """
-File: wallscraper.py
---------------------
 Assignment 3: Wallscraper
 Course: CS 41
 Name: <YOUR NAME>

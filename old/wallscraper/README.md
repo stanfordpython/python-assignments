@@ -2,15 +2,15 @@
 
 ## Congratulations!
 
-Congratulations on completing Week 6! Midterm season is almost over, and we've basically finished discussing the syntax of the Python language. At this point, you know most of the important stuff about the language itself. Therefore, we'll spend most of the rest of the time in class going over useful builtin- or third-party modules that are omnipresent in the Python ecosystem. However, as far as the language itself goes, you have all become skilled in the art of the Python language.
+Congratulations on (almost) completing Week 7! Midterm season is nearly over, and we've finished discussing the syntax of the Python language. At this point, you know most of the important stuff about the language itself. Therefore, we'll spend most of the rest of the time in class going over useful builtin- or third-party modules that are omnipresent in the Python ecosystem. However, as far as the language itself goes, you have all become skilled in the art of the Python language.
 
 ## Overview
 
-Sigh... another CS41 lab day and boring assignment. Better open up reddit and see what's new on /r/funny.
+Sigh... another CS41 lab day and boring activity. Better open up reddit and see what's new on [/r/funny](https://www.reddit.com/r/funny).
 
-**PSYCH IT'S THE MOST AMAZING LAB EVER.**
+**PSYCH THIS IS THE MOST AMAZING LAB EVER.**
 
-And while you're at it, you really need a new desktop background wallpaper. So, head on over to /r/wallpapers, or maybe /r/wallpaper. If you're feeling up for it, even /r/earthporn and /r/spaceporn.
+While you're aimlessly tabbing between windows, you realize you really need a new desktop background wallpaper. So, you head on over to [/r/wallpapers](https://www.reddit.com/r/wallpapers) and maybe peruse [/r/wallpaper](https://www.reddit.com/r/wallpaper) as well. If you're feeling up for it, you might check out [/r/earthporn](https://www.reddit.com/r/earthporn) and [/r/spaceporn](https://www.reddit.com/r/spaceporn).
 
 Generally, these labs have focused on exploring nuances of the Python language - whether the syntax, semantics, or style of thinking. However, since we've now almost wrapped up talking about the language, labs will become a period of time for you to build something awesome.
 
@@ -22,55 +22,49 @@ While Python's standard library has a lot of functionality included, we sometime
 
 ### Installing Required Packages
 
-As always, the first step is installing any required packages using `pip`. At the very least, you should ensure that `requests` and `Pillow` are installed inside your virtual environment:
+As always, the first step is installing any required packages using `pip`. At the very least, you should ensure that `requests` is installed inside your virtual environment:
 
 ```
 # Activate your virtual environment
-$ workon cs41
-(cs41)$ pip install requests
-(cs41)$ pip install Pillow
+$ workon cs41-env
+(cs41-env)$ pip install requests
 ```
 
-You are free to install any other third-party libraries you think will be useful. In particular, `awesome-slugify` can be used to normalize possibly complicated filenames.
+You are free to install any other third-party libraries you think will be useful. In particular, `awesome-slugify` can be used to normalize possibly complicated filenames, and `Pillow` can simplify operations on images.
 
-Our solution also uses the `os`, `sys`, `io`, `subprocess`, `pathlib`, `imghdr`, and `mimetypes` packages from the standard library, if you're looking for possibly useful builtin tools.
+Our solution also uses the `os`, `sys`, `io`, `subprocess`, `pathlib`, `imghdr`, and `mimetypes` packages from the standard library.
 
 ### Check Installations
-To ensure that you've successfully installed requests, enter an interactive session and check:
+To ensure that you've successfully installed requests, run:
 
 ```
-(cs41)$ python3
-Python 3.4.3 (v3.4.3:9b73f1c3e601, Feb 23 2015, 02:52:03)
-[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
->>> import requests
->>> from PIL import Image
->>>
+(cs41-env)$ python -c "import requests"
+(cs41-env)$
 ```
 
-If you get back the interactive prompt `>>>`, everything is installed correctly! If, on the other hand, you get an `ImportError` - please let one of the course staff know.
+If you get an error that looks like `ModuleNotFoundError: No module named 'requests'`, then you have not installed requests in your virtual environment.
 
 ## Wallscraper Specification
 
 The internet is full of many awesome things: [cat videos](https://www.youtube.com/v/2XID_W4neJo), [the most awesome person in the world](https://www.facebook.com/), and most importantly, [reddit](https://www.reddit.com/r/python).
 
-Take a (brief) look at [reddit.com/r/wallpapers](https://www.reddit.com/r/wallpapers) - there is so much happening on the page. Images are dynamically loaded, buttons ask you to click them, ads on the side demand your attention - it can be hard to find the data, and although we could use something like `BeautifulSoup` to parse all this junk, it seems too complicated to be worth it.
+Take a (brief) look at [reddit.com/r/wallpapers](https://www.reddit.com/r/wallpapers) - there is a lot happening on that page. Images are dynamically loaded, buttons ask you to click them, ads on the side demand your attention - it can be hard to find the data, and although we could use something like `BeautifulSoup` to parse all this junk, it seems almost too complicated to be worth it.
 
-On the other hand, take a (long) look at [reddit.com/r/wallpapers.json](https://www.reddit.com/r/wallpapers.json) (note the suffix `.json`). By adding this suffix to the query, we get back a rich data structure representing, in this case, posts on /r/wallpapers.
+On the other hand, take a (longer) look at [reddit.com/r/wallpapers.json](https://www.reddit.com/r/wallpapers.json) (note the suffix `.json`). By adding this suffix to the query, we get back a rich data structure representing, in this case, posts on /r/wallpapers.
 
 ### Overview
 
-At a high level, you will need to extract a list of the top posts from a subreddit, and for each of the posts, download the linked image if it represents a (SFW) image.
+At a high level, you will need to extract a list of the top posts from a subreddit, and for each of the posts, download the linked image to your computer if it represents a (SFW) image.
 
 ### Aside: Using `requests`
 
-In this section, we'll explore some of the functionality of the `requests` module, which will be quite useful for this assignment. You can skip this if you already know how `requests` works.
+In this section, we'll explore some of the functionality of the `requests` module, which will be quite useful for this assignment. You can skip this if you already know are comfortable with how `requests` works.
 
 A sample usage of the `requests` package is shown below.
 
 ```
 >>> import requests
->>> response = requests.get('http://stanfordpython.com')
+>>> response = requests.get('https://stanfordpython.com')
 >>> print(response)
 <Response [200]>
 >>> print(type(response))
@@ -83,26 +77,27 @@ A `Response` instance supports a lot of attribute references:
 
 ```
 >>> response.<tab>
-response.apparent_encoding      response.history                response.raise_for_status
-response.close                  response.is_permanent_redirect  response.raw
-response.connection             response.is_redirect            response.reason
-response.content                response.iter_content           response.request
-response.cookies                response.iter_lines             response.status_code
-response.elapsed                response.json                   response.text
-response.encoding               response.links                  response.url
-response.headers                response.ok
+response.apparent_encoding      response.history                response.ok
+response.close                  response.is_permanent_redirect  response.raise_for_status
+response.connection             response.is_redirect            response.raw
+response.content                response.iter_content           response.reason
+response.cookies                response.iter_lines             response.request
+response.elapsed                response.json                   response.status_code
+response.encoding               response.links                  response.text
+response.headers                response.next                   response.url
 ```
 
-For the purposes of this assignment, we only care about a few of them:
+For this project, we only care about a few of these:
 
 ```
-# true iff the request to the server was successful
+# True if and only if the server returned a successful response.
 response.ok
 
-# the raw server response, as a bytestring
+# The raw server response, as a bytes object.
 response.content
 
-# return a python dictionary of the response data, if the data represents JSON-encoded data, otherwise raise an Exception
+# A Python dictionary containing the response data if the response represents JSON-encoded data.
+# If the response isn't JSON data, raise an Exception.
 response.json()
 ```
 
@@ -121,7 +116,7 @@ Your function should gracefully handle all of the following scenarios:
 
 In all of these situations, your `query` function should print out an informative error message.
 
-To test this function, write a few lines of code with a reasonable subreddit, and compute the number of posts with a score greater than 500.
+To test out this function, write a few lines of code to query a reasonable subreddit and compute the number of posts with a score greater than 500.
 
 #### Note: Rate Limits
 
@@ -129,17 +124,16 @@ Reddit imposes a rate limit on generic scripts that make too many requests to it
 
 To avoid this problem, we need to tell Reddit that we're not just some random script by adding a `User-Agent` to our request. In particular, you need to add `headers={'User-Agent': <unique_identifier>}` as a keyword argument to `requests.get`.
 
-For instance, I would use 
+For instance, I might use 
 
 ```
 requests.get(
     'http://www.website.com', 
-    headers={'User-Agent': 'Wallscraper Script by sredmond'}
+    headers={'User-Agent': 'Wallscraper Script by @sredmond'}
 )
 ```
 
-This should avoid the rate-limit problem.
-
+This should avoid the rate-limit problem for class, but is not to be abused!
 
 ### Building a `RedditPost` Class
 
@@ -150,36 +144,37 @@ A RedditPost object must support two methods, and can support as many helper fun
 * `__init__(self, data)`: Initialize a RedditPost from a JSON dictionary representing the post, as extracted from the top-level subreddit JSON.
 * `download(self)`: Tries to download the Reddit post. Must determine (1) if the post can be downloaded, (2) where to download the post, and (3) actually download the post.
 
-For now, let's focus on the constructor. As discussed in the data model section, there are lots of irrelevant attributes in the JSON returned by the subreddit.
+For now, let's focus on the constructor. As discussed in the data model section later on, there are lots of irrelevant attributes in the JSON returned by the subreddit.
 
 Write the `__init__` method, and only keep the attributes that correspond to an attribute you think will be useful. If an attribute is missing or the data is otherwise corrupted, your program should handle the error gracefully.
 
-Additionally, you can implement the magic method `__str__(self)` to return a string representing a human-readable form of a post, allowing us to more easily debug when printing a `RedditPost` to the console. We suggest printing the posts in the following format: `"{title} ({score}): {url}"`.
+Additionally, you can implement the magic method `__str__(self)` to return a string representing a human-readable form of a post, allowing us to more easily debug when printing a `RedditPost` to the console. We suggest printing the posts in the following format: `"RedditPost({title} ({score}): {url})"`.
+
+You can change this API if you'd like.
 
 ### Load Response Data into Post Objects
 
 Write the code to convert the data returned by `query` into a list of `RedditPost` objects. You can accomplish this in one line using a list comprehension. As a sanity check, your list of `RedditPost`s should have length 25 (or perhaps 26 or 27, depending on stickied posts).
 
-If the data is bad - i.e. keys are missing, information is not structured as you suspect, etc. - your program should not crash. Rather, it should gracefully handle the errors and proceed accordingly. Who's responsibility is it to check for malformed data?
+If the data is bad - i.e. keys are missing, information is not structured as you suspect, etc. - your program should not crash. Rather, it should gracefully handle the errors and proceed accordingly. Which function's responsibility should it be to check for malformed data?
 
-At this point, rewrite your old code to determine the number of posts with a score greater than 500. This should also take one line of code.
+At this point, rewrite your old code to determine the number of posts with a score greater than 500. This can also be done in one line of code.
 
 ### Download an Image Post
 
-Ultimately, our goal is to download wallpapers. Implement the `download(self)` method in the `RedditPost` class that attempts to download the post. 
+Ultimately, our goal is to download wallpapers. Implement the `self.download()` method in the `RedditPost` class that attempts to download the post.
 
 If the post doesn't represent an image, don't download anything. How can you tell if the post represents an image? You can look at the `url` - does it end with `'.jpg'`,`'.png'`. or any other image suffix? Is the `is_self` attribute `True` or `False`? Is the `post_hint` attribute `image`, `link`, or something else? Is the domain something recognizable like `'i.imgur.com'`?
 
 You can add any other conditions you'd like on the downloaded wallpapers - perhaps you only download images from imgur, or only wallpapers with a score over 500, or only gilded posts.
 
-Where do you download the file to? Use the aspect ratio and width/height to store the download in a structured place. For example, if an image is 1920 by 1080, store it in `wallpapers/16x9/1920x1080/image.png`. How can you title the file? For one, you can use the title of the post. However, sometimes Reddit posts have titles that aren't amenable to filesystems, so you should probably slugify the title in some way. Furthermore, most titles have something like `'[1920x1080]'` in the title. You should use a regular expression to detect and remove anything that looks like that, possibly using `re.sub`.
+Where do you download the file to? Use the aspect ratio and width/height to store the download in a structured place. For example, if an image is 1920 by 1080, store it in `wallpapers/16x9/1920x1080/image.png`. How can you title the file? For one, you can use the title of the post. However, sometimes Reddit posts have titles that aren't amenable to filesystems, so you should probably `slugify` the title in some way. Furthermore, most titles have something like `'[1920x1080]'` in the title. You should use a regular expression to detect and remove anything that looks like that, possibly using `re.sub`.
 
-Hint: if you're writing image data to an open file object, make sure that the file has been opened with `wb` flags for (w)riting in (b)inary mode. Generally, when reading or writing binary data like images or sound files, it's a good idea to use the `'b'` option.
+Hint: if you're writing image data to an open file object, make sure that the file has been opened with `wb` flags for (w)riting in (b)inary mode. Generally, when reading or writing binary data such as images or sound files, it's a good idea to use the `'b'` option.
 
 Test this method by downloading one of the posts.
 
 If you have successfully downloaded a photo, congratulations! That's pretty dang impressive.
-
 
 ### Tying Everything Together
 
@@ -410,29 +405,13 @@ In addition to this `README`, the other starter files are:
 * `wallscraper.py`: Barebones starter code. All of your program logic will go into this file.
 * `wallscraperutils.py`: A few helper functions that may simplify some of the less interesting steps of the assignment. Read through the file for more information.
 
-## Submitting     
-
-You can submit your final code using the `submit` script on AFS, as with previous assignments.
-
-```
-myth$ /usr/class/cs41/tools/submit
-```
-
-Furthermore, we have built a style-checking tool for you. On AFS, you can run
-
-```
-myth$ /usr/class/cs41/tools/stylecheck path/to/wallscraper.py
-```
-
-to run PEP8 linting on your Python files. We highly recommend fixing all of the style before submitting your final solution. You can do so using the `autopep8` module discussed in lecture, although you'll have to `pip install autopep8` first inside your virtual environment.
-
 ## Grading
 
 If submitting for a final project, we'll grade on the following criteria:
 
 ### Functionality
 
-We'll be testing your code on live Reddit data, so make sure it works on real subreddits and multireddits (as stated, we suggest `'/r/wallpapers+wallpaper+earthporn'`). There a lot of different ways you can take this assignment, so we'll be assessing functionality on a case-by-case basis. If your program handles errors gracefully and successfully downloads wallpapers from the internet, that's deserving of a &check;+! If the wallscraper is mostly correct, but fails on some inputs or crashes in certain conditions, that's a &check;. If the program *drastically* fails to either (1) connect to the internet and extract a list of top posts or (2) save posts to  the filesystem, that would be a &check;-.
+We'll be testing your code on live Reddit data, so make sure it works on real subreddits and multireddits (as stated, we suggest `'/r/wallpapers+wallpaper+earthporn'`). There a lot of different ways you can take this assignment, so we'll be assessing functionality on a case-by-case basis. If your program handles errors gracefully and successfully downloads wallpapers from the internet, that's deserving of a &check;+! If the wallscraper is mostly correct, but fails on some inputs or crashes in certain conditions, that's a &check;. If the program *drastically* fails to either (1) connect to the internet and extract a list of top posts or (2) save posts to the filesystem, that would be a &check;-.
 
 ### Style
 
