@@ -44,7 +44,7 @@ wireframe visualizer - build a project that visualizes 3D graphics using raytrac
 
 convex optimizer - generic convex optimizations on sufficiently constrained problems
 
-## Proposals from Autumn 2015
+## Previous Proposals
 *List of proposals from last quarter's final projects. This list exists to show you the incredible breadth of projects that are possible!*
 
 Bach - Programming a Python-based piano interface with various musical capabilities.
@@ -81,6 +81,6 @@ Image Triangulation - Use Delaunay triangulation to auto-artsify profile pics in
 ## Stolen Assignments
 *Implementations of programming assignments from other classes, this time in Python!*
 
-Karel (CS106A)- build a Karel emulator in Python, including a graphical interface, a lexer and parser for the karel language, and enforced correctness)
+Karel (CS106A)- build a Karel emulator in Python, including a graphical interface, a lexer and parser for the karel language, and enforce correctness)
 
 RSS Aggregator (CS110) - aggregates news from lots of RSS feeds
