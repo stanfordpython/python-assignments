@@ -73,7 +73,7 @@ Notes:
 - You may assume that all alphabetic characters will be in uppercase.
 - Do not assume that the arguments to this function always have at least one character.
 
-That is, `encrypt_caesar("")` should return `""` (the empty string) and `encrypt_caesar("F1RST P0ST")` should return `"M1YZA W0ZA"` (where the letters have been encrypted by the numbers, and the space, have been left unchanged).
+That is, `encrypt_caesar("")` should return `""` (the empty string) and `encrypt_caesar("F1RST P0ST")` should return `"I1UVW S0VW"` (where the letters have been encrypted by the numbers, and the space, have been left unchanged).
 
 You should test your ciphers using the interactive interpreter:
 
