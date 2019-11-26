@@ -1,4 +1,4 @@
-"""Assignment 1: Cryptography for CS41 Winter 2019.
+"""Assignment 1: Cryptography for CS41 Winter 2020.
 
 Name: <YOUR NAME>
 SUNet: <SUNet ID>

@@ -1,5 +1,5 @@
 # Assignment 1: Cryptography
-**Due: Midnight, Tuesday of Week 7**
+**Due: Midnight, Tuesday of Week 6**
 
 ## Overview
 In this assignment, you will build a cryptography suite that implements two or three different cryptosystems - Caesar cipher, Vigenere cipher, and (optionally) the Merkle-Hellman Knapsack Cryptosystem. This handout will walk you through the details of building this text-based cryptography tool. We want to instill good Pythonic practices from the beginning - so we encourage you to think critically about writing clean Python code.
@@ -38,7 +38,7 @@ In this section, you will build cipher functions to encrypt and decrypt messages
 
 ### Caesar Cipher
 
-A Caesar cipher involves shifting each character in a plaintext by three letters forward:
+A Caesar cipher involves shifting each character in a plaintext by **three** letters forward (note that the shift can be anything between zero and 25, but we're just going to implement the three-shift cipher):
 
 ```
 A -> D, B -> E, C -> F, etc... 
@@ -75,7 +75,9 @@ Notes:
 
 That is, `encrypt_caesar("")` should return `""` (the empty string) and `encrypt_caesar("F1RST P0ST")` should return `"I1UVW S0VW"` (where the letters have been encrypted by the numbers, and the space, have been left unchanged).
 
-You should test your ciphers using the interactive interpreter:
+There are two ways to test your ciphers.
+
+Your primary method of debugging should be using the interactive interpreter:
 
 ```
 (cs41-env) $ ipython -i crypto.py
@@ -87,9 +89,11 @@ In [2]:decrypt_caesar("SBWKRQ")
 
 A non-exhaustive list of test cases, represented by a tab-delimited (plaintext, ciphertext) pair are given in the text file `tests/caesar-tests.txt`. You can use this file to sanity check your implementation.
 
-Questions to Ponder:
+**Questions to Ponder:**
 
-- What sort of data structure can be used to represent an association of input characters to (encrypted) output characters? How can we make one of these data structures efficiently? How can we use it to transform an input message?
+- What sort of data structure can be used to represent an association of input characters to (encrypted) output characters? 
+- How can we make one of these data structures efficiently? 
+- How can we use it to transform an input message?
 
 For this part of the assignment, try not to use the `ord` and `chr` functions.
 
@@ -139,6 +143,7 @@ These functions take two arguments, a message to encrypt (or decrypt) and a keyw
 Notes:
 
 - You can assume that all characters in the plaintext, ciphertext, and keyword will be alphabetic (i.e no spaces, numbers, or punctuation).
+	- **But**, the text of `not_a_secret_message.txt` contains spaces, numbers, and punctuation, so if you want to decrypt that, you'll need to write code to handle non-alphabetic ciphertext...
 - You can assume that all of the characters will be provided in uppercase.
 - You can assume that keyword will have at least one letter in it.
 
@@ -153,7 +158,7 @@ In [2]: decrypt_vigenere("LXFOPVEFRNHR", "LEMON")
 ```
 Another list of non-exhaustive tests are available at `tests/vigenere-tests.txt`.
 
-Questions to Ponder:
+**Questions to Ponder:**
 
 - How can you cycle through the letters of the keyword? Consider looking at functions exported by the `itertools` module.
 - What concepts from class can we employ to make this code more elegant?
@@ -205,6 +210,57 @@ Again? (Y/N) n
 Goodbye!
 (cs41-env) $ 
 ```
+
+## Design
+
+Please submit a short design document (`design.txt`) describing your approach to each of the parts of the assignment. "Short" means just a few sentences (1-3) per part discussing the rationale behind your decision to implement this program in the way you did. Consider answering the following questions:
+
+1. What data structures did you use to handle transformation of data?
+2. What Pythonic ideas or strategies did you incorporate in your approach, if any?
+
+Again, by "short" we really mean that you shouldn't take more than, say, fifteen minutes filling out this document.
+
+## Grading
+
+Your grade will be assessed on both functionality and style.
+
+Functionality will be determined entirely by your program's correctness on a suite of unit tests (some of which are provided with the starter code).
+
+Stylistically, you will be evaluated on your general program design (a la 106 series: decomposition, logic, naming, spacing) as well as your Python-specific style. In particular, we will be looking for "Pythonic" approaches to solving problems, as opposed to "non-Pythonic" solutions, that emphasize the Zen of Python. We will also be looking at your Python syntax and mechanics.
+
+**We encourage you to format your code in accordance with [Python style guidelines](https://www.python.org/dev/peps/pep-0008/).**
+
+You can find a tool to help format your code [online](http://pep8online.com/). If you have any questions, please don't hesitate to let us know. Think about the [Zen of Python](https://www.python.org/dev/peps/pep-0020/) when making design decisions. 
+
+## Deliverables
+
+1. Your modified `crypto.py`
+2. The `design.txt` file documenting your design decisions
+
+## Submitting
+
+See the [submission instructions](https://github.com/stanfordpython/python-handouts/blob/master/submitting-assignments.md) on the course website.
+
+## General Tips
+
+The `string` module exports some useful values:
+
+```
+>>> import string
+>>> string.ascii_letters
+'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+>>> string.ascii_uppercase
+'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+>>> string.ascii_lowercase
+'abcdefghijklmnopqrstuvwxyz'
+>>> string.punctuation
+'!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
+```
+
+Think back to what we know about data structures. How can we efficiently create and manipulate lists and dicts?
+
+Check back here for more tips as they come up!
+
 
 ## Merkle-Hellman Knapsack Cryptosystem (optional)
 
@@ -553,57 +609,9 @@ The algorithm's details are described in [Shamir's 1984 paper](http://citeseerx.
 
 What's perhaps more suprising is the fact that subset-sum is NP-hard, but there is a deterministic polynomial time algorithm to break the Merkle-Hellman Knapsack Cryptosystem, which is based on subset-sum.
 
-## Design
-
-Please submit a short design document (`design.txt`) describing your approach to each of the parts of the assignment. "Short" means just a few sentences (1-3) per part discussing the rationale behind your decision to implement this program in the way you did. Consider answering the following questions:
-
-1. What data structures did you use to handle transformation of data?
-2. What Pythonic ideas or strategies did you incorporate in your approach, if any?
-
-Again, by "short" we really mean that you shouldn't take more than, say, fifteen minutes filling out this document.
-
-## Grading
-
-Your grade will be assessed on both functionality and style.
-
-Functionality will be determined entirely by your program's correctness on a suite of unit tests (some of which are provided with the starter code).
-
-Stylistically, you will be evaluated on your general program design (a la 106 series: decomposition, logic, naming, spacing) as well as your Python-specific style. In particular, we will be looking for "Pythonic" approaches to solving problems, as opposed to "non-Pythonic" solutions, that emphasize the Zen of Python. We will also be looking at your Python syntax and mechanics.
-
-**We encourage you to format your code in accordance with [Python style guidelines](https://www.python.org/dev/peps/pep-0008/).**
-
-You can find a tool to help format your code [online](http://pep8online.com/). If you have any questions, please don't hesitate to let us know. Think about the [Zen of Python](https://www.python.org/dev/peps/pep-0020/) when making design decisions. 
-
-## Deliverables
-
-1. Your modified `crypto.py`
-2. The `design.txt` file documenting your design decisions
-
-## Submitting
-
-See the [submission instructions](https://github.com/stanfordpython/python-handouts/blob/master/submitting-assignments.md) on the course website.
-
-## General Tips
-
-The `string` module exports some useful values:
-
-```
->>> import string
->>> string.ascii_letters
-'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
->>> string.ascii_uppercase
-'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
->>> string.ascii_lowercase
-'abcdefghijklmnopqrstuvwxyz'
->>> string.punctuation
-'!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
-```
-
-Think back to what we know about data structures. How can we efficiently create and manipulate lists and dicts?
-
-Check back here for more tips as they come up!
-
 ## Credit
-*Sherman Leung (@skleung), Python Tutorial, Learn Python the Hard Way, Google Python, MIT OCW 6.189, Project Euler, and Wikipedia's list of ciphers.*
+Much of this handout was shamelessly copied from Sam Redmond's version of this handout, that was used in prior iterations of CS41.
 
-> With <3 by @sredmond 
+*Sam Redmond (@sredmond), Sherman Leung (@skleung), Python Tutorial, Learn Python the Hard Way, Google Python, MIT OCW 6.189, Project Euler, and Wikipedia's list of ciphers.*
+
+> With &#129412; by @parthsarin and @coopermj 
