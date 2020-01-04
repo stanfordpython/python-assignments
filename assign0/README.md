@@ -72,22 +72,22 @@ If the total number of ounces of birds divided by the number of pounds of coconu
 Your program should be able to emulate the following sample runs. *Make sure to activate your virtual environment before executing these lines of code!*
 
 ```
-(cs41-env)$ python3 coconuts.py
+(cs41-env)$ python coconuts.py
 How many ounces of birds are carrying the coconuts? 5
 How many pounds of coconuts are there? 1
 No. Carrying the coconuts is impossible.
 
-(cs41-env)$ python3 coconuts.py
+(cs41-env)$ python coconuts.py
 How many ounces of birds are carrying the coconuts? 6.2
 How many pounds of coconuts are there? 1.1
 Yes! Carrying the coconuts is possible.
 
-(cs41-env)$ python3 coconuts.py
+(cs41-env)$ python coconuts.py
 How many ounces of birds are carrying the coconuts? 17
 How many pounds of coconuts are there? 3
 Yes! Carrying the coconuts is possible.
 
-(cs41-env)$ python3 coconuts.py
+(cs41-env)$ python coconuts.py
 How many ounces of birds are carrying the coconuts? 12.5
 How many pounds of coconuts are there? 2.5
 No. Carrying the coconuts is impossible.
