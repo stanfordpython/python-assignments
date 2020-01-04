@@ -369,4 +369,7 @@ Submit the python files you've created; no need to submit `answers.txt`. See the
 
 If you've added any extra files or extensions above to the assignment, you should include those in your Paperless submission as well.
 
+## Credit
+Credit for the assignment idea and much of this writeup go to Sam Redmond (@samredmond).
+
 > With &#129412; by @parthsarin and @coopermj
