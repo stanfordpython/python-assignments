@@ -63,7 +63,7 @@ We're going to help the guards out and compute whether a collection of swallows 
 
 Create a file named `coconuts.py` in which we will write our program. In this portion of the assignment, we will ask the user for two numbers: the total ounces of birds that are carrying coconuts, and the total weight in pounds of the coconuts.
 
-Prompt the user for the number of ounces of bird by asking: `"How many ounces of swallows are carrying the coconuts? "`. Prompt the user for the number of pounds of coconut by asking: `"How many pounds of coconuts are there? "`. Remember to convert these values to `float`s! You can assume that the user input is formatted correctly.
+Prompt the user for the number of ounces of bird by asking: `"How many ounces of birds are carrying the coconuts? "`. Prompt the user for the number of pounds of coconut by asking: `"How many pounds of coconuts are there? "`. Remember to convert these values to `float`s! You can assume that the user input is formatted correctly.
 
 If the total number of ounces of birds divided by the number of pounds of coconuts is at least 5.5 (including the value 5.5), then we will print out `"Yes! Carrying the coconuts is possible."`. Otherwise, print out `"No. Carrying the coconuts is impossible."`
 
@@ -370,6 +370,6 @@ Submit the python files you've created; no need to submit `answers.txt`. See the
 If you've added any extra files or extensions above to the assignment, you should include those in your Paperless submission as well.
 
 ## Credit
-Credit for the assignment idea and much of this writeup go to Sam Redmond (@samredmond).
+Credit for the assignment idea and much of this writeup go to Sam Redmond (@sredmond).
 
 > With &#129412; by @parthsarin and @coopermj
