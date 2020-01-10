@@ -33,7 +33,7 @@ There are no starter files for this assignment. You will create and submit a fil
 A reasonable starter file might look like:
 
 ```python
-#!/usr/bin/env python3 -tt
+#!/usr/bin/env python3
 """Module-level comment."""
 
 # Write additional code and functions here.
