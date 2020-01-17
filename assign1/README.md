@@ -143,7 +143,7 @@ These functions take two arguments, a message to encrypt (or decrypt) and a keyw
 Notes:
 
 - You can assume that all characters in the plaintext, ciphertext, and keyword will be alphabetic (i.e no spaces, numbers, or punctuation).
-	- **But**, the text of `not_a_secret_message.txt` contains spaces, numbers, and punctuation, so if you want to decrypt that, you'll need to write code to handle non-alphabetic ciphertext...
+	- However, the text of `not_a_secret_message.txt` contains spaces, numbers, and punctuation, so if you want to decrypt that, you'll need to write code that handles non-alphabetic characters. You can ignore these characters entirely for the purpose of encryption and decryption.
 - You can assume that all of the characters will be provided in uppercase.
 - You can assume that keyword will have at least one letter in it.
 
