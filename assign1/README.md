@@ -1,5 +1,5 @@
 # Assignment 1: Cryptography
-**Due: Midnight, Tuesday of Week 6**
+**Due: Midnight, Tuesday of Week 5 (Febuary 3, 2019)**
 
 ## Overview
 In this assignment, you will build a cryptography suite that implements two or three different cryptosystems - Caesar cipher, Vigenere cipher, and (optionally) the Merkle-Hellman Knapsack Cryptosystem. This handout will walk you through the details of building this text-based cryptography tool. We want to instill good Pythonic practices from the beginning - so we encourage you to think critically about writing clean Python code.
@@ -106,7 +106,7 @@ The keyword is repeated or truncated as necessary to fit the length of the plain
 ```
 Plaintext:		ATTACKATDAWN
 Key:			LEMONLEMONLE
-Ciphertext:	    LXFOPVEFRNHR
+Ciphertext:	 	LXFOPVEFRNHR
 ```
 
 Looking more closely, each letter in the ciphertext is the sum of the letters in the plaintext and the key. Thus, the first character of ciphertext is `"L"` because of the following calculations:
@@ -614,4 +614,4 @@ Much of this handout was shamelessly copied from Sam Redmond's version of this h
 
 *Sam Redmond (@sredmond), Sherman Leung (@skleung), Python Tutorial, Learn Python the Hard Way, Google Python, MIT OCW 6.189, Project Euler, and Wikipedia's list of ciphers.*
 
-> With &#129412; by @parthsarin and @coopermj 
+> With &#129412; by @psarin and @coopermj 
