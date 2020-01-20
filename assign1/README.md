@@ -1,5 +1,5 @@
 # Assignment 1: Cryptography
-**Due: Midnight, Tuesday of Week 5 (Febuary 3, 2019)**
+**Due: Midnight, Tuesday of Week 5 (Febuary 4, 2020)**
 
 ## Overview
 In this assignment, you will build a cryptography suite that implements two or three different cryptosystems - Caesar cipher, Vigenere cipher, and (optionally) the Merkle-Hellman Knapsack Cryptosystem. This handout will walk you through the details of building this text-based cryptography tool. We want to instill good Pythonic practices from the beginning - so we encourage you to think critically about writing clean Python code.
@@ -32,6 +32,21 @@ res/mh-plain.txt       and res/mh-cipher.txt
 ```
 
 # Cryptography Suite
+## General Tips
+
+You'll be modifying a lot of strings in this assignment. The `string` module exports some useful values:
+
+```
+>>> import string
+>>> string.ascii_letters
+'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+>>> string.ascii_uppercase
+'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+>>> string.ascii_lowercase
+'abcdefghijklmnopqrstuvwxyz'
+>>> string.punctuation
+'!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
+```
 
 ## Building the Ciphers
 In this section, you will build cipher functions to encrypt and decrypt messages. We'll give a brief overview of each cipher and give some pointers on how it fits it into the starter files.
@@ -142,16 +157,7 @@ These functions take two arguments, a message to encrypt (or decrypt) and a keyw
 
 Notes:
 
-- You can assume that all characters in the plaintext, ciphertext, and keyword will be alphabetic (i.e no spaces, numbers, or punctuation).
-	- However, the text of `not_a_secret_message.txt` contains spaces, numbers, and punctuation, so if you want to decrypt that, you'll need to write code that handles non-alphabetic characters. Non-alphabetic characters will not be encrypted, and do not use up any of the characters from the key. For example:
-
-```
-  ATTACK AT DAWN!
-+ LEMONL EM ONLE
------------------
-  LXFOPV EF RNHR!
-```
-	
+- You can assume that all characters in the plaintext, ciphertext, and keyword will be alphabetic (i.e no spaces, numbers, or punctuation).	
 - You can assume that all of the characters will be provided in uppercase.
 - You can assume that keyword will have at least one letter in it.
 
@@ -173,7 +179,15 @@ Another list of non-exhaustive tests are available at `tests/vigenere-tests.txt`
 
 You can use the functions `ord` and `chr` which convert strings of length one to and from their ASCII numerical equivalents. For example, `ord('A') == 65`, `ord('B') == 66`, ..., `ord('Z') == 90`, and `chr(65) == 'A'`, `chr(66) == 'B'`, ..., `chr(90) == 'Z'`. For an extra challenge, try to implement these functions purely functionally.
 
-Intrigued? Take a look in `not_a_secret_message.txt`. One possible extension is to try to decrypt this message (or any encrypted message!) despite not knowing what the key is. For this encryption, ignore non-alphabetic characters entirely.
+Intrigued? Take a look in `not_a_secret_message.txt`. One possible extension is to try to decrypt this message (or any encrypted message!) despite not knowing what the key is. For this encryption, ignore non-alphabetic characters entirely. In particular, non-alphabetic characters do not use up any of the characters from the key. For example:
+
+```
+  ATTACK AT DAWN!
++ LEMONL EM ONLE
+-----------------
+  LXFOPV EF RNHR!
+```
+
 
 ## Console Menu
 
@@ -240,35 +254,14 @@ Stylistically, you will be evaluated on your general program design (a la 106 se
 
 You can find a tool to help format your code [online](http://pep8online.com/). If you have any questions, please don't hesitate to let us know. Think about the [Zen of Python](https://www.python.org/dev/peps/pep-0020/) when making design decisions. 
 
-## Deliverables
+## Submitting
+
+Submit the following files:
 
 1. Your modified `crypto.py`
 2. The `design.txt` file documenting your design decisions
 
-## Submitting
-
 See the [submission instructions](https://github.com/stanfordpython/python-handouts/blob/master/submitting-assignments.md) on the course website.
-
-## General Tips
-
-The `string` module exports some useful values:
-
-```
->>> import string
->>> string.ascii_letters
-'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
->>> string.ascii_uppercase
-'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
->>> string.ascii_lowercase
-'abcdefghijklmnopqrstuvwxyz'
->>> string.punctuation
-'!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
-```
-
-Think back to what we know about data structures. How can we efficiently create and manipulate lists and dicts?
-
-Check back here for more tips as they come up!
-
 
 ## Merkle-Hellman Knapsack Cryptosystem (optional)
 
