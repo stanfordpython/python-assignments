@@ -4,7 +4,8 @@
 ## Overview
 In this assignment, you will build a cryptography suite that implements two or three different cryptosystems - Caesar cipher, Vigenere cipher, and (optionally) the Merkle-Hellman Knapsack Cryptosystem. This handout will walk you through the details of building this text-based cryptography tool. We want to instill good Pythonic practices from the beginning - so we encourage you to think critically about writing clean Python code.
 
-*Expected Time: 3 hours (if it takes much longer than that, email us), 6 hours with Merkle-Hellman*
+* *Expected Time: 3 hours, 6 hours with Merkle-Hellman*
+* *Max Time: 6 hours; higher if you complete an extension*
 
 Note: It's always a good idea to get started early, in case you run into unexpected difficulties down the line. Merkle-Hellman is a hard cipher to implement.
 
