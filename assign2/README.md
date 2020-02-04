@@ -15,6 +15,7 @@ A few notes before we begin!
 
 1. The unicorn is hidden **in a bush**. You'll likely only get a rough estimation of where the unicorn is, so you'll need to dig around a bit! If you think you're very close and have looked but haven't found the unicorn, you can call Parth.
 2. TAKE PICTURES! Take lots of pictures throughout the assignment but, in particular, take pictures once you've found the unicorn / where the unicorn used to be :)
+3. You can do this now or at the end, but give us a list of who is on your team by filling out [this form](https://forms.gle/iQrmkX1SSJPSvQDd6).
 
 There are multiple ways to find the unicorn, which are detailed below.
 
