@@ -11,7 +11,7 @@ First you need to download 150 images from our website. The images are hosted at
 
 The data you just downloaded contain almost all of the information needed to solve this problem. Each of the images, individually, will not help you, but the sum of their information will. I'll just outline **some** useful tips.
 
-* If you want to do **some** image manipulation, `Pillow` is a useful library. We didn't talk about this much in class, but the documentation is here: [https://pillow.readthedocs.io/](https://pillow.readthedocs.io/).
+* If you want to do **some** image manipulation, `Pillow` is a useful library. Here's the documentation: [https://pillow.readthedocs.io/](https://pillow.readthedocs.io/).
   * Make sure you have `Pillow`, and not `PIL` installed. You install `Pillow` by running `pip install Pillow` at a command line. But, you import it in a script with `import PIL`. (*Note for the curious*: This is because `Pillow` is the fork of `PIL` that is still maintained, while `PIL` is no longer being maintaned).
   * Your development environment should be set up like this automatically if you followed our instructions at the beginning of the quarter.
 * **Some**times it's useful to interface between `Pillow` and `numpy` because images are really just arrays of pixels where each pixel has R, G, and B values. That makes them an `m x n x 3` array for an image of dimension `m x n`.
