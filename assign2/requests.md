@@ -45,7 +45,7 @@ This means that from the start position, you can travel east or west. To "travel
 
 Note that the `"west"` key points back to `start.json` (moving east and then west will end up in the same place). Periodically, you'll hear the *cry of the unicorn*. At cells where you hear the unicorn cry, you'll get some additional information in the JSON file. It'll look something like:
 
-```json
+```python
 {
 	"unicorn_cry": {
 		"latitude": 37.420841,
