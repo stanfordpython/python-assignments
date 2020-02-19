@@ -41,7 +41,7 @@ To actually compute the best recipes, we'll simply filter out all the characters
 8. *(Stretch)* Map the characters into a high-dimensional vector space and run clustering algorithms to find the best-matching character profiles
 9. *(Stretch)* Use generative adversarial networks to generate images of the character's face. Currently I had to draw this myself:
 <p align="center">
-	<img src="Kali.png" style="max-width: 150px" alt="Parth's D&D Character." />
+	<img src="Kali.png" width="300" alt="Parth's D&D Character." />
 </p>
 
 Honestly, the only part we're worried about is the actual algorithm of choosing the best matching character. Can a naive algorithm do "well enough," or do we need to incorporate ML techniques to get reasonable results? We're fairly confident that we can scrape the character data and do the console I/O.
