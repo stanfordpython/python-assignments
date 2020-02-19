@@ -10,7 +10,7 @@
 
 As discussed in class, the purpose of the project proposal is for the course staff to ensure that the project is well-scoped and incorporates Python in some meaningful way. We can also suggest useful packages for your project. The more detailed your proposal, the more we can assist you by pointing you away from common pitfalls and towards feasible solutions.
 
-Submit a project proposal using [this form](https://forms.gle/nYR7wvhEa6K7m8A79). Or, if you prefer to edit more freely, you can use [`template.md`](template.md) as a starting template for your proposal. See [`sampleproposal.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/sampleproposal.md) for an example of what we're looking for. Additionally, we've added some ideas to [`ideas.md`](ideas.md) if you're stuck.
+Submit a project proposal using [this form](https://forms.gle/nYR7wvhEa6K7m8A79). Or, if you prefer to edit more freely, you can use [`template.md`](template.md) as a starting template for your proposal. See [`sampleproposal.md`](sampleproposal.md) for an example of what we're looking for. Additionally, we've added some ideas to [`ideas.md`](ideas.md) if you're stuck.
 
 In order to submit the proposal, fill out our [Google Form](https://forms.gle/nYR7wvhEa6K7m8A79) with the appropriate content. When we review your proposals, we'll look at the most recently added proposal.
 
