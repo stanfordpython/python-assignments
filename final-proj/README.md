@@ -1,22 +1,27 @@
-# Assignment 4: Final Project!
+# Assignment 3: Final Project!
 
 ## The Proposal
 
-*Due: Tuesday, Week 8 (February 26th) at 11:59:59 PM*
+*Due: Wednesday, Week 8 (February 26th) at 11:59:59 PM*
 
-![The Proposal](https://raw.githubusercontent.com/stanfordpython/python-assignments/master/assign4/proposal.png)
+<p align="center">
+	<img src="proposal.png" style="max-width: 100%" alt="A person dressed in a unicorn head, proposing to another person wearing a unicorn onesie." />
+</p>
 
 As discussed in class, the purpose of the project proposal is for the course staff to ensure that the project is well-scoped and incorporates Python in some meaningful way. We can also suggest useful packages for your project. The more detailed your proposal, the more we can assist you by pointing you away from common pitfalls and towards feasible solutions.
 
-Submit a project proposal using [this form](https://goo.gl/forms/dYe4tkL6TWxslmkY2). Or, if you prefer to edit more freely, you can use [`template.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/template.md) as a starting template for your proposal. You can access the raw markdown [here](https://raw.githubusercontent.com/stanfordpython/python-assignments/master/assign4/template.md) or just copy-paste into a Google Doc to edit. See [`sampleproposal.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/sampleproposal.md) for an example of what we're looking for. Additionally, we've added some ideas to [`ideas.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/ideas.md) if you're stuck.
+Submit a project proposal using [this form](https://forms.gle/nYR7wvhEa6K7m8A79). Or, if you prefer to edit more freely, you can use [`template.md`](template.md) as a starting template for your proposal. See [`sampleproposal.md`](https://github.com/stanfordpython/python-assignments/blob/master/assign4/sampleproposal.md) for an example of what we're looking for. Additionally, we've added some ideas to [`ideas.md`](ideas.md) if you're stuck.
 
-In order to submit the proposal, fill out our [Google Form](https://goo.gl/forms/dYe4tkL6TWxslmkY2) with the appropriate content. When we review your proposals, we'll look at the most recently added proposal.
+In order to submit the proposal, fill out our [Google Form](https://forms.gle/nYR7wvhEa6K7m8A79) with the appropriate content. When we review your proposals, we'll look at the most recently added proposal.
 
 *Note: you can use late days on the project proposal, but hopefully you will complete the proposal on time so that we can get feedback to you sooner.*
 
 ## The Project
 
-*Due: Tuesday, Week 10 at 4:20:00 PM*
+*Due Dates:*
+
+* *Presentation: Monday, Week 10 (March 9th) at 3pm*
+* *Code & Writeup: Wednesday, Week 10 (March 11th) at 11:59:59pm*
 
 Implement the project you have proposed, incorporating our feedback. You are free to begin working on the project before you hear from us.
 
@@ -42,7 +47,7 @@ Other general sections of a README usually include, but are not limited to: know
 
 There is no upper or lower limit to the length of the README. We've had successful README's in the past that are as short as a few hundred words, or some much longer, with the longest being around 2000 words. Regardless, the majority of the writeup should focus on the technical overview. You're free to write fewer or more words as you see fit, but remember that we are reading your README to understand what your project does.
 
-*Video Supplement to README.*
+#### Video Supplement to README
 
 If you are comfortable with it, record a video of your final project in action and include it in the final submission. We'll watch this video to get a sense for what your project does. It can be a fun way to immortalize the work you've done and show us a working demo! You should narrate what we're seeing in the video, describing the features and technical overview that would otherwise be in the README.
 
@@ -54,7 +59,7 @@ Mechanically, you can [record your screen on a Mac with QuickTime Player](https:
 
 For this assignment, we are not explicitly providing any code to you.
 
-You are free to use any builtin modules, publicly available code, or any code you find online, as long as you cite it appropriately. We have a pretty buggy version (`campy`) of the Stanford graphical libraries (e.g. `GOval`, `GRect`) in Python if you would like to contribute or test it out. Google and StackOverflow are your friends! The chances are high that someone has built a library to help with your project, so make sure to ask us or search before reinventing the wheel!
+You are free to use any builtin modules, publicly available code, or any code you find online, as long as you cite it appropriately. Google and StackOverflow are your friends! The chances are high that someone has built a library to help with your project, so make sure to ask us or search before reinventing the wheel!
 
 You may *not* use proprietary code, code which requires a paid license, anything which promotes illegal activity, anything which violates Stanford policies, etc.
 
@@ -64,7 +69,7 @@ The project *proposal* grade will be assessed purely on completion. Did you do i
 
 Your final project grade will be assessed on both functionality and style.
 
-Functionality will be determined holistically using a combination of difficulty of project and success of execution. Unfortunately, that's as detailed as we can get given the breadth of possible topics. In effect, if you put in your fair share of effort, we'll be reasonable. =)
+Functionality will be determined holistically using a combination of difficulty of project and success of execution. Unfortunately, that's as detailed as we can get given the breadth of possible topics. In effect, if you put in your fair share of effort, we'll be reasonable. ☺️
 
 Stylistically, as always, you'll be assessed on three main categories:
 
@@ -76,7 +81,7 @@ We hold the final project to a higher standard of style than the assignments, si
 
 ## Submitting
 
-Upload all of the files you want to submit, including a `README` and a short demo video, to [Paperless](paperless.stanford.edu).
+Upload all of the files you want to submit, including a `README` and a short demo video, to [Paperless](https://paperless.stanford.edu).
 
 **WARNING: If you use any third-party libraries, ensure that you have generated a `requirements.txt` file listing your project's dependencies before submitting. You can do this by putting the output of `$ pip freeze` into a file. When exercising your code, we guarantee that we will run `$ pip install -r requirements.txt` to install this list of dependencies.**
 
@@ -84,4 +89,7 @@ If your project is sufficiently convoluted, make sure to add the corresponding c
 
 We highly recommend that you check your submission folder on Paperless after submitting to ensure that all necessary files were copied over successfully.
 
-> With <3 by @sredmond 
+## Credit
+This handout is based on a similar handout written by former CS 41 Course Staff.
+
+> With &#129412;s by @psarin and @coopermj
