@@ -1,4 +1,4 @@
-# CS41 Sample Project Proposal: Sous Chef
+# CS41 Sample Project Proposal: D&D Character Generator
 
 > Parth Sarin (psarin), Michael Cooper (coopermj), and Guido van Rossum (bdfl)
 
