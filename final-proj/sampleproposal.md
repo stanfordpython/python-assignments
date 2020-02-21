@@ -26,14 +26,14 @@ First, we're going to scrape the [D&D 5e API](http://www.dnd5eapi.co/), which ha
 
 To interact with the user, we're going to have a simple text-based I/O system where the user enters character information one at a time and then signals when done. We'll then ask more questions (but only the *really* important ones) and output a bunch of potential characters for the user to choose from.
 
-To actually compute the best recipes, we'll simply filter out all the characters that *don't* match the desired profile. Of the remaining recipes, we'll sort them on a combination of relevance to the original suggestions and based on self-computed heuristics about character effectiveness. We plan to use the awesome `pandas` library for better data manipulation of the character data in raw Python.
+To actually compute the best character profiles, we'll simply filter out all the characters that *don't* match the desired profile. Of the remaining options, we'll sort them on a combination of relevance to the original suggestions and based on self-computed heuristics about character effectiveness. We plan to use the awesome `pandas` library for better data manipulation of the character data in raw Python.
 
 
 ## Tasks
 
 1. Authenticate to the D&D 5e API
 2. Download all of the character, class, race, spell, and equipment information into a database
-3. Load the recipes into Python classes: `Character`, `Class`, `Race`, `Equipment`, `Spell`
+3. Load the data into Python classes: `Character`, `Class`, `Race`, `Equipment`, `Spell`
 4. Main loop that asks user for characteristics and returns character objects using the class interface
 5. Match character specifications to classes, races, equipment, and spells
 6. Sort remaining characteristics by a "good" heuristic (we'll need to try a lot of heuristics)
@@ -69,4 +69,4 @@ We've made a little progress on Task 1 (we acquired an API token), but we haven'
 
 ## Resources
 
-All of our data is going to come from the APIs described above, but we're also going to hand-code some test recipes for small data sets to make sure the general logic is working. 
+All of our data is going to come from the APIs described above, but we're also going to hand-code some test characters for small data sets to make sure the general logic is working. 
