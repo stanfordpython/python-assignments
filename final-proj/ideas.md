@@ -59,6 +59,12 @@ You can do almost anything you would like to!
 * Karel (CS106A)- build a Karel emulator in Python, including a graphical interface, a lexer and parser for the karel language, and enforce correctness)
 * RSS Aggregator (CS110) - aggregates news from lots of RSS feeds
 
+## Past Assignments
+*Some full-fledged assignments from previous quarters!*
+
+* [AI Racecar](https://github.com/parthsarin/AIRacetrackGame)
+* [PyTri : Python Image Triangulation](https://github.com/pmaldonado/PyTri)
+
 ## Credit
 This handout was used in prior versions of CS 41, where it was unattributed to any individual person. Context suggests that it was a pool of ideas from a bunch of former CS 41 Course Staff. Moving forward, this document will function in that way: as a collection of project ideas from all staff members.
 
