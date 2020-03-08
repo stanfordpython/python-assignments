@@ -43,6 +43,8 @@ This writeup should contain a technical overview of the project and the code the
 
 In addition, we're asking you to write short installation/execution instructions. After we download your code, what steps do we have to perform to get it up and running? For many projects, the answer will just be "run the main python script named `something.py`," but several others will have more complex configuration. If we can't set up your project, we have no way to confirm that your project works, so we hope that your installation instructions are clear, correct, replicable, and concise.
 
+Add a section to your README that flags what portions of the final project you are comfortable with the CS 41 staff publishing on the website. Think of this as a replacement for your in-person presentation. We'd like you to, at least, provide a screenshot to publish. At the same time, we understand if you decide that you don't want us to publish any of the project.
+
 Other general sections of a README usually include, but are not limited to: known bugs, contact information for the maintainer (that's you!), and credits/acknowledgements.
 
 There is no upper or lower limit to the length of the README. We've had successful README's in the past that are as short as a few hundred words, or some much longer, with the longest being around 2000 words. Regardless, the majority of the writeup should focus on the technical overview. You're free to write fewer or more words as you see fit, but remember that we are reading your README to understand what your project does.
