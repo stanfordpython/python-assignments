@@ -47,9 +47,7 @@ Other general sections of a README usually include, but are not limited to: know
 
 There is no upper or lower limit to the length of the README. We've had successful README's in the past that are as short as a few hundred words, or some much longer, with the longest being around 2000 words. Regardless, the majority of the writeup should focus on the technical overview. You're free to write fewer or more words as you see fit, but remember that we are reading your README to understand what your project does.
 
-#### Video Supplement to README
-
-If you are comfortable with it, record a video of your final project in action and include it in the final submission. We'll watch this video to get a sense for what your project does. It can be a fun way to immortalize the work you've done and show us a working demo! You should narrate what we're seeing in the video, describing the features and technical overview that would otherwise be in the README.
+In addition, please record a video of your final project in action and include it in the final submission. We'll watch this video to get a sense for what your project does. It can be a fun way to immortalize the work you've done and show us a working demo! You should narrate what we're seeing in the video, describing the features and technical overview that would otherwise be in the README.
 
 Moreover, we want this video to be a conversational, informal way to show off what you've built! Don't worry if the production quality isn't good, or if your roommate walks in on you in the middle, or if you get some weird message notification.
 
