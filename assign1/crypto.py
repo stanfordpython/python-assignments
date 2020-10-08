@@ -13,32 +13,48 @@ import utils
 #################
 
 def encrypt_caesar(plaintext):
-    """Encrypt a plaintext using a Caesar cipher.
+    res = ''
+    if (len(plaintext) == 0):
+        return
 
-    Add more implementation details here.
+    abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
-    :param plaintext: The message to encrypt.
-    :type plaintext: str
-
-    :returns: The encrypted ciphertext.
-    """
-    # Your implementation here.
-    raise NotImplementedError('encrypt_caesar is not yet implemented!')
-
+    shift = 3
+    
+    for a in plaintext:
+        loc = abc.find(a)
+        if(loc == -1):
+            res = res + a
+            continue
+        
+        upr = 0
+        if(a >= 'a' and a <= 'z'):
+            upr = 26
+       
+        res = res + abc[(loc-upr + shift)%26 + upr]
+    return res
 
 def decrypt_caesar(ciphertext):
-    """Decrypt a ciphertext using a Caesar cipher.
+    res = ''
+    if (len(ciphertext) == 0):
+        return
 
-    Add more implementation details here.
+    abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
-    :param ciphertext: The message to decrypt.
-    :type ciphertext: str
-
-    :returns: The decrypted plaintext.
-    """
-    # Your implementation here.
-    raise NotImplementedError('decrypt_caesar is not yet implemented!')
-
+    shift = 3
+    
+    for a in ciphertext:
+        loc = abc.find(a)
+        if(loc == -1):
+            res = res + a
+            continue
+        
+        upr = 0
+        if(a >= 'a' and a <= 'z'):
+            upr = 26
+       
+        res = res + abc[(loc-upr - shift)%26 + upr]
+    return res
 
 ###################
 # VIGENERE CIPHER #
@@ -176,3 +192,4 @@ def decrypt_mh(message, private_key):
     """
     # Your implementation here.
     raise NotImplementedError('decrypt_mh is not yet implemented!')
+
