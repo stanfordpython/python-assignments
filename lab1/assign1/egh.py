@@ -1,49 +1,67 @@
-def encrypt_caesar(plaintext):
-    res = ''
-    if (len(plaintext) == 0):
-        return
+import math as math
 
-    abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+def encrypt_railfence(plaintext, num_rails):
+    ciphertext = ""
+    length = len(plaintext)
+    cycles = 2 * num_rails - 2
+    characters = length / cycles
 
-    shift = 3
-    
-    for a in plaintext:
-        loc = abc.find(a)
-        if(loc == -1):
-            res = res + a
-            continue
+    for i in range(characters+1):
+        ciphertext += plaintext[i* cycles]
+
+    for i in range(1, num_rails-1):
+        space1 = cycles - 2 * i
+        space2 = cycles - 2 * (num_rails - i -1)
+        for c in range(characters):
+            ciphertext += plaintext[c * space1 + i + c * space2] + plaintext[c * space2 + (c+1) * space1 + i]
+
+        if length % cycles != 0 and (characters * space1 + i + characters * space2) < length:
+            ciphertext += plaintext[characters * space1 + i + characters * space2]
+
+    for i in range(characters):
+        ciphertext += plaintext[i * cycles + num_rails-1]
         
-        upr = 0
-        if(a >= 'a' and a <= 'z'):
-            upr = 26
-       
-        res = res + abc[(loc-upr + shift)%26 + upr]
-    return res
+    if length % cycles != 0 and (characters * cycles + num_rails-1) < length:
+        ciphertext += plaintext[characters * cycles + num_rails-1]
 
-def decrypt_caesar(ciphertext):
-    res = ''
-    if (len(ciphertext) == 0):
-        return
+    return ciphertext
 
-    abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
-    shift = 3
+def decrypt_railfence(ciphertext, num_rails):
+    length = len(ciphertext)
+    plaintext = list(['.' for i  in range(length-1)])
+    cycles = 2 * num_rails - 2
+    characters = length / cycles
+
+    plaintext += ciphertext[0]
+
+    curr = 0
+
+    for i in range(characters+1):
+        plaintext[i* cycles] = ciphertext[curr]
+        curr = curr + 1
+
+    for i in range(1, num_rails-1):
+        space1 = cycles - 2 * i
+        space2 = cycles - 2 * (num_rails - i -1)
+        for c in range(characters):
+            plaintext[c * space1 + i + (c) * space2] = ciphertext[curr]
+            curr = curr + 1
+            plaintext[(c) * space2 + (c+1) * space1 + i] =  ciphertext[curr]
+            curr = curr + 1
+        if length % cycles != 0 and (characters * space1 + i + characters * space2) < length:
+            plaintext[characters * space1 + i + characters * space2] = ciphertext[curr]
+            curr = curr + 1
+
+    for i in range(characters):
+        plaintext[i * cycles + num_rails-1] = ciphertext[curr]
+        curr = curr + 1
+
+    if length % cycles != 0 and (characters * cycles + num_rails-1) < length:
+        plaintext[characters * cycles + num_rails-1] = ciphertext[curr]
+        curr = curr + 1 
     
-    for a in ciphertext:
-        loc = abc.find(a)
-        if(loc == -1):
-            res = res + a
-            continue
-        
-        upr = 0
-        if(a >= 'a' and a <= 'z'):
-            upr = 26
-       
-        res = res + abc[(loc-upr - shift)%26 + upr]
-    return res
+    return "".join(plaintext)
 
-def main():
-    print(decrypt_caesar(encrypt_caesar("F1RST P0ST")))
-
-if __name__ == "__main__":
-    main()
+print(encrypt_railfence("ABCDEFGHIJ", 4))
+print(decrypt_railfence(encrypt_railfence("ABCDEFGHIJ", 4), 4))
