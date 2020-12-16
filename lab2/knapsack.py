@@ -4,7 +4,26 @@ class Knapsack:
     def __init__(self, n):
         self.privateKey = self.__getPrivateKey__(n)
         self.publicKey = self.__getPublicKey__(self.privateKey)
-        
+        self.n = n
+
+    def encrypt(self, msg):
+        encryptedMsg = []
+
+        # Converting the msg into bit array
+        bitMsg = bin(int.from_bytes(msg.encode(), 'big'))[2:]
+        bitSum = 0
+        # Variable to loop trough our private key
+        j = 0
+        for i in range(0, len(bitMsg)):
+            if j == self.n:
+                encryptedMsg.append(bitSum)
+                bitSum = 0
+                j = 0
+            bitSum += int(bitMsg[i]) * self.privateKey[j]
+            j += 1
+        if j != 0:
+            encryptedMsg.append(bitSum)
+        return encryptedMsg
 
     def __getPrivateKey__(self, n):
         privateKey = []
@@ -40,6 +59,7 @@ class Knapsack:
                 x,y=y,x%y
         return n
 
-knap = Knapsack(10)
+knap = Knapsack(16)
 print(knap.privateKey)
 print(knap.publicKey)
+print(knap.encrypt('hellokaa'))
