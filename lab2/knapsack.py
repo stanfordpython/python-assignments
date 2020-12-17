@@ -1,29 +1,45 @@
 import random
+from bitstring import BitArray
 
 class Knapsack:
-    def __init__(self, n):
-        self.privateKey = self.__getPrivateKey__(n)
+    def __init__(self, len):
+        self.privateKey = self.__getPrivateKey__(len)
         self.publicKey = self.__getPublicKey__(self.privateKey)
-        self.n = n
+        self.len = len
 
     def encrypt(self, msg):
         encryptedMsg = []
 
         # Converting the msg into bit array
-        bitMsg = bin(int.from_bytes(msg.encode(), 'big'))[2:]
+        bitMsg = BitArray(str.encode(msg))
         bitSum = 0
         # Variable to loop trough our private key
         j = 0
         for i in range(0, len(bitMsg)):
-            if j == self.n:
+            if j == self.len:
                 encryptedMsg.append(bitSum)
                 bitSum = 0
                 j = 0
-            bitSum += int(bitMsg[i]) * self.privateKey[j]
+            bitSum += int(bitMsg[i]) * self.publicKey[j]
             j += 1
         if j != 0:
             encryptedMsg.append(bitSum)
         return encryptedMsg
+
+    def decrypt(self, msg):
+        decryptedMsg = ''
+        invN = pow(self.n, -1, self.m)
+        for i in msg:
+            invMul = (invN * i)%self.m
+            partMsg = ''
+            for j in range(self.len-1, -1, -1):
+                if self.privateKey[j] <= invMul:
+                    partMsg += '1'
+                    invMul -= self.privateKey[j]
+                else:
+                    partMsg += '0'
+            decryptedMsg += partMsg[::-1]
+        return self.decode_binary_string(decryptedMsg)
 
     def __getPrivateKey__(self, n):
         privateKey = []
@@ -36,12 +52,12 @@ class Knapsack:
         return privateKey
 
     def __getPublicKey__(self, privateKey):
-        m = self.__defineM__(privateKey)
-        n = self.__defineN__(m)
+        self.m = self.__defineM__(privateKey)
+        self.n = self.__defineN__(self.m)
 
         publicKey = []
         for i in privateKey:
-            publicKey.append((i * n)%m)
+            publicKey.append((i * self.n)%self.m)
         return publicKey
 
     def __defineM__(self, privateKey):
@@ -59,7 +75,11 @@ class Knapsack:
                 x,y=y,x%y
         return n
 
-knap = Knapsack(16)
-print(knap.privateKey)
-print(knap.publicKey)
-print(knap.encrypt('hellokaa'))
+    def decode_binary_string(self, s):
+        return ''.join(chr(int(s[i*8:i*8+8],2)) for i in range(len(s)//8)).encode('utf-8')
+
+knap = Knapsack(8)
+encMsg = knap.encrypt('!.sadkAkmds$ds..!')
+print(encMsg)
+decMsg = knap.decrypt(encMsg)
+print(decMsg)
