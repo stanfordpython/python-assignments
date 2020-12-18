@@ -79,7 +79,7 @@ class Knapsack:
         return ''.join(chr(int(s[i*8:i*8+8],2)) for i in range(len(s)//8)).encode('utf-8')
 
 knap = Knapsack(8)
-encMsg = knap.encrypt('!.sadkAkmds$ds..!')
-print(encMsg)
-decMsg = knap.decrypt(encMsg)
-print(decMsg)
+msg = knap.encrypt('aiusdjkx')
+print(msg)
+msg = knap.decrypt(msg)
+print(msg)
