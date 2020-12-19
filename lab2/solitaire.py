@@ -79,12 +79,3 @@ class Solitaire:
             decryptedMsg+=(chr(msg[i] ^ keyStream[i]))
 
         return decryptedMsg
-
-
-phrase = 'kiraly'
-sol = Solitaire()
-sol.phraseShuffle(phrase)
-sol2 = Solitaire()
-sol2.phraseShuffle('kiraly')
-encmsg = sol.encrypt('Alma a fa alatt1.sdas44')
-print(sol2.decrypt(encmsg))

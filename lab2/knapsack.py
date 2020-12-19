@@ -7,7 +7,10 @@ class Knapsack:
         self.publicKey = self.__getPublicKey__(self.privateKey)
         self.len = len
 
-    def encrypt(self, msg):
+    def encrypt(self, msg, pubKey):
+        # We can encrypt messages with other publicKeys
+        if pubKey == None:
+            pubKey = self.publicKey
         encryptedMsg = []
 
         # Converting the msg into bit array
@@ -16,11 +19,11 @@ class Knapsack:
         # Variable to loop trough our private key
         j = 0
         for i in range(0, len(bitMsg)):
-            if j == self.len:
+            if j == len(pubKey):
                 encryptedMsg.append(bitSum)
                 bitSum = 0
                 j = 0
-            bitSum += int(bitMsg[i]) * self.publicKey[j]
+            bitSum += int(bitMsg[i]) * pubKey[j]
             j += 1
         if j != 0:
             encryptedMsg.append(bitSum)
@@ -77,9 +80,3 @@ class Knapsack:
 
     def decode_binary_string(self, s):
         return ''.join(chr(int(s[i*8:i*8+8],2)) for i in range(len(s)//8)).encode('utf-8')
-
-knap = Knapsack(8)
-msg = knap.encrypt('aiusdjkx')
-print(msg)
-msg = knap.decrypt(msg)
-print(msg)
