@@ -27,20 +27,21 @@ def send_msg(socket, msg):
 def client_actions(i):
     # Adding the ids to the clients
     conn = connections[i][0]
-    id = read_from_socket(connections[i][0])
+    id = int.from_bytes(read_from_socket(conn), 'big')
     connections[i].append(id)
 
     # Receiving the publicKeys
-    publicKey = read_from_socket(connections[i][0])
+    publicKey = read_from_socket(conn).decode('utf-8')
     connections[i].append(publicKey)
 
     # Get the interested id
-    communicationId = read_from_socket(connections[i][0])
+    communicationId = int.from_bytes(read_from_socket(conn), 'big')
 
-    for conn in connections:
-        if conn[2] == communicationId:
+    for c in connections:
+        if c[1] == communicationId:
             # Returning the clients publicKey
-
+            pkCon = ''.join([str(i) for i in c[2]])
+            send_msg(conn, pkCon)
             break
 
 

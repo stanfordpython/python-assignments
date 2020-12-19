@@ -24,7 +24,6 @@ def read_from_socket(socket):
     return msg
 
 def login(socket, publicKey):
-    # msg = json.loads(b'{"id" : "' + clientId + b'", "publicKey" : "' + publicKey + b'"}')
     # Sending our id and publicKey to the server
     send_msg(socket, clientId)
 
@@ -37,7 +36,7 @@ def createCommunication(socket, id):
     send_msg(socket, id)
 
     # Receiving it's public key and addr
-    publicKey = read_from_socket(socket)
+    publicKey = read_from_socket(socket).decode('utf-8')
     return publicKey
 
 knap = knapsack.Knapsack(8)
@@ -49,4 +48,8 @@ server_address = (HOST, PORT)
 socket.connect(server_address)
 
 login(socket, knap.publicKey)
+
+print("Tell me which client you want to speak with:")
+c2Id = int(input())
+createCommunication(socket, c2Id)
 
