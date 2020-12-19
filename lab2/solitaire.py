@@ -7,8 +7,18 @@ class Solitaire:
     # Joker A - card #53
     def __init_deck__(self):
         self.deck = []
+        self.streamCount = 0
         for i in range(54):
             self.deck.append(i)
+
+    def phraseShuffle(self, phrase):
+        for c in phrase:
+            self.__move_jokers__()
+            self.__triple_cut__()
+            self.__count_cut(self.deck[-1])
+
+            self.__count_cut(ord(c)%54)
+
 
     def __move_jokers__(self):
         jokerA = self.deck.index(52)
@@ -24,6 +34,8 @@ class Solitaire:
         jokerA = self.deck.index(52)
         jokerB = self.deck.index(53)
 
+        if jokerA > jokerB:
+            jokerA, jokerB = jokerB, jokerA
         cut1 = self.deck[0:jokerA]
         cut2 = self.deck[jokerA:jokerB+1]
         cut3 = self.deck[jokerB+1:54]
@@ -33,29 +45,15 @@ class Solitaire:
     def __count_cut(self, n):
         self.deck[:-1] = self.deck[n:-1] + self.deck[:n]
 
-    def __getIntValue__(self, num):
-        val = ord(num)
-        if val >= 97:
-            return val - 97
-        else:
-            return val - 39
-    
-    def __get_char__(self, num):
-        num = num % 54
-        if num >= 26:
-            return chr(num + 39)
-        else:
-            return chr(num + 97)
-
     def __getDefaultValues__(self, msg):
         values = []
         for c in msg:
-            val = self.__getIntValue__(c)
-            values.append(self.deck[val])
+            values.append(ord(c))
         return values
 
     def __getKeysTream__(self, n):
         keyStream = []
+        self.streamCount += n
         for _ in range(n):
             self.__move_jokers__()
             self.__triple_cut__()
@@ -69,7 +67,6 @@ class Solitaire:
         keyStream = self.__getKeysTream__(len(msg))
         
         for i in range(len(values)):
-            # encryptedMsg += self.__get_char__(values[i] + keyStream[i])
             encryptedMsg.append(values[i] ^ keyStream[i])
 
         return encryptedMsg
@@ -79,12 +76,15 @@ class Solitaire:
         keyStream = self.__getKeysTream__(len(msg))
         
         for i in range(len(msg)):
-            # encryptedMsg += self.__get_char__(values[i] + keyStream[i])
-            decryptedMsg+=(self.__get_char__(msg[i] ^ keyStream[i]))
+            decryptedMsg+=(chr(msg[i] ^ keyStream[i]))
 
         return decryptedMsg
 
+
+phrase = 'kiraly'
 sol = Solitaire()
+sol.phraseShuffle(phrase)
 sol2 = Solitaire()
-encmsg = sol.encrypt('iashdjnSHJKsds')
+sol2.phraseShuffle('kiraly')
+encmsg = sol.encrypt('Alma a fa alatt1.sdas44')
 print(sol2.decrypt(encmsg))
