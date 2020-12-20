@@ -1,8 +1,8 @@
 import socket as factory
 import knapsack
-import json
+import solitaire
 
-clientId = 33301
+clientId = 33302
 
 HOST = 'localhost'
 PORT = 30001
@@ -48,8 +48,46 @@ server_address = (HOST, PORT)
 socket.connect(server_address)
 
 login(socket, knap.publicKey)
+# Creating a new socket by which we can speak to the other client
+clientSocket = factory.socket(factory.AF_INET, factory.SOCK_STREAM)
+# In the second client
+clientSocket.bind((HOST, clientId))
+clientSocket.listen()
 
+# Selecting which user we want to speak to
 print("Tell me which client you want to speak with:")
 c2Id = int(input())
-createCommunication(socket, c2Id)
+pubKey = [int(i) for i in createCommunication(socket, c2Id).split()]
+socket.close()
+
+
+# Connecting to the other client
+# clientSocket.connect(server_address)
+
+# In the other client accept the connection
+conn, addr = clientSocket.accept()
+# Reading the phrase which will be used by the Solitaire encryption
+print('Select a phrase for encryption:')
+phrase = input()
+
+# Sending and reading phrase with which we will use the Solitaire encryptions
+formatedPhrase = ' '.join([str(i) for i in knap.encrypt(phrase, pubKey)])
+send_msg(conn, formatedPhrase)
+# In the second client
+phrase = knap.decrypt([int(i) for i in read_from_socket(conn).split()]).decode('utf-8') + phrase
+# phrase += knap.decrypt(read_from_socket(clientSocket).decode('utf-8'))
+print(phrase)
+
+# Creating the Solitaire encryption tool
+sol = solitaire.Solitaire()
+sol.phraseShuffle(phrase)
+
+msg = ''
+while msg != 'exit':
+    formatedMsg = [int(i) for i in read_from_socket(conn).decode('utf-8').split()]
+    print(sol.decrypt(formatedMsg))
+    msg = input()
+    encMsg = ' '.join([str(i) for i in sol.encrypt(msg)])
+    send_msg(conn, encMsg)
+
 

@@ -7,7 +7,7 @@ class Knapsack:
         self.publicKey = self.__getPublicKey__(self.privateKey)
         self.len = len
 
-    def encrypt(self, msg, pubKey):
+    def encrypt(self, msg, pubKey=None):
         # We can encrypt messages with other publicKeys
         if pubKey == None:
             pubKey = self.publicKey
