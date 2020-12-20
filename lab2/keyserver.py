@@ -7,13 +7,15 @@ PORT = 30001
 connections = []
 
 
-def read_from_socket(socket):
+def read_from_socket(socket, id = None):
     # Getting how many bytes we need to read
     n = int.from_bytes(socket.recv(1), 'big')
 
     # Reading those bytes
     msg = socket.recv(n)
 
+    if id != None:
+        print('Client: ' + str(id))
     print('Received:')
     print(msg)
 
@@ -31,11 +33,11 @@ def client_actions(i):
     connections[i].append(id)
 
     # Receiving the publicKeys
-    publicKey = read_from_socket(conn).decode('utf-8')
+    publicKey = read_from_socket(conn, connections[i][1]).decode('utf-8')
     connections[i].append(publicKey)
 
     # Get the interested id
-    communicationId = int.from_bytes(read_from_socket(conn), 'big')
+    communicationId = int.from_bytes(read_from_socket(conn, connections[i][1]), 'big')
 
     for c in connections:
         if c[1] == communicationId:
@@ -50,11 +52,12 @@ with factory.socket(factory.AF_INET, factory.SOCK_STREAM) as server:
     server.listen()
     threads = []
     i = 0
+    print('Server started')
     while i < 2:
         # Accepting the clients
         conn, addr = server.accept()
         connections.append([conn])
-
+        print('Accepted connection')
         # Creating a new thread for each client
         t = threading.Thread(target=client_actions, args=(i,))
         t.start()
@@ -63,6 +66,7 @@ with factory.socket(factory.AF_INET, factory.SOCK_STREAM) as server:
         i = i+1
     
     # Joining all threads
+    print('Closing all threads and stopping')
     for t in threads:
         t.join()
 

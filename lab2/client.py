@@ -39,21 +39,29 @@ def createCommunication(socket, id):
     publicKey = read_from_socket(socket).decode('utf-8')
     return publicKey
 
+def intListToString(l):
+    return ' '.join([str(i) for i in l])
+
+def stringToIntList(string):
+    return [int(i) for i in string.split()]
+
 knap = knapsack.Knapsack(8)
 
-
+print('Client started')
 # Connecting the client to the server
 socket = factory.socket(factory.AF_INET, factory.SOCK_STREAM)
 server_address = (HOST, PORT)
 socket.connect(server_address)
+print('Connected to the keyserver')
 
 login(socket, knap.publicKey)
-
+print('Logged in to keyserver')
 # Selecting which user we want to speak to
 print("Tell me which client you want to speak with:")
 c2Id = int(input())
-pubKey = [int(i) for i in createCommunication(socket, c2Id).split()]
+pubKey = stringToIntList(createCommunication(socket, c2Id))
 socket.close()
+print('Closed communication with the keyserver')
 
 # Creating a new socket by which we can speak to the other client
 clientSocket = factory.socket(factory.AF_INET, factory.SOCK_STREAM)
@@ -64,7 +72,7 @@ server_address = (HOST, c2Id)
 
 # Connecting to the other client
 clientSocket.connect(server_address)
-
+print('Connected to the peer we want to speak with')
 # In the other client accept the connection
 # conn, addr = clientSocket.accept()
 # Reading the phrase which will be used by the Solitaire encryption
@@ -72,23 +80,27 @@ print('Select a phrase for encryption:')
 phrase = input()
 
 # Sending and reading phrase with which we will use the Solitaire encryptions
-formatedPhrase = ' '.join([str(i) for i in knap.encrypt(phrase, pubKey)])
+formatedPhrase = intListToString(knap.encrypt(phrase, pubKey))
 send_msg(clientSocket, formatedPhrase)
 # In the second client
 # phrase = knap.decrypt(read_from_socket(clientSocket).decode('utf-8')) + phrase
-phrase += knap.decrypt([int(i) for i in read_from_socket(clientSocket).split()]).decode('utf-8')
+phrase += knap.decrypt(stringToIntList(read_from_socket(clientSocket))).decode('utf-8')
+print('Assembled the encrypting phrase with my peer')
 print(phrase)
 
 # Creating the Solitaire encryption tool
 sol = solitaire.Solitaire()
 sol.phraseShuffle(phrase)
 
+print('Starting conversation')
+
 msg = ''
 while msg != 'exit':
     msg = input()
-    encMsg = ' '.join([str(i) for i in sol.encrypt(msg)])
+    encMsg = intListToString(sol.encrypt(msg))
     send_msg(clientSocket, encMsg)
-    formatedMsg = [int(i) for i in read_from_socket(clientSocket).decode('utf-8').split()]
-    print(sol.decrypt(formatedMsg))
+    formatedMsg = stringToIntList(read_from_socket(clientSocket).decode('utf-8'))
+    msg = sol.decrypt(formatedMsg)
+    print(msg)
 
 
