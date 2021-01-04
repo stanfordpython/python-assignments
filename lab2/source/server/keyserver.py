@@ -11,9 +11,15 @@ connections = []
 def read_from_socket(socket, id = None):
     # Getting how many bytes we need to read
     n = int.from_bytes(socket.recv(1), 'big')
+    length = n
+    while n == 255:
+        n = int.from_bytes(socket.recv(1), 'big')
+        length += n
+    
+    print(length)
 
     # Reading those bytes
-    msg = socket.recv(n)
+    msg = socket.recv(length)
 
     if id != None:
         print('Client: ' + str(id))
@@ -23,8 +29,12 @@ def read_from_socket(socket, id = None):
     return msg
 
 def send_msg(socket, msg):
-    socket.sendall(bytes([len(str(msg))]))
-    socket.sendall(bytes(str(msg), 'utf-8'))
+    size = len(str(msg))
+    while size > 255:
+        socket.sendall(bytes([255]))
+        size -= 255
+    socket.sendall(bytes([size]))
+    socket.sendall(msg.encode())
 
 
 def client_actions(i):
@@ -36,7 +46,12 @@ def client_actions(i):
     try:
         while close == False:
             # Receiving a json msg from the client
-            msg = json.loads(read_from_socket(conn).decode('utf-8'))
+            text = read_from_socket(conn).decode('utf-8')
+            if len(text) < 2:
+                connections[i][0].close()
+                connections[i] = None
+                return
+            msg = json.loads(text)
 
             # Saving the id
             if 'id' in msg:
@@ -59,15 +74,21 @@ def client_actions(i):
             # Get the interested id
             if 'peer' in msg:
                 communicationId = int(msg['peer'])
-
+                found = False
                 for c in connections:
-                    if c[1] == communicationId:
+                    if c != None and c[1] == communicationId:
+                        found = True
                         # Returning the clients publicKey
                         sentMsg = {
                             "peer" : c[2]
                         }
                         send_msg(conn, json.dumps(sentMsg))
                         break
+                if not found:
+                    sentMsg = {
+                            "peer" : -1
+                        }
+                    send_msg(conn, json.dumps(sentMsg))
             if 'close' in msg:
                 connections[i] = None
                 close = True
@@ -81,7 +102,7 @@ with factory.socket(factory.AF_INET, factory.SOCK_STREAM) as server:
     threads = []
     i = 0
     print('Server started')
-    while i < 2:
+    while True:
         # Accepting the clients
         conn, addr = server.accept()
         connections.append([conn])
@@ -101,6 +122,12 @@ with factory.socket(factory.AF_INET, factory.SOCK_STREAM) as server:
 
 
 
+# TODO: Correct steps:
+            # 1. Client 1 connects to the keyserver
+            # 2. Client 1 sends  message to Client 2
+            # 3. Client 2 asks for the key of Client 1
+            # 4. Client 2 sends a confirmation msg to Client 1
+            # 5. Communication starts
 
     
 
