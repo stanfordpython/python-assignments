@@ -8,28 +8,15 @@ import solitaire
 
 class KnapsackTest(unittest.TestCase):
     def setUp(self):
-        self.len = 8
+        self.len = 5
         self.knapsack = knapsack.Knapsack(self.len)
 
-    def test_encryption(self):
+    def test_correctness(self):
         message = 'Message test'
         cipherText = self.knapsack.encrypt(message)
+        simpleText = self.knapsack.decrypt(cipherText).decode()
 
-        self.assertEqual(len(message), len(cipherText))
-
-    def test_decryption(self):
-        message = 'Message test'
-        cipherText = self.knapsack.encrypt(message)
-        simpleText = self.knapsack.decrypt(cipherText)
-
-        self.assertEqual(len(simpleText), len(cipherText))
-
-    # def test_correctness(self):
-    #     message = 'Message test'
-    #     cipherText = self.knapsack.encrypt(message)
-    #     simpleText = self.knapsack.decrypt(cipherText)
-
-    #     self.assertEqual(message, simpleText)
+        self.assertEqual(message, simpleText)
 
 
 if __name__ == '__main__':
