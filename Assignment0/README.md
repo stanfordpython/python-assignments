@@ -1,5 +1,5 @@
 # Assignment 0: Welcome to Python!
-> Due: 11:59 PM, Tuesday Jan 21
+> Due: 11:59 PM, Thursday April 8, 2021
 
 ## Overview
 
