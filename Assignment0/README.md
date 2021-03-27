@@ -8,15 +8,15 @@ This introductory assignment aims to give you practice with a few of the Python 
 - *Expected Time: 2 hours*
 - *Max Time: 4 hours*
 
-Note: Please get started early! We want to make sure there's time to resolve any installation or submission problems.
+Note: As this is Assignment 0, please get started early! We want to make sure that there's time to resolve any installation or submission problems.
 
 ## Outline
 
 - In Part 1, you will create a file called `coconuts.py` in which you write code to calculate the coconut-carrying capacity of swallows.
 - In Part 2, you will create a file called `cheese.py` in which you write code to play the part of a cheese shop owner as they discuss inventory with a client.
-- In Part 3, you will design and implement your own console I/O program from a broad specification - we're excited to see what programs you choose to build!
+- In Part 3, you will design and implement your own chatbot program from a broad specification - we're excited to see what types of chatbots you choose to build!
 
-(If this all sounds rather random, don't worry - as you will see later, the first two parts of this assignment are well-grounded in Monty Python sketches, which partially-inspired the name of the Python Programming Language).
+(If coconuts and cheese shops sound rather random, there is some method to this madness - the first two parts of this assignment are themed, as you will soon see, around Monty Python sketches which inspired the name of the Python Programming Language).
 
 ## Installing Python
 
@@ -32,7 +32,7 @@ Follow our instructions for installing Python 3.9.2 and setting up a virtual env
 
 There are no starter files for this assignment. 
 
-You will create and submit three Python files, named `coconuts.py`, `cheese.py`, and `creative.py`, and two text files, named `data.txt` and `sampleruns.txt`.
+You will create and submit three Python files, named `coconuts.py`, `cheese.py`, and `chatbot.py`, and two text files, named `data.txt` and `sampleruns.txt`.
 
 A reasonable starter `.py` file might look like:
 
@@ -172,65 +172,77 @@ You can check that an element is contained in a collection by using the keyword 
 
 Please submit a file called `cheese.py` which contains the code for this segment of the assignment.
 
-## Part 3: Console I/O and Persistent Storage
+## Part 3: Creative Chatbot
 
-In the third part of this assignment, you will implement a program with two, rather broad, requirements:
-1. The program must employ Console I/O. That is, the user must both read from the console (to understand instructions, or gain information, for example), and write to the console (to input information into your program) over the course of each successful run.
-2. The program must access data stored in a text file over the course of its run.
+In the third part of this assignment, you will implement a chatbot program similar to that which was discussed in Lecture 1.2, which uses a `while` loop to repeatedly prompt the user for interactions. This chatbot program will include two rather broad requirements:
+1. The program must employ Console I/O. That is, the user must both read from the console (when being prompted for input, or to read output, for example), and write to the console (to provide the chatbot with information, for example) over the course of each run.
+2. The program must access data stored in a text file over the course of its run, so that data from previous runs is accessible to users in future runs.
 
 To give you an idea of the scope and complexity of what we expect from this part of the assignment, below are two examples of types of submissions which would fulfill the requirements of this component.
 
 ### Example 1: User Authentication
 
-A simple user authentication program would allow users to create an account (in which a username and password would be appended to a text file for future access), and attempt to authenticate (in which the program would iterate through the text file to check if the given username and password combination is present in the file). 
+A simple user authentication chatbot might take the role of a gatekeeper. The gatekeeper stops all travellers attempting to pass through the gate, and asks them for their name and passphrase. If the traveller provides a name and passphrase whch are contained in the gatekeeer's Book of Records, the traveller may proceed. If not, the traveller is denied entry.
 
-It would then accept or reject the authentication request based on whether the user's credentials appeared in the text file. A sample run for such a system might appear as follows:
+Upon being asked for a name and passphrase, each traveller has two options: they may (a) provide a valid name and passphrase, or (b) bribe the guard - which allows them to add a new name and passphrase to the Book of Records - for a small fee.
+
+A sample run for such a chatbot might appear as follows:
 
 ```
-(cs41-env)$ python creative.py
-Would you like to add a new user, or authenticate an existing user? add
-What is your username? coopermj
-What is your password? parthsarin12345
-Successfully added credentials to data.txt!
+(cs41-env)$ python chatbot.py
+Halt! Welcome to the Doors of Destiny. Should you wish to proceed, you must identify yourself within the Book of Records. Is your name present in our book? yes
+What is your name, traveller? Michael
+What is your passphrase? parthsarin12345
+Welcome through, peaceful soul!
 
-(cs41-env)$ python creative.py
-Would you like to add a new user, or authenticate an existing user? authenticate
-What is your username? coopermj
-What is your password? pythoniscool
-Authentication failed. Either the username or password is incorrect.
+(cs41-env)$ python chatbot.py
+Halt! Welcome to the Doors of Destiny. Should you wish to proceed, you must identify yourself within the Book of Records. Is your name present in our book? no
+Psst! I'm... not supposed to tell you this, but for a small... compensation... I'll be able to add you to the Book of Records without the Warden noticing. Would you like to be added to the Book of Records? yes
+Perfect! I've added you - but I don't come cheap! I charge 100 Dogecoin for my services. Can you make the deposit? yes
+Deposit successful! You have 5532 Dogecoin remaining in your account.
+What is your name, then, traveller? Michael
+What is your passphrase? parthsarin12345
+Welcome through the Doors of Destiny! And it's been a pleasure doing business with you.
 
-(cs41-env)$ python creative.py
-Would you like to add a new user, or authenticate an existing user? authenticate
-What is your username? coopermj
-What is your password? parthsarin12345
-Authentication success! Access granted.
+(cs41-env)$ python chatbot.py
+Halt! Welcome to the Doors of Destiny. Should you wish to proceed, you must identify yourself within the Book of Records. Is your name present in our book? yes
+What is your name, traveller? Michael
+What is your passphrase? cs41isacoolclass
+The passphrase you presented does not match our records! Guards - arrest this intruder!
 ```
 
-(This problem is somewhat near and dear to my - Michael's - heart, since I've worked on authentication systems in several capacities for a couple of years now. This would be a great example of what we'd love to see in this part of the assignment - bringing something that you're passionate about, and theming your submission of this part around your area of interest).
+(Though this chatbot has somewhat more... personality... than most identity systems, this problem is somewhat near and dear to my - Michael's - heart, since I've worked on identity and authentication systems in several capacities for a couple of years now. This type of thinking would be be a great example of what we'd love to see in this part of the assignment - bringing something that you're passionate about, and theming your chatbot of this part around your area of interest).
 
 ### Example 2: Simple Schedule
 
-A simple scheduling system would allow users to schedule events (in which they would enter a time range, and a name for the event, which would be stored into a text file), and check whether an event was taking place at a given time. A sample run for such a system might appear as follows. (Notes - I've used a MMDDYYYY encoding scheme for dates, and for hours, I've converted hours to floating point numbers, such that 14.5 means 2:30PM).
+Another example might be a Virtual Assistant chatbot, which allows users to schedule events (in which they would enter a time range, and a name for the event, which would be stored into a text file), and check whether an event was taking place at a given time. A sample run for such a system might appear as follows. (Notes - I've used a MMDDYYYY encoding scheme for dates, and for hours, I've converted hours to floating point numbers, such that 14.5 means 2:30PM).
 
 ```
-(cs41-env)$ python creative.py
-Would you like to add a new event, or check an existing time slot? add
+(cs41-env)$ python chatbot.py
+Hello there, it's Hal, your friendly scheduling assistant! Would you like to add a new event, or check an existing time slot? add
 What is the name of the event? CS41 Lecture
 On which day would you like to schedule the event? 03302021
 What is the start time? 14.5
 What is the end time? 16
 Successfully added the event to your day!
 
-(cs41-env)$ python creative.py
-Would you like to add a new event, or check an existing time slot? check
+(cs41-env)$ python chatbot.py
+Hello there, it's Hal, your friendly scheduling assistant! Would you like to add a new event, or check an existing time slot? check
 On which day would you like to check for scheduled events? 03302021
 What time would you like to check for availability? 15
 At that time, you'll be busy with CS41 Lecture.
+
+
+(cs41-env)$ python chatbot.py
+Hello there, it's Hal, your friendly scheduling assistant! Would you like to add a new event, or check an existing time slot? open the pod bay doors
+I'm sorry Dave, I'm afraid I can't let you do that.
 ```
 
-Note that with both of these examples, we've left the scheme you use to store data to the file open-ended. For example, if designing an authentication system as in the first example, you may choose to create a text file with the following data format:
+Note that with both of these examples, we've left the scheme you use to store data to the file open-ended. For example, if designing an authentication system as in the first example, you might choose to create a text file with the following data format:
 
 ```
+dogecoin_in_account:5632
+
 coopermj
 parthsarin12345
 
@@ -254,22 +266,24 @@ start_time: 10
 end_time: 11
 ```
 
-The format in which you choose to store your data is up to you, and will likely be (at least in part) informed by the type of system you choose to implement for this part of the assignment. If you're having trouble working out a data format, though, feel free to reach out, and we're more than happy to help brainstorm with you.
+The format in which you choose to store your data is up to you, and will likely be (at least in part) informed by the theme around which you'd like to design your chatbot. If you're having trouble working out a data format, though, feel free to reach out, and we're more than happy to help brainstorm with you.
 
-We've deliberately left this problem open-ended, since we're excited to see where you choose to take this prompt. 
+We've deliberately left this problem open-ended, since we're excited to see where you choose to take this prompt.
 
 _We'd ask that, in the spirit of open-endedness, that you please not implement one of the two examples above, but rather that you bring your own take on this assignment to this submission - if you're really struggling for ideas, though, please reach out to us!_
 
 ### Submission
 
-Please submit a file called `creative.py` which contains the code for this segment of the assignment. Please also submit the following two text files. `sampleruns.txt` should contain - similar to what we've shown in the examples above - input and output from a couple of sample runs, copied and pasted from your Terminal. This will give us an idea of how to interact with your program while grading it. Additionally, `data.txt` will contain some starter data for your program, so that the user does not need to construct a data file and add data before querying for existing data (e.g. in the authentication example, a user should be able to attempt to login immediately, without first needing to create a file of credentials and populate it with a series of usernames and passwords).
+Please submit a file called `chatbot.py` which contains the code for this segment of the assignment. Please also submit the following two text files. 
+- `sampleruns.txt` should contain - similar to what we've shown in the examples above - input and output from a couple of sample runs, copied and pasted from your Terminal. This will give us an idea of how to interact with your program while grading it. 
+- `data.txt` will contain some starter data for your program, so that the user does not need to construct a data file and add data before querying for existing data (e.g. in the authentication example, a user should be able to attempt to login immediately, without first needing to create a file of credentials and populate it with a series of usernames and passwords).
 
 ## Extensions
 > Extensions on Assignment 0? If you insist.
 
 This section of an assignment handout usually gives a few of our suggestions if you're looking for ways to go above and beyond the requirements of the assignment. At no point are you ever required to implement an extension - although they sometimes provide interesting challenges or alternative approaches to problem-solving.
 
-In general, when you submit an extension to an assignment, add `-ext` to the end of the filename. In this case, if you want to submit an extension, you should submit *both* an unmodified `coconuts.py` file that implements the unextended assignment and a `coconuts-ext.py` file that implements your extension. Extension programs should also contain a module-level comment explaining what the extended assignment does differently.
+When you submit an extension to an assignment, you should submit *both* an unmodified `coconuts.py` file that implements the unextended assignment and a `coconuts-ext.py` file that implements your extension. Extension programs should also contain a module-level comment explaining what the extended assignment does differently.
 
 ### Binge-Watch Monty Python Videos on Youtube
 Including but not limited to:
@@ -298,6 +312,9 @@ Instead of always using the same prompts and responses, cycle through a list of 
 ### `cheese`: Fuzzy matching
 Allow the user to enter any input, and search for each of your cheeses, case-insensitively, in their input. That is, let the user ask: `"Any Norwegian Jarlsberger, per chance?"`.
 
+### `chatbot`: Go Nuts!
+As you are likely well aware, building effective chatbots which can fluently converse with - and understand - humans is an open area of research in computer science. Though we've designed this assignment so that you implement a simple chatbot within a well-scoped set of requirements, there truly is no ceiling to where you can take this. As two starter ideas, though, we'd recommend adding new features to your chatbot within the theme you've defined, and seeing whether you can make your chatbot robust to imperfect input (in the calendar chatbot, for example, whether the user types `add` or `add event`, the outcome should be the same - how robust can you make your chatbot to such variability in user input?).
+
 ## Grading
 
 This assignment will not be assigned a numeric grade. However, we will be leaving detailed feedback on your functionality and style, so take a pass through your completed assignment to make its style feel good (to you!) if you haven't already done that.
@@ -311,16 +328,16 @@ While not necessary for this assignment, we want to point out a really useful to
 You can run `pycodestyle` as follows:
 
 ```
-(cs41-env)$ pycodestyle coconuts.py cheese.py creative.py
+(cs41-env)$ pycodestyle coconuts.py cheese.py chatbot.py
 ```
 
 Any style violations will be printed to the console. You can automatically apply all of these changes using the `autopep8` tool. Be warned that the `autopep8` tool overwrites your files in-place, and may substantially change them, so you might want to apply changes by hand. However, `autopep8` can be a good time saver.
 
 ```
-(cs41-env)$ autopep8 coconuts.py cheese.py
+(cs41-env)$ autopep8 coconuts.py cheese.py chatbot.py
 ```
 
-If you just want to see what changes would be made, but not apply them, you can use `autopep8 --diff coconuts.py cheese.py creative.py` instead.
+If you just want to see what changes would be made, but not apply them, you can use `autopep8 --diff coconuts.py cheese.py chatbot.py` instead.
 
 During setup, we installed both `pycodestyle` and `autopep8` into our virtual environment, so they will be available inside of the virtual environment. That is, make sure that you have activated your `cs41-env` virtual environment in order to run these tools.
 
