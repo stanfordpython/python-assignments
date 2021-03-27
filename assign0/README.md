@@ -159,15 +159,15 @@ In the third part of this assignment, you will implement a chatbot program which
 1. *Ask the user for input and print out responses*. The program should read input from the console and, based on the input, print out some response. You don't have to respond immediately after every input; the program could keep asking questions, just as long as it responds eventually.
 2. *Access stored data*. The program should access data stored in a text file over the course of its run, so that data from previous runs is accessible to users in future runs.
 
-To give you an idea of the scope and complexity of what we expect from this part of the assignment, below are two examples of types of submissions which would fulfill the requirements of this component.
+Beyond this, make it your own! Here are two examples that your course staff made previously:
 
 ### Example 1: The Doors of Destiny
 
-A simple user authentication chatbot might take the role of a gatekeeper. The gatekeeper stops all travellers attempting to pass through the gate, and asks them for their name and passphrase. If the traveller provides a name and passphrase whch are contained in the gatekeeer's Book of Records, the traveller may proceed. If not, the traveller is denied entry.
+This program is a simple user authentication chatbot who acts like a gatekeeper before the "Doors of Destiny". The gatekeeper stops all travellers attempting to pass through the gate, and asks them for their name and passphrase. If the traveller provides a name and passphrase whch are contained in the gatekeeer's Book of Records, the traveller may proceed. If not, the traveller is denied entry.
 
 Upon being asked for a name and passphrase, each traveller has two options: they may (a) provide a valid name and passphrase, or (b) bribe the guard - which allows them to add a new name and passphrase to the Book of Records - for a small fee.
 
-A sample run for such a chatbot might appear as follows (user input is ***bolded and italicized***):
+Here's what the chatbot looks like (user input is ***bolded and italicized***):
 
 <pre><code>(cs41-env)$ python chatbot.py
 Halt! Welcome to the Doors of Destiny. 
@@ -178,7 +178,6 @@ What is your name, traveller? <b><i>Michael</i></b>
 What is your passphrase? <b><i>parthsarin12345</i></b>
 Welcome through, peaceful soul!
 
-(cs41-env)$ python chatbot.py
 Halt! Welcome to the Doors of Destiny. 
 Should you wish to proceed, you must identify yourself within the Book of Records. 
 
@@ -194,7 +193,6 @@ What is your name, then, traveller? <b><i>Michael</i></b>
 What is your passphrase? <b><i>parthsarin12345</i></b>
 Welcome through the Doors of Destiny! And it's been a pleasure doing business with you.
 
-(cs41-env)$ python chatbot.py
 Halt! Welcome to the Doors of Destiny. 
 Should you wish to proceed, you must identify yourself within the Book of Records. 
 
@@ -208,7 +206,7 @@ This chatbot is adorable and geeky! Feel free to bring your personality and pass
 
 ### Example 2: Simple Schedule
 
-Another example might be a Virtual Assistant chatbot, which allows users to schedule events (in which they would enter a time range, and a name for the event, which would be stored into a text file), and check whether an event was taking place at a given time. A sample run for such a system might appear as follows. (Note that this uses `MMDDYYYY` as an encoding scheme for dates, and that hours are represented as floating point numbers, so 14.5 means 2:30PM). Once again, user input is ***bolded and italicized***.
+This program is more like a virtual assistant (think Siri, Alexa, etc.), which allows users to schedule events and see their calendar. Here's a sample run for this program (note that this uses `MMDDYYYY` as an encoding scheme for dates, and that hours are represented as floating point numbers, so 14.5 means 2:30PM); once again, user input is ***bolded and italicized***:
 
 <pre><code>(cs41-env)$ python chatbot.py
 Hello there, it's Hal, your friendly scheduling assistant! 
@@ -221,17 +219,10 @@ What is the end time? <b><i>16</i></b>
 
 Successfully added the event to your day!
 
-(cs41-env)$ python chatbot.py
-Hello there, it's Hal, your friendly scheduling assistant! 
-
 Would you like to add a new event, or check an existing time slot? <b><i>check</i></b>
 On which day would you like to check for scheduled events? <b><i>03302021</i></b>
 What time would you like to check for availability? <b><i>15</i></b>
 At that time, you'll be busy with CS41 Lecture.
-
-
-(cs41-env)$ python chatbot.py
-Hello there, it's Hal, your friendly scheduling assistant! 
 
 Would you like to add a new event, or check an existing time slot? <b><i>open the pod bay doors</i></b>
 I'm sorry Dave, I'm afraid I can't let you do that.
