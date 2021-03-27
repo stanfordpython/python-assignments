@@ -29,7 +29,7 @@ Follow our instructions for installing Python 3.9.2 and setting up a virtual env
 
 There are no starter files for this assignment. 
 
-You will create and submit three Python files, named `coconuts.py`, `cheese.py`, and `chatbot.py`, and two text files, named `data.txt` and `sampleruns.txt`.
+You will create and submit three Python files, named `coconuts.py`, `cheese.py`, and `chatbot.py`, and some text files which store data for your chatbot.
 
 A reasonable starter file might look like:
 
