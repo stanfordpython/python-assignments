@@ -1,12 +1,9 @@
 # Assignment 0: Welcome to Python!
-> Due: 11:59 PM, Thursday April 8, 2021
+> Due: 11:59 PM, Friday, April 9, 2021
 
 ## Overview
 
 This introductory assignment aims to give you practice with a few of the Python fundamentals we've covered in class. More importantly, the goal of this warmup assignment is to ensure that your local Python installation is set up correctly and that you are familiar with the CS41 submission process.
-
-- *Expected Time: 2 hours*
-- *Max Time: 4 hours*
 
 Note: As this is Assignment 0, please get started early! We want to make sure that there's time to resolve any installation or submission problems.
 
@@ -34,11 +31,16 @@ There are no starter files for this assignment.
 
 You will create and submit three Python files, named `coconuts.py`, `cheese.py`, and `chatbot.py`, and two text files, named `data.txt` and `sampleruns.txt`.
 
-A reasonable starter `.py` file might look like:
+A reasonable starter file might look like:
 
 ```python
 #!/usr/bin/env python3
-"""Module-level comment."""
+"""
+File: <filename>.py
+-------------------
+
+What does this file do?
+"""
 
 # Write additional code and functions here.
 
@@ -89,27 +91,7 @@ How many pounds of coconuts are there? 2.5
 No. Carrying the coconuts is impossible.
 ```
 
-### Hints
-
-In all portions of this assignment, you may find it tedious to repeatedly enter inputs. You can create a file, for example called `coconuts-input.txt`, and populate it with the two lines `17` and `3` so that the file looks like:
-
-```
-17
-3
-```
-
-Now, you can run the program with predetermined input by running:
-
-```
-(cs41-env)$ python3 coconuts.py < coconuts-input.txt
-How many ounces of birds are carrying the coconuts? How many pounds of coconuts are there? Yes! Carrying the coconuts is possible.
-```
-
-The formatting will be compressed, and a little harder to read, but this debugging trick might be an efficiency gain for you in the later parts of the assignment.
-
-### Submission
-
-Please submit a file called `coconuts.py` which contains the code for this segment of the assignment.
+Submit the `coconuts.py` file, which should the code for this segment of the assignment.
 
 ## Part 2: The Cheese Shop
 
@@ -172,72 +154,94 @@ You can check that an element is contained in a collection by using the keyword 
 
 Please submit a file called `cheese.py` which contains the code for this segment of the assignment.
 
-## Part 3: Creative Chatbot
+## Part 3: Chatbot
 
-In the third part of this assignment, you will implement a chatbot program similar to that which was discussed in Lecture 1.2, which uses a `while` loop to repeatedly prompt the user for interactions. This chatbot program will include two rather broad requirements:
-1. The program must employ Console I/O. That is, the user must both read from the console (when being prompted for input, or to read output, for example), and write to the console (to provide the chatbot with information, for example) over the course of each run.
-2. The program must access data stored in a text file over the course of its run, so that data from previous runs is accessible to users in future runs.
+In the third part of this assignment, you will implement a chatbot program which has a conversation with the user. There are just two requirements for this program:
+
+1. *Ask the user for input and print out responses*. The program should read input from the console and, based on the input, print out some response. You don't have to respond immediately after every input; the program could keep asking questions, just as long as it responds eventually.
+2. *Access stored data*. The program should access data stored in a text file over the course of its run, so that data from previous runs is accessible to users in future runs.
 
 To give you an idea of the scope and complexity of what we expect from this part of the assignment, below are two examples of types of submissions which would fulfill the requirements of this component.
 
-### Example 1: User Authentication
+### Example 1: The Doors of Destiny
 
 A simple user authentication chatbot might take the role of a gatekeeper. The gatekeeper stops all travellers attempting to pass through the gate, and asks them for their name and passphrase. If the traveller provides a name and passphrase whch are contained in the gatekeeer's Book of Records, the traveller may proceed. If not, the traveller is denied entry.
 
 Upon being asked for a name and passphrase, each traveller has two options: they may (a) provide a valid name and passphrase, or (b) bribe the guard - which allows them to add a new name and passphrase to the Book of Records - for a small fee.
 
-A sample run for such a chatbot might appear as follows:
+A sample run for such a chatbot might appear as follows (user input is ***bolded and italicized***):
 
-```
+<pre><code>
 (cs41-env)$ python chatbot.py
-Halt! Welcome to the Doors of Destiny. Should you wish to proceed, you must identify yourself within the Book of Records. Is your name present in our book? yes
-What is your name, traveller? Michael
-What is your passphrase? parthsarin12345
+Halt! Welcome to the Doors of Destiny. 
+Should you wish to proceed, you must identify yourself within the Book of Records. 
+
+Is your name present in our book? <b><i>yes</i></b>
+What is your name, traveller? <b><i>Michael</i></b>
+What is your passphrase? <b><i>parthsarin12345</i></b>
 Welcome through, peaceful soul!
 
 (cs41-env)$ python chatbot.py
-Halt! Welcome to the Doors of Destiny. Should you wish to proceed, you must identify yourself within the Book of Records. Is your name present in our book? no
-Psst! I'm... not supposed to tell you this, but for a small... compensation... I'll be able to add you to the Book of Records without the Warden noticing. Would you like to be added to the Book of Records? yes
-Perfect! I've added you - but I don't come cheap! I charge 100 Dogecoin for my services. Can you make the deposit? yes
+Halt! Welcome to the Doors of Destiny. 
+Should you wish to proceed, you must identify yourself within the Book of Records. 
+
+Is your name present in our book? no
+Psst! I'm... not supposed to tell you this, but for a small... compensation... I might be able to add you to the Book of Records without the Warden noticing. 
+
+Would you like to be added to the Book of Records? <b><i>yes</i></b>
+Perfect! I've added you - but I don't come cheap! I charge 100 Dogecoin for my services. 
+Can you make the deposit? <b><i>yes</i></b>
 Deposit successful! You have 5532 Dogecoin remaining in your account.
-What is your name, then, traveller? Michael
-What is your passphrase? parthsarin12345
+
+What is your name, then, traveller? <b><i>Michael</i></b>
+What is your passphrase? <b><i>parthsarin12345</i></b>
 Welcome through the Doors of Destiny! And it's been a pleasure doing business with you.
 
 (cs41-env)$ python chatbot.py
-Halt! Welcome to the Doors of Destiny. Should you wish to proceed, you must identify yourself within the Book of Records. Is your name present in our book? yes
-What is your name, traveller? Michael
-What is your passphrase? cs41isacoolclass
-The passphrase you presented does not match our records! Guards - arrest this intruder!
-```
+Halt! Welcome to the Doors of Destiny. 
+Should you wish to proceed, you must identify yourself within the Book of Records. 
 
-(Though this chatbot has somewhat more... personality... than most identity systems, this problem is somewhat near and dear to my - Michael's - heart, since I've worked on identity and authentication systems in several capacities for a couple of years now. This type of thinking would be be a great example of what we'd love to see in this part of the assignment - bringing something that you're passionate about, and theming your chatbot of this part around your area of interest).
+Is your name present in our book? <b><i>yes</i></b>
+What is your name, traveller? <b><i>Michael</i></b>
+What is your passphrase? <b><i>cs41isacoolclass</i></b>
+The passphrase you presented does not match our records! Guards - arrest this intruder!
+</code></pre>
+
+This chatbot is adorable and geeky! Feel free to bring your personality and passion to this ☺️
 
 ### Example 2: Simple Schedule
 
-Another example might be a Virtual Assistant chatbot, which allows users to schedule events (in which they would enter a time range, and a name for the event, which would be stored into a text file), and check whether an event was taking place at a given time. A sample run for such a system might appear as follows. (Notes - I've used a MMDDYYYY encoding scheme for dates, and for hours, I've converted hours to floating point numbers, such that 14.5 means 2:30PM).
+Another example might be a Virtual Assistant chatbot, which allows users to schedule events (in which they would enter a time range, and a name for the event, which would be stored into a text file), and check whether an event was taking place at a given time. A sample run for such a system might appear as follows. (Note that this uses MMDDYYYY as an encoding scheme for dates and hours are represented as floating point numbers, so 14.5 means 2:30PM). Once again, user input is ***bolded and italicized***.
 
-```
+<pre><code>
 (cs41-env)$ python chatbot.py
-Hello there, it's Hal, your friendly scheduling assistant! Would you like to add a new event, or check an existing time slot? add
-What is the name of the event? CS41 Lecture
-On which day would you like to schedule the event? 03302021
-What is the start time? 14.5
-What is the end time? 16
+Hello there, it's Hal, your friendly scheduling assistant! 
+
+Would you like to add a new event, or check an existing time slot? <b><i>add</i></b>
+What is the name of the event? <b><i>CS41 Lecture</i></b>
+On which day would you like to schedule the event? <b><i>03302021</i></b>
+What is the start time? <b><i>14.5</i></b>
+What is the end time? <b><i>16</i></b>
+
 Successfully added the event to your day!
 
 (cs41-env)$ python chatbot.py
-Hello there, it's Hal, your friendly scheduling assistant! Would you like to add a new event, or check an existing time slot? check
-On which day would you like to check for scheduled events? 03302021
-What time would you like to check for availability? 15
+Hello there, it's Hal, your friendly scheduling assistant! 
+
+Would you like to add a new event, or check an existing time slot? <b><i>check</i></b>
+On which day would you like to check for scheduled events? <b><i>03302021</i></b>
+What time would you like to check for availability? <b><i>15</i></b>
 At that time, you'll be busy with CS41 Lecture.
 
 
 (cs41-env)$ python chatbot.py
-Hello there, it's Hal, your friendly scheduling assistant! Would you like to add a new event, or check an existing time slot? open the pod bay doors
-I'm sorry Dave, I'm afraid I can't let you do that.
-```
+Hello there, it's Hal, your friendly scheduling assistant! 
 
+Would you like to add a new event, or check an existing time slot? <b><i>open the pod bay doors</i></b>
+I'm sorry Dave, I'm afraid I can't let you do that.
+</code></pre>
+
+### Example: File I/O
 Note that with both of these examples, we've left the scheme you use to store data to the file open-ended. For example, if designing an authentication system as in the first example, you might choose to create a text file with the following data format:
 
 ```
@@ -270,13 +274,12 @@ The format in which you choose to store your data is up to you, and will likely 
 
 We've deliberately left this problem open-ended, since we're excited to see where you choose to take this prompt.
 
-_We'd ask that, in the spirit of open-endedness, that you please not implement one of the two examples above, but rather that you bring your own take on this assignment to this submission - if you're really struggling for ideas, though, please reach out to us!_
-
 ### Submission
 
-Please submit a file called `chatbot.py` which contains the code for this segment of the assignment. Please also submit the following two text files. 
-- `sampleruns.txt` should contain - similar to what we've shown in the examples above - input and output from a couple of sample runs, copied and pasted from your Terminal. This will give us an idea of how to interact with your program while grading it. 
-- `data.txt` will contain some starter data for your program, so that the user does not need to construct a data file and add data before querying for existing data (e.g. in the authentication example, a user should be able to attempt to login immediately, without first needing to create a file of credentials and populate it with a series of usernames and passwords).
+Please submit a file called `chatbot.py` which contains the code for this segment of the assignment. Please also submit the following two text files.
+
+- `sampleruns.txt` should contain - similar to what we've shown in the examples above - input and output from a couple of sample runs, copied and pasted from your Terminal. This will give us an idea of how to interact with your program while grading it. You don't need to bold and italicize the user input; we should be able to figure it out.
+- `data.txt` should contain some data for your program, so that the user does not need to construct a data file and add data before querying for existing data (e.g. in the authentication example, a user should be able to attempt to login immediately, without first needing to create a file of credentials and populate it with a series of usernames and passwords).
 
 ## Extensions
 > Extensions on Assignment 0? If you insist.
@@ -317,13 +320,11 @@ As you are likely well aware, building effective chatbots which can fluently con
 
 ## Grading
 
-This assignment will not be assigned a numeric grade. However, we will be leaving detailed feedback on your functionality and style, so take a pass through your completed assignment to make its style feel good (to you!) if you haven't already done that.
-
-Even though we haven't discussed style too much in class so far, 
+This assignment will just be submitted for feedback, not a grade!
 
 ## Style Checks
 
-While not necessary for this assignment, we want to point out a really useful tool for following the mechanics of Python style. The `pycodestyle` command-line tool takes as arguments a list of Python files and outputs a list of mechanical style violations. This catches small things like inconsistent spacing, line length, whitespace, but not larger things like program design, idiomatic Python, or structural complexity. 
+While not necessary for this assignment, we want to point out a useful tool for following the mechanics of Python style. The `pycodestyle` command-line tool takes as arguments a list of Python files and outputs a list of mechanical style violations. This catches small things like inconsistent spacing, line length, whitespace, but not larger things like program design, idiomatic Python, or structural complexity. *Nobody writes error-free code! `pycodestyle` is there to help your code comply with the (somewhat arbitrary) rules that the Python community has decided on.*
 
 You can run `pycodestyle` as follows:
 
@@ -350,4 +351,4 @@ If you've added any extra files or extensions above to the assignment, you shoul
 ## Credit
 Credit for the assignment idea and much of this writeup go to Sam Redmond (@sredmond).
 
-> With &#129412; by @parthsarin and @coopermj
+> With love, 🦄s, and 🐘s by @psarin and @coopermj
