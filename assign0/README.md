@@ -260,13 +260,14 @@ cs41isafunclass
 ```
 
 If you're designing a scheduling system as in the second example, you may choose to create a text file with the following data format:
+
 ```
-event_name:CS41 Lecture
+event_name: CS41 Lecture
 date: 03302021
 start_time: 14.5
 end_time: 16
 
-event_name:Workout
+event_name: Workout
 date: 04012021
 start_time: 10
 end_time: 11
@@ -280,9 +281,8 @@ We've deliberately left this problem open-ended, since we're excited to see wher
 
 Please submit a file called `chatbot.py` which contains the code for this segment of the assignment. Please also submit the following text files.
 
-- `sampleruns.txt` should contain - similar to what we've shown in the examples above - input and output from a couple of sample runs, copied and pasted from your Terminal. This will give us an idea of how to interact with your program while grading it. You don't need to bold and italicize the user input; we should be able to figure it out.
-- `data.txt` should contain some data for your program, so that the user does not need to construct a data file and add data before querying for existing data (e.g. in the authentication example, a user should be able to attempt to login immediately, without first needing to create a file of credentials and populate it with a series of usernames and passwords).
-- Any additional data files, if your program uses more than one data file. (As we saw above, one clean implementation of the gatekeeper program utilizes two files, one of which tracks the coin balance, the other of which tracks names and passphrases). These files should be pre-populated with sample data in much the same way as the `data.txt` file you submit.
+- `sampleruns.txt` should contain input and output from a couple of sample runs, copied and pasted from your Terminal (similar to what we've included above). This way we know how to interact with your program
+- Any data files for your program (there should be at least one). Include some nontrivial data in the file so we don't have to add data before we use the program (e.g. in the authentication example, we should be able to attempt to login immediately, without first needing to create a file of credentials and populate it with a series of usernames and passwords).
 
 ## Extensions
 > Extensions on Assignment 0? If you insist.
