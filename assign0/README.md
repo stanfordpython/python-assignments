@@ -245,9 +245,9 @@ Note that with both of these examples, we've left the scheme you use to store da
 ```
 
 ```
-coopermj:parthsarin12345
-psarin:pythoniscool!!
-antonioferris:cs41isafunclass
+Michael:parthsarin12345
+Parth:pythoniscool!!
+Antonio:cs41isafunclass
 ```
 
 If you're designing a scheduling system as in the second example, you may choose to create a text file with the following data format:
