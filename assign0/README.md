@@ -238,7 +238,7 @@ I'm sorry Dave, I'm afraid I can't let you do that.
 </code></pre>
 
 ### Example: File I/O
-Note that with both of these examples, we've left the scheme you use to store data to the file open-ended. For example, if designing an authentication system as in the first example, you might choose to create two text files - `coins.txt` to keep track of the coin balance, and `data.txt` to track names and passphrases - with the following data formats, respectively:
+Note that with both of these examples, we've left the scheme you use to store data to the file open-ended. For example, the authentication system might have two files - `coins.txt` to keep track of the coin balance, and `data.txt` to track names and passphrases - that look like this:
 
 ```
 5632
@@ -250,7 +250,7 @@ Parth:pythoniscool!!
 Antonio:cs41isafunclass
 ```
 
-If you're designing a scheduling system as in the second example, you may choose to create a text file with the following data format:
+The scheduling system in the second example might have a single data file that looks like this:
 
 ```
 event_name: CS41 Lecture
@@ -264,9 +264,7 @@ start_time: 10
 end_time: 11
 ```
 
-The format in which you choose to store your data is up to you, and will likely be (at least in part) informed by the theme around which you'd like to design your chatbot. If you're having trouble working out a data format, though, feel free to reach out, and we're more than happy to help brainstorm with you.
-
-We've deliberately left this problem open-ended, since we're excited to see where you choose to take this prompt.
+The format for your data is up to you, and will likely be informed by the theme around which you'd like to design your chatbot. If you're having trouble working out a data format, though, feel free to reach out, and we're more than happy to help brainstorm with you.
 
 ### Submission
 
