@@ -189,9 +189,9 @@ Is your name present in our book? no
 Psst! I'm... not supposed to tell you this, but for a small... compensation... I might be able to add you to the Book of Records without the Warden noticing. 
 
 Would you like to be added to the Book of Records? <b><i>yes</i></b>
-Perfect! I've added you - but I don't come cheap! I charge 100 Dogecoin for my services. 
+Perfect! I've added you - but I don't come cheap! I charge 100 coins for my services. 
 Can you make the deposit? <b><i>yes</i></b>
-Deposit successful! You have 5532 Dogecoin remaining in your account.
+Deposit successful! (You have 5532 coins remaining in your account).
 
 What is your name, then, traveller? <b><i>Michael</i></b>
 What is your passphrase? <b><i>parthsarin12345</i></b>
@@ -207,11 +207,11 @@ What is your passphrase? <b><i>cs41isacoolclass</i></b>
 The passphrase you presented does not match our records! Guards - arrest this intruder!
 </code></pre>
 
-This chatbot is adorable and geeky! Feel free to bring your personality and passion to this ☺️
+This chatbot is adorable and geeky! Feel free to bring your personality and passions to this part of the assignment. 😊
 
 ### Example 2: Simple Schedule
 
-Another example might be a Virtual Assistant chatbot, which allows users to schedule events (in which they would enter a time range, and a name for the event, which would be stored into a text file), and check whether an event was taking place at a given time. A sample run for such a system might appear as follows. (Note that this uses MMDDYYYY as an encoding scheme for dates and hours are represented as floating point numbers, so 14.5 means 2:30PM). Once again, user input is ***bolded and italicized***.
+Another example might be a Virtual Assistant chatbot, which allows users to schedule events (in which they would enter a time range, and a name for the event, which would be stored into a text file), and check whether an event was taking place at a given time. A sample run for such a system might appear as follows. (Note that this uses `MMDDYYYY` as an encoding scheme for dates, and that hours are represented as floating point numbers, so 14.5 means 2:30PM). Once again, user input is ***bolded and italicized***.
 
 <pre><code>
 (cs41-env)$ python chatbot.py
@@ -242,11 +242,13 @@ I'm sorry Dave, I'm afraid I can't let you do that.
 </code></pre>
 
 ### Example: File I/O
-Note that with both of these examples, we've left the scheme you use to store data to the file open-ended. For example, if designing an authentication system as in the first example, you might choose to create a text file with the following data format:
+Note that with both of these examples, we've left the scheme you use to store data to the file open-ended. For example, if designing an authentication system as in the first example, you might choose to create two text files - `coins.txt` to keep track of the coin balance, and `data.txt` to track names and passphrases - with the following data formats, respectively:
 
 ```
-dogecoin_in_account:5632
+5632
+```
 
+```
 coopermj
 parthsarin12345
 
@@ -276,10 +278,11 @@ We've deliberately left this problem open-ended, since we're excited to see wher
 
 ### Submission
 
-Please submit a file called `chatbot.py` which contains the code for this segment of the assignment. Please also submit the following two text files.
+Please submit a file called `chatbot.py` which contains the code for this segment of the assignment. Please also submit the following text files.
 
 - `sampleruns.txt` should contain - similar to what we've shown in the examples above - input and output from a couple of sample runs, copied and pasted from your Terminal. This will give us an idea of how to interact with your program while grading it. You don't need to bold and italicize the user input; we should be able to figure it out.
 - `data.txt` should contain some data for your program, so that the user does not need to construct a data file and add data before querying for existing data (e.g. in the authentication example, a user should be able to attempt to login immediately, without first needing to create a file of credentials and populate it with a series of usernames and passwords).
+- Any additional data files, if your program uses more than one data file. (As we saw above, one clean implementation of the gatekeeper program utilizes two files, one of which tracks the coin balance, the other of which tracks names and passphrases). These files should be pre-populated with sample data in much the same way as the `data.txt` file you submit.
 
 ## Extensions
 > Extensions on Assignment 0? If you insist.
