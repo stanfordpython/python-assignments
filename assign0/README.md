@@ -67,29 +67,28 @@ You can assume that the user input is formatted correctly.
 
 ### Sample Runs
 
-Your program should be able to emulate the following sample runs. *Make sure to activate your virtual environment before executing these lines of code!*
+Your program should be able to emulate the following sample runs. *Make sure to activate your virtual environment before executing these lines of code!* User input is ***bolded and italicized***:
 
-```
-(cs41-env)$ python coconuts.py
-How many ounces of birds are carrying the coconuts? 5
-How many pounds of coconuts are there? 1
+<pre><code>(cs41-env)$ python coconuts.py
+How many ounces of birds are carrying the coconuts? <b><i>5</i></b>
+How many pounds of coconuts are there? <b><i>1</i></b>
 No. Carrying the coconuts is impossible.
 
 (cs41-env)$ python coconuts.py
-How many ounces of birds are carrying the coconuts? 6.2
-How many pounds of coconuts are there? 1.1
+How many ounces of birds are carrying the coconuts? <b><i>6.2</i></b>
+How many pounds of coconuts are there? <b><i>1.1</i></b>
 Yes! Carrying the coconuts is possible.
 
 (cs41-env)$ python coconuts.py
-How many ounces of birds are carrying the coconuts? 17
-How many pounds of coconuts are there? 3
+How many ounces of birds are carrying the coconuts? <b><i>17</i></b>
+How many pounds of coconuts are there? <b><i>3</i></b>
 Yes! Carrying the coconuts is possible.
 
 (cs41-env)$ python coconuts.py
-How many ounces of birds are carrying the coconuts? 12.5
-How many pounds of coconuts are there? 2.5
+How many ounces of birds are carrying the coconuts? <b><i>12.5</i></b>
+How many pounds of coconuts are there? <b><i>2.5</i></b>
 No. Carrying the coconuts is impossible.
-```
+</code></pre>
 
 Submit the `coconuts.py` file, which should the code for this segment of the assignment.
 
@@ -113,36 +112,35 @@ The user is also allowed to enter special questions. If the user enters either o
 
 Your program should be able to emulate the following sample runs. *Make sure to activate your virtual environment before executing these lines of code!*
 
-```
-(cs41-env)$ python cheese.py
+<pre><code>(cs41-env)$ python cheese.py
 Good morning. Welcome to the National Cheese Emporium!
-What would you like? Red Windsor
+What would you like? <b><i>Red Windsor</i></b>
 I'm afraid we don't have any Red Windsor.
-What would you like? Lancashire
+What would you like? <b><i>Lancashire</i></b>
 I'm afraid we don't have any Lancashire.
-What would you like? cheddar
+What would you like? <b><i>cheddar</i></b>
 I'm afraid we don't have any cheddar.
-What would you like? Cheddar
+What would you like? <b><i>Cheddar</i></b>
 We have Cheddar, yessir.
 
 (cs41-env)$ python cheese.py
 Good morning. Welcome to the National Cheese Emporium!
-What would you like? Red Windsor
+What would you like? <b><i>Red Windsor</i></b>
 I'm afraid we don't have any Red Windsor.
-What would you like? cHeDdAr
+What would you like? <b><i>cHeDdAr</i></b>
 I'm afraid we don't have any cHeDdAr.
 What would you like? Have you in fact got any cheese here at all?
 We have 3 cheese(s)!
 Muenster
 Cheddar
 Red Leicester
-What would you like? exit
+What would you like? <b><i>exit</i></b>
 I'm afraid we don't have any exit.
-What would you like? LET ME OUT
+What would you like? <b><i>LET ME OUT</i></b>
 I'm afraid we don't have any LET ME OUT.
-What would you like? Cheddar
+What would you like? <b><i>Cheddar</i></b>
 We have Cheddar, yessir.
-```
+</code></pre>
 
 For anything that is not detailed in the above specification, your program can behave in any way you'd like. For example, you can customize the prompts and messages.
 
@@ -171,8 +169,7 @@ Upon being asked for a name and passphrase, each traveller has two options: they
 
 A sample run for such a chatbot might appear as follows (user input is ***bolded and italicized***):
 
-<pre><code>
-(cs41-env)$ python chatbot.py
+<pre><code>(cs41-env)$ python chatbot.py
 Halt! Welcome to the Doors of Destiny. 
 Should you wish to proceed, you must identify yourself within the Book of Records. 
 
@@ -213,8 +210,7 @@ This chatbot is adorable and geeky! Feel free to bring your personality and pass
 
 Another example might be a Virtual Assistant chatbot, which allows users to schedule events (in which they would enter a time range, and a name for the event, which would be stored into a text file), and check whether an event was taking place at a given time. A sample run for such a system might appear as follows. (Note that this uses `MMDDYYYY` as an encoding scheme for dates, and that hours are represented as floating point numbers, so 14.5 means 2:30PM). Once again, user input is ***bolded and italicized***.
 
-<pre><code>
-(cs41-env)$ python chatbot.py
+<pre><code>(cs41-env)$ python chatbot.py
 Hello there, it's Hal, your friendly scheduling assistant! 
 
 Would you like to add a new event, or check an existing time slot? <b><i>add</i></b>
