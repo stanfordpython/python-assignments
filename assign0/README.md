@@ -129,7 +129,7 @@ What would you like? <b><i>Red Windsor</i></b>
 I'm afraid we don't have any Red Windsor.
 What would you like? <b><i>cHeDdAr</i></b>
 I'm afraid we don't have any cHeDdAr.
-What would you like? Have you in fact got any cheese here at all?
+What would you like? <b><i>Have you in fact got any cheese here at all?</i></b>
 We have 3 cheese(s)!
 Muenster
 Cheddar
