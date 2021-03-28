@@ -202,8 +202,6 @@ What is your passphrase? <b><i>cs41isacoolclass</i></b>
 The passphrase you presented does not match our records! Guards - arrest this intruder!
 </code></pre>
 
-This chatbot is adorable and geeky! Feel free to bring your personality and passions to this part of the assignment. 😊
-
 ### Example 2: Simple Schedule
 
 This program is more like a virtual assistant (think Siri, Alexa, etc.), which allows users to schedule events and see their calendar. Here's a sample run for this program (note that this uses `MMDDYYYY` as an encoding scheme for dates, and that hours are represented as floating point numbers, so 14.5 means 2:30PM); once again, user input is ***bolded and italicized***:
@@ -228,7 +226,9 @@ Would you like to add a new event, or check an existing time slot? <b><i>open th
 I'm sorry Dave, I'm afraid I can't let you do that.
 </code></pre>
 
-### Example: File I/O
+These chatbots are adorable and geeky! Feel free to bring your personality and passions to this part of the assignment. 😊
+
+### File I/O and Data Formatting
 Note that with both of these examples, we've left the scheme you use to store data to the file open-ended. For example, the authentication system might have two files - `coins.txt` to keep track of the coin balance, and `data.txt` to track names and passphrases - that look like this:
 
 ```
