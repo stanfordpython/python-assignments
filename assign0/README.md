@@ -90,11 +90,11 @@ How many pounds of coconuts are there? <b><i>2.5</i></b>
 No. Carrying the coconuts is impossible.
 </code></pre>
 
-Submit the `coconuts.py` file, which should the code for this segment of the assignment.
+Submit the `coconuts.py` file, which should be the code for this segment of the assignment.
 
 ## Part 2: The Cheese Shop
 
-Before anything else, watch [this five-minute video](https://www.facebook.com/MontyPython/videos/567922730042254/) (cw: gun violence) on Facebook. The transcript can be found [here](http://www.montypython.net/scripts/cheese.php).
+Before anything else, watch [this five-minute video](https://www.youtube.com/watch?v=Hz1JWzyvv8A) (cw: gun violence) on Facebook. The transcript can be found [here](http://www.montypython.net/scripts/cheese.php).
 
 In this part of the assignment, you will play the part of the Michael Palin, the owner of the National Cheese Emporium.
 
